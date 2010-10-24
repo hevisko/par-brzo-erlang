@@ -1,0 +1,495 @@
+%% Starting with things for the PhD. Very experimental.
+
+%% Copyright (c) 2008, Tinus Strauss, All Rights Reserved.
+%% File : mds.erl
+%% Author: Tinus Strauss
+
+%% "fixed" some warnings from erlide etc.
+%% Hendrik Visage 2010
+
+%% Need to get versioning going inside erlide :()
+%% perhaps falling back to Aquamacs??
+%% - Also considers the is_integer() to the alphabet etc.
+
+
+
+-module(mds).
+
+-copyright('Copyright (c) 2008 Tinus Strauss').
+-copyright('Copyright (c) 2010 Hendrik Visage').
+-vsn("$Revision: 1.8 $").
+%$Id: mds.erl,v 1.8 2010/06/25 19:11:54 hendrivi Exp hendrivi $
+
+%-export([null/1,deriv/2,reduce/1,re_reverse/1,first/1,brz/2,equiv/5,compute_equiv/1,compute_equiv_par1/1]).
+-export([null/1,deriv/2,reduce/1,re_reverse/1,first/1,brz/2]).
+-compile(export_all).
+-include("mds.hrl").
+
+
+% Define an is_symbol function to test whether an input is a symbol. At
+% the moment it only tests whether the input is an integer.
+% However, guards cannot be user-defined functions. So for the moment
+% I'll use Is_integer directly. This should be improved.
+% I could use {symbol,$a} to represent the symbol a.
+is_symbol(Input) -> is_integer(Input).
+%HV: Using ints is a tad "limiting", as debugging (especially in Erlang without char/string "types") I
+% would prefer it to still work with: brz({concat,a,b},[a,b]),
+% which currently "fails" with no match :(
+
+%HV:Added list stuf, for example:
+% {concat,"web","ebay"}
+
+%% Define the boolean function Null (Bruce PhD Property 6.71)
+null(empty) -> false;
+null(epsilon) -> true;
+null(Symbol) when is_integer(Symbol) -> false;
+null({union,L,R}) -> null(L) or null(R);
+null({concat, L,R}) -> null(L) and null(R);
+null({kclosure,_}) -> true;
+null({pclosure,L}) -> null(L);
+null({optional,_}) -> true;
+%HV: Following added for lists, example "aa"
+null([H|[]])->null(H);
+null([H|Tail])->null({concat,H,Tail}).
+
+%% Define full derivatives (Bruce PhD Definition 6.60).
+%% deriv(RE, Symbol) -> RE
+deriv(empty, _) -> empty;
+deriv(epsilon, _) -> empty;
+deriv(Symbol1, Symbol2) 
+   when is_integer(Symbol1), is_integer(Symbol2) ->
+           case Symbol1 =:= Symbol2 of
+              true -> epsilon;
+              false -> empty
+           end;
+deriv({union,L,R},Symbol) ->
+   {union,deriv(L,Symbol), deriv(R,Symbol)};
+deriv({concat,L,R},Symbol) ->
+      case null(L) of
+         true -> {union,{concat,deriv(L,Symbol),R},deriv(R, Symbol)};
+         false -> {concat, deriv(L,Symbol),R}
+      end;
+%HV: list addition
+deriv([H|Tail],Symbol)->deriv({concat,H,Tail},Symbol);
+
+deriv({kclosure,L},Symbol) ->
+   {concat,deriv(L, Symbol), {kclosure, L}};
+deriv({pclosure,L},Symbol) ->
+   {concat,deriv(L, Symbol), {kclosure, L}};
+deriv({optional, L},Symbol) ->
+   deriv(L,Symbol).
+
+
+% Implement reduce rules from Bruce Construction taxonomy Remark 5.32.
+% reduce : RE -> RE.
+% The concat and union rules needs some attention
+reduce(epsilon) -> epsilon;
+reduce(empty) -> empty;
+reduce(Symbol) when is_integer(Symbol) -> Symbol;
+reduce({union, E, E}) -> reduce(E);
+reduce({union, empty, E}) -> reduce(E);
+reduce({union, E, empty}) -> reduce(E);
+reduce({union, Sym1, Sym2}) when is_integer(Sym1), is_integer(Sym2) -> 
+   {union, Sym1, Sym2};
+reduce({union,E1,E2}) -> 
+   RE1 = reduce(E1), RE2 = reduce(E2),
+   case {RE1, RE2} of 
+      {empty, RE2} -> RE2;
+      {RE1, empty} -> RE1;
+      _Else -> {union, RE1, RE2}
+   end;
+
+reduce({concat,_,empty}) -> empty;
+reduce({concat,empty,_}) -> empty;
+reduce({concat, epsilon, E}) -> reduce(E);
+reduce({concat, E, epsilon}) -> reduce(E);
+reduce({concat, Sym1, Sym2}) when is_integer(Sym1), is_integer(Sym2) ->
+   {concat, Sym1, Sym2};
+reduce({concat,E1,E2}) -> 
+   RE1 = reduce(E1), RE2 = reduce(E2),
+   case {RE1, RE2} of
+      {empty, _} -> empty;
+      {_, empty} -> empty;
+      {epsilon, RE2} -> RE2;
+      {RE1, epsilon} -> RE1;
+      _Else -> {concat, RE1, RE2}
+   end;
+% reduce(list) added by HV
+reduce([H|[]]) -> reduce(H);
+reduce([H|Tail]) -> reduce({concat,H,Tail});
+
+
+reduce({kclosure, empty}) -> epsilon;
+reduce({kclosure, epsilon}) -> epsilon;
+reduce({kclosure, {kclosure, E}}) -> reduce({kclosure, E});
+reduce({kclosure, E}) -> 
+   RE = reduce(E),
+   case RE of
+      empty -> epsilon;
+      epsilon -> epsilon;
+      _Else -> {kclosure, RE}
+   end;
+
+reduce({pclosure, empty}) -> empty;
+reduce({pclosure, epsilon}) -> epsilon;
+reduce({pclosure,{pclosure,E}}) -> {pclosure, reduce(E)};
+reduce({pclosure,RE}) -> {pclosure, reduce(RE)};
+
+reduce({optional, epsilon}) -> epsilon;
+reduce({optional, empty}) -> epsilon;
+reduce({optional, RE}) -> {optional, reduce(RE)}.
+
+
+%% Define the partial derivative function. Bruce PhD Definition 6.50.
+%% parderiv: RE x Sigma -> Powerset(RE).
+%parderiv(empty,_) -> sets:new();
+%parderiv(epsilon, _) -> sets:new();
+%parderiv(Symbol1, Symbol2)
+%   when is_integer(Symbol1), is_integer(Symbol2) ->
+%           case Symbol1 =:= Symbol2 of
+%              true -> A = sets:new(), sets:add_element(epsilon, A);
+%              false -> sets:new()
+%           end;
+%parderiv({union, L, R},Symbol) ->
+%   sets:union(parderiv(L,Symbol), parderiv(R,Symbol));
+%parderiv({concat,L,R},Symbol) -> sets:new().
+%% figure out what is meant by concat on the RHS of def 6.50
+%%% Still busy with this one.
+
+% Define function re_reverse. Def 3.22 Bruce construction taxonomy.
+%re_reverse : RE -> RE.
+re_reverse(epsilon) -> epsilon;
+re_reverse(empty) -> empty;
+re_reverse(Symbol) when is_integer(Symbol) -> Symbol;
+re_reverse({union, E1, E2}) ->
+   {union, re_reverse(E1), re_reverse(E2)};
+re_reverse({concat, E1, E2}) ->
+   {concat, re_reverse(E2), re_reverse(E1)};
+re_reverse({kclosure, E}) ->
+   {kclosure, re_reverse(E)};
+re_reverse({pclosure, E}) ->
+   {pclosure, re_reverse(E)};
+re_reverse({optional, E}) ->
+   {optional, re_reverse(E)}.
+
+% Implement the function First. Definition 4.60 Bruce construction
+% taxonomy. It returns a set of symbols that may be the first symbols of
+% the input.
+% first : RE -> Powerset(Symbols).
+% I'll use simple built-in sets for now. Should probably be improved.
+
+first(epsilon) -> sets:new();
+first(empty) -> sets:new();
+first(Symbol) when is_integer(Symbol) ->
+   sets:add_element(Symbol,sets:new());
+first({concat,E,F}) ->
+   case null(E) of
+      true -> sets:union(first(E), first(F));
+      false -> first(E)
+   end;
+first({union, E, F}) ->
+   sets:union(first(E), first(F));
+first({kclosure,E}) -> first(E);
+first({pclosure,E}) -> first(E);
+first({optional,E}) -> first(E);
+%Added by HV for "string" case:
+first([H|[]])->first(H);
+first([H|Tail])->first({concat,H,Tail}).
+
+
+% Implement Brzozowski's construction algorithm
+% At the moment I keep the "IDs" of the states, the RE representing the
+% state. I should rather change them to integers.
+% This is the interface function.
+% Brz : RE -> DFA
+brz(RE,Sigma) -> brz1(Sigma,dict:new(),[RE],[],[],[RE]).
+
+% Helper function to do the actual construction
+% brz1(Sigma,Delta,S,F,D,T) 
+
+brz1(Sigma,Delta,S,F,D,[]) ->
+   %T is empty, so we're done.
+   % Return the DFA record.
+   #dfa{states=lists:sort(D),symbols=Sigma,start=S,transition=Delta,finals=F};
+
+
+brz1(Sigma, Delta, S, F, D, [H|Tail]) ->
+   % Put the current node in the "done" set.
+	% H being the current node.
+	D1 = [H|D],
+   % Calculate the derivatives of the current node wrt all elements of
+   % Sigma. Also update the transition relation.
+   {Derivatives,Delta1} = lists:mapfoldl(fun(X,Delta0) ->
+            A=reduce(deriv(H,X)),
+            {A,dict:store({H,X},A,Delta0)} end,
+      Delta,Sigma),
+   % Need to filter to add only "new" REs to T.
+   % Here is a first filter attempt.
+   UniqDerivatives = lists:usort(Derivatives),
+   T1 = lists:umerge(
+       lists:filter(fun(X) -> not lists:member(X,D1) end, UniqDerivatives), 
+      Tail),
+
+   % Add nullable states to F
+   case null(H) of
+      true -> F1=[H|F];
+      false -> F1 = F
+   end,
+   % Now do it again, with the updated state.
+   brz1(Sigma, Delta1, S, F1, D1, T1).
+
+% Functions to take a DFA constructed by Brz and translate the states
+% into integers rather that REs. This could perhaps be done inside the
+% construction, but I keep it seperate now. (As an aside this mapping
+% from RE to integer could be a mapping based on some other function and
+% then, instead of storing the real RE in the todo/done sets one could
+% work with the value of the function. The function should then have a
+% number of properties. Being a real function is the most correct.
+% However, one could be a little bit less precise and still find
+% something, I think. . .)
+construct_mapping(States) -> 
+   construct_mapping(States, 1, []).
+
+construct_mapping([], _, Map) ->
+   % No more states to remap.
+   Map;
+construct_mapping([RE|States], Increment, []) ->
+   % Starting off, so we need a first element.
+   construct_mapping(States, Increment, [{RE,Increment}]);
+
+construct_mapping([RE|States], Increment, [{_,X}|_]=Map) ->
+   construct_mapping(States,Increment,[{RE,X+Increment}|Map]).
+
+convert_dfa(#dfa{states=Q,start=S,symbols=Symbols,transition=Delta,finals=F}) ->
+   Mapping = dict:from_list(construct_mapping(Q)),
+   Map = fun(X) -> dict:fetch(X,Mapping) end,
+   Snew = lists:map(Map,S),
+   Fnew = lists:map(Map,F),
+   Qnew = lists:map(Map,Q),
+   DeltaNew = dict:fold(fun(Key, Val, D) ->
+            {RE,Sym} = Key, 
+            dict:store({Map(RE),Sym},Map(Val),D) end,
+      dict:new(),
+      Delta),
+   #dfa{states=Qnew, symbols=Symbols, start=Snew, transition=DeltaNew,
+      finals=Fnew}.
+
+
+
+% A parallel version of map. Based on the one from the Erlnag book.
+% Note that the order of the new list might be different from the
+% original list. 
+parmap(Fun, List) ->
+   Self = self(),
+   Ref = erlang:make_ref(),
+   lists:foreach(fun(Item) -> 
+        spawn(fun() -> do_fun(Self, Ref, Fun, Item) end)
+      end, List),
+   collect(length(List), Ref,[]).
+
+% The work that is to be performed.
+do_fun(Parent, Ref, Fun, Value) ->
+   Parent ! {Ref, (catch Fun(Value))}.
+
+% A function to collect the results from all the workers in no
+% particular order.
+collect(0, _, List) -> List; 
+collect(N, Ref, List) ->
+   receive
+      {Ref, Result} -> collect(N-1, Ref, [Result|List])
+   end.
+
+% Similar to parmap, but we collect two lists. Fun should retrn a pair.
+parmap2(Fun, List) ->
+   Self = self(),
+   Ref = erlang:make_ref(),
+   lists:foreach(fun(Item) -> 
+        spawn(fun() -> do_fun(Self, Ref, Fun, Item) end)
+      end, List),
+   collect2(length(List), Ref,{[],[]}).
+
+collect2(0, _, Lists) -> Lists; 
+collect2(N, Ref, {List1, List2}) ->
+   receive
+      {Ref, {Result1, Result2}} -> collect2(N-1, Ref, 
+            {[Result1|List1],[Result2|List2]})
+   end.
+
+
+% A parallel "inner loop" version of the above Brz contruction.
+brz_par1(RE,Sigma) -> brz1_par1(Sigma,dict:new(),[RE],[],[],[RE]).
+
+% Helper function to do the actual construction
+% brz1(Sigma,Delta,S,F,D,T) 
+brz1_par1(Sigma,Delta,S,F,D,[]) ->
+   %T is empty, so we're done.
+   % Return the DFA record.
+   #dfa{states=lists:sort(D),symbols=Sigma,start=S,transition=Delta,finals=F};
+brz1_par1(Sigma, Delta, S, F, D, [H|Ttail]=_T) ->
+   % Put the current node in the "done" set.
+   D1 = [H|D],
+   % Calculate the derivatives of the current node wrt all elements of
+   % Sigma. Also update the transition relation.
+   % Find the derivatives in parallel for each symbol
+   {Derivatives,DeltaList} = parmap2(
+      fun(X) -> 
+         A = reduce(deriv(H,X)), {A, {{H,X},A}} 
+      end,
+      Sigma),
+   Delta1 = lists:foldl(
+      fun({Key,Val},Delta0) -> 
+            dict:store(Key,Val,Delta0) 
+      end,
+      Delta, DeltaList),
+   UniqDerivatives = lists:usort(Derivatives),
+   T1 = lists:umerge(
+       lists:filter(fun(X) -> not lists:member(X,D1) end, UniqDerivatives), 
+      Ttail),
+
+   % Add nullable states to F
+   case null(H) of
+      true -> F1=[H|F];
+      false -> F1 = F
+   end,
+   % Now do it again, with the updated state.
+   brz1_par1(Sigma, Delta1, S, F1, D1, T1).
+
+
+
+% Returns a list of N unique random integers between Min and Max, both
+% inclusive.
+% I have just realised that this method of generating the random numbers
+% is not guarenteed to terminate. One could keep on generating numbers
+% without getting "new" ones. I reckon it is unlikely. However is
+% something is done a trillion times a day, after a few months, it could
+% be an issue.
+% The reason for having this function is to select N items from some
+% list. Perhaps I should consider doing it differently. 
+rand_integers(Min, Max, N) when (Min =< Max), (Max - Min)+1 >= N ->
+   make_random_integers(Min, Max, N, [],0).
+
+make_random_integers(_Min, _Max, 0, List, Inv) ->
+   {Inv,List};
+make_random_integers(Min, Max, N, List,Inv) ->
+   Number = Min + random:uniform(Max-Min+1) -1,
+   case lists:member(Number,List) of
+      true -> make_random_integers(Min, Max, N, List,Inv+1);
+      false -> make_random_integers(Min, Max, N-1, [Number|List],Inv+1)
+   end.
+
+% A function to generate a random DFA. This is a fairly simple (read
+% naive) way of contruting an arbitrary DFA. It would be nice to specify
+% additional contraints on the structure. For example, that it should be
+% a tree, or acyclic, "deep", "broad" etc. The latter two might be
+% achieved by specifying the degree of the nodes. I need to think about
+% that a bit though.
+% The idea is simply to get a number of nodes, and randomly create
+% transitions among them. Some nodes are marked as final.
+%
+
+
+% NOTE. Since I control how it is generated, I could refrain from
+% having a list for all states, but rather just use the number an make a
+% rule that state 1 is the start and the others are all numbered.
+random_dfa(NumAlpha, NumStates, NumFinals, MinDeg, MaxDeg) 
+   %when MinDeg =< MaxDeg =< NumAlpha =< NumStates, NumFinals =< NumStates 
+   ->
+      build_dfa(
+         NumAlpha, NumStates, NumFinals, MinDeg, MaxDeg,
+         NumStates,
+         dict:new()).
+
+% A function that takes a list an constructs a random subset of length
+% N. List is a List with unique elements.
+random_sublist(List, N) ->
+   build_random_sublist(List,N,[]).
+
+build_random_sublist([],_,Sublist) ->
+   Sublist;
+build_random_sublist(_,0,Sublist) ->
+   Sublist;
+build_random_sublist(List,N,Sublist) ->
+   Item = lists:nth(random:uniform(length(List)),List),
+   build_random_sublist(lists:delete(Item,List), N-1, [Item|Sublist]).
+
+
+
+build_dfa(NumAlpha, NumStates, NumFinals, _MinDeg, _MaxDeg, 0, Trans) ->
+   % No more states to handle, so we are done
+   #dfa{
+      states=lists:seq(1,NumStates),
+      start=[1],
+      symbols=lists:seq(1,NumAlpha),
+      finals=random_sublist(lists:seq(1,NumStates),NumFinals),
+      transition=Trans
+   };
+
+
+build_dfa(NumAlpha, NumStates, NumFinals, MinDeg, MaxDeg, Current, Trans) ->
+   % How many connections? Some random number between MinDeg and MaxDeg
+   Number = MinDeg + random:uniform(MaxDeg-MinDeg+1) - 1,
+   Symbols = random_sublist(lists:seq(1,NumAlpha),Number),
+   Destinations = random_sublist(lists:seq(1,NumStates),Number),
+   Pairs = pair_lists(Symbols,Destinations),
+   TransNew = lists:foldl(
+      fun({Symb, Dest}, TransIn) -> 
+            dict:store({Current,Symb},Dest,TransIn)
+      end,
+      Trans,
+      Pairs),
+   % HEre we go again.
+   build_dfa(
+      NumAlpha, NumStates, NumFinals, MinDeg, MaxDeg,
+      Current-1,
+      TransNew
+   ).
+
+
+
+% A function that takes two "parallel" lists and combines them into a
+% single list of pairs.
+% pair(List1,List2) -> List3
+% length(List1) = length(List2)
+% List1 = [a], List2 = [b], List3 = [{a,b}]
+
+pair_lists(List1,List2) when length(List1) == length(List2) ->
+   build_pairs(List1,List2,[]).
+
+build_pairs([],[],Pairs) ->
+   lists:reverse(Pairs);
+build_pairs([H1|T1], [H2|T2],Pairs) ->
+   build_pairs(T1,T2,[{H1,H2}|Pairs]).
+
+
+
+
+% A function that generates a "random" regular expression.
+% Of  N operators.
+% generateRE(List1, List2, N) -> RE
+% List1 = [{Op,Type}], Type = bin|uni
+generateRE(_Operators, Symbols, N) when N < 1 ->
+   lists:nth(random:uniform(length(Symbols)),Symbols);
+generateRE(Operators, Symbols, N) ->
+   OpItem = lists:nth(random:uniform(length(Operators)),Operators),
+   case OpItem of
+      {Op, bin} ->
+         {Op, generateRE(Operators, Symbols, N-2), generateRE(Operators, Symbols, N-2)};
+      {Op, uni} ->
+         {Op, generateRE(Operators, Symbols, N-1)}
+   end.
+
+
+%
+% $Log: mds.erl,v $
+% Revision 1.8  2010/06/25 19:11:54  hendrivi
+% some I have missed: The states=lists:sort(D) is added to make the DFAs equivalent especially after the mds:convert_dfa/1
+%
+% Revision 1.7  2010/06/25 19:09:51  hendrivi
+% The states=lists:sort(D) is added to make the DFAs equivalent especially after the mds:convert_dfa/1
+%
+% Revision 1.6  2010/06/20 14:10:16  hvisage
+% Added strings to first
+%
+% Revision 1.5  2010/06/19 19:57:34  hvisage
+% Revision keywords added
+%

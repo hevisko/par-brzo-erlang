@@ -1,0 +1,3 @@
+  RE2 = {concat,{union,$a,epsilon},{kclosure, $b}}.
+  Alpha2 = "ab".
+  mds:brz(RE2,Alpha2).

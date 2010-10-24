@@ -1,0 +1,12 @@
+  % ebay or web
+  RE1 = {union,{concat,{concat,$w,$e},$b},{concat,{concat,{concat, $e,$b},$a},$y}}.
+  Alpha1 = "abewy".
+  M1=mds:brz_par1(RE1,Alpha1).
+
+  % Bruce's example RE. (a | epsilon)b*
+  RE2 = {concat,{union,$a,epsilon},{kclosure, $b}}.
+  Alpha2 = "ab".
+  M2 = mds:brz_par1(RE2,Alpha2).
+  
+  
+  

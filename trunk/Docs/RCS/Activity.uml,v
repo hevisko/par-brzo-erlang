@@ -1,0 +1,81 @@
+head	1.1;
+access;
+symbols;
+locks
+	hendrivi:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2010.06.26.18.58.30;	author hendrivi;	state Exp;
+branches;
+next	;
+
+
+desc
+@Initial checkin
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML">
+  <uml:Package xmi:id="_YOkaMHsAEd-7_6h2hXlZJA">
+    <elementImport xmi:id="_YP3asHsAEd-7_6h2hXlZJA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_YP3asXsAEd-7_6h2hXlZJA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <elementImport xmi:id="_YP4BwHsAEd-7_6h2hXlZJA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+    </elementImport>
+    <elementImport xmi:id="_YP4BwXsAEd-7_6h2hXlZJA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_usKooHsAEd-7_6h2hXlZJA" name="3rd attempt of concurrent Brzozowski DFA construction flow">
+      <node xmi:type="uml:InitialNode" xmi:id="_2oKO0HsAEd-7_6h2hXlZJA" outgoing="_z4SdUHsCEd-7_6h2hXlZJA"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_rtATYHsBEd-7_6h2hXlZJA" name="Foreach(alphabet) Generate{E,i} message and add to WiP" outgoing="_AHwuoH3nEd-2V_6fTYVoJg" incoming="_PqMhMHsHEd-7_6h2hXlZJA _z4SdUHsCEd-7_6h2hXlZJA">
+        <handler xmi:id="_2N6JgHsFEd-7_6h2hXlZJA" handlerBody="_ytnSkHsFEd-7_6h2hXlZJA"/>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="_--W9YHsDEd-7_6h2hXlZJA" name="DecisionNode" outgoing="_ThDTcHsGEd-7_6h2hXlZJA _c0ZuIHsGEd-7_6h2hXlZJA _xHeUYH3oEd-2V_6fTYVoJg" incoming="_QxPo0HsHEd-7_6h2hXlZJA _I5tFYH3nEd-2V_6fTYVoJg _3JYMcH3oEd-2V_6fTYVoJg _4DSP8H3oEd-2V_6fTYVoJg"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_ytnSkHsFEd-7_6h2hXlZJA" name="Distributor to receivers." outgoing="_HlSksHsJEd-7_6h2hXlZJA"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_SvwZYHsGEd-7_6h2hXlZJA" incoming="_ThDTcHsGEd-7_6h2hXlZJA"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_bzxXkHsGEd-7_6h2hXlZJA" name="Receive {rd,E,i,d/di} and remove {rd,E,i} from WiP" outgoing="_NqpEQHsHEd-7_6h2hXlZJA" incoming="_c0ZuIHsGEd-7_6h2hXlZJA"/>
+      <node xmi:type="uml:ValueSpecificationAction" xmi:id="_-LWrwHsGEd-7_6h2hXlZJA" name="Paths(E,i)=d/di" outgoing="_1EZgUHugEd-ICeNGhPHulQ" incoming="_NqpEQHsHEd-7_6h2hXlZJA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_Lg7lwHsHEd-7_6h2hXlZJA" name="DecisionNode" outgoing="_PqMhMHsHEd-7_6h2hXlZJA _QxPo0HsHEd-7_6h2hXlZJA" incoming="_1EZgUHugEd-ICeNGhPHulQ"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_CvGR0HsJEd-7_6h2hXlZJA" name="Receiver: process and send result." incoming="_HlSksHsJEd-7_6h2hXlZJA">
+        <handler xmi:id="_nIlTsHsGEd-7_6h2hXlZJA" handlerBody="_bzxXkHsGEd-7_6h2hXlZJA"/>
+        <handler xmi:id="_pWtGwH3oEd-2V_6fTYVoJg" handlerBody="_dh1KgH3oEd-2V_6fTYVoJg"/>
+      </node>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_DceAoH3nEd-2V_6fTYVoJg" name="Send {null,E} message and add {null,E} to WiP" outgoing="_I5tFYH3nEd-2V_6fTYVoJg" incoming="_AHwuoH3nEd-2V_6fTYVoJg">
+        <handler xmi:id="_Kz6vUH3nEd-2V_6fTYVoJg" handlerBody="_ytnSkHsFEd-7_6h2hXlZJA"/>
+      </node>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_dh1KgH3oEd-2V_6fTYVoJg" name="Receive {null,E,boolean} and remove {null,E} from WiP" outgoing="_1Qms8H3oEd-2V_6fTYVoJg" incoming="_xHeUYH3oEd-2V_6fTYVoJg"/>
+      <node xmi:type="uml:ValueSpecificationAction" xmi:id="_fPoJEH3oEd-2V_6fTYVoJg" name="Finish += E" outgoing="_4DSP8H3oEd-2V_6fTYVoJg" incoming="_2BDScH3oEd-2V_6fTYVoJg"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_zTI6sH3oEd-2V_6fTYVoJg" name="DecisionNode" outgoing="_2BDScH3oEd-2V_6fTYVoJg _3JYMcH3oEd-2V_6fTYVoJg" incoming="_1Qms8H3oEd-2V_6fTYVoJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_z4SdUHsCEd-7_6h2hXlZJA" source="_2oKO0HsAEd-7_6h2hXlZJA" target="_rtATYHsBEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ThDTcHsGEd-7_6h2hXlZJA" name="No WiP left" source="_--W9YHsDEd-7_6h2hXlZJA" target="_SvwZYHsGEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_c0ZuIHsGEd-7_6h2hXlZJA" name="WiP left" source="_--W9YHsDEd-7_6h2hXlZJA" target="_bzxXkHsGEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_NqpEQHsHEd-7_6h2hXlZJA" source="_bzxXkHsGEd-7_6h2hXlZJA" target="_-LWrwHsGEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_PqMhMHsHEd-7_6h2hXlZJA" name="d/di not yet in D" source="_Lg7lwHsHEd-7_6h2hXlZJA" target="_rtATYHsBEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QxPo0HsHEd-7_6h2hXlZJA" name="d/di already element of D" source="_Lg7lwHsHEd-7_6h2hXlZJA" target="_--W9YHsDEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_HlSksHsJEd-7_6h2hXlZJA" source="_ytnSkHsFEd-7_6h2hXlZJA" target="_CvGR0HsJEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_1EZgUHugEd-ICeNGhPHulQ" source="_-LWrwHsGEd-7_6h2hXlZJA" target="_Lg7lwHsHEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_AHwuoH3nEd-2V_6fTYVoJg" source="_rtATYHsBEd-7_6h2hXlZJA" target="_DceAoH3nEd-2V_6fTYVoJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_I5tFYH3nEd-2V_6fTYVoJg" source="_DceAoH3nEd-2V_6fTYVoJg" target="_--W9YHsDEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xHeUYH3oEd-2V_6fTYVoJg" source="_--W9YHsDEd-7_6h2hXlZJA" target="_dh1KgH3oEd-2V_6fTYVoJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_1Qms8H3oEd-2V_6fTYVoJg" source="_dh1KgH3oEd-2V_6fTYVoJg" target="_zTI6sH3oEd-2V_6fTYVoJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_2BDScH3oEd-2V_6fTYVoJg" name="True" source="_zTI6sH3oEd-2V_6fTYVoJg" target="_fPoJEH3oEd-2V_6fTYVoJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_3JYMcH3oEd-2V_6fTYVoJg" name="False" source="_zTI6sH3oEd-2V_6fTYVoJg" target="_--W9YHsDEd-7_6h2hXlZJA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_4DSP8H3oEd-2V_6fTYVoJg" source="_fPoJEH3oEd-2V_6fTYVoJg" target="_--W9YHsDEd-7_6h2hXlZJA"/>
+    </packagedElement>
+  </uml:Package>
+  <uml:Constraint xmi:id="_v0CaMHsBEd-7_6h2hXlZJA"/>
+  <uml:Constraint xmi:id="_wK7QMHsBEd-7_6h2hXlZJA"/>
+</xmi:XMI>
+@

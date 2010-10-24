@@ -1,0 +1,106 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@% @;
+
+
+1.1
+date	2010.08.02.16.31.48;	author hvisage;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@\usepackage{gcl}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{natbib}
+\usepackage{pfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+
+\usepackage{threeparttable}
+\usepackage{colortbl}
+\usepackage{xtab}
+\usepackage{longtable}
+
+\lstloadlanguages{erlang}
+%\lstset{ %
+%language=erlang,
+%numbers=left,
+%numberstyle=\tiny,
+%showspaces=false,               % show spaces adding particular underscores
+%showstringspaces=false,         % underline spaces within strings
+%breaklines=false,                % sets no automatic line breaking
+%breakatwhitespace=true        % sets if automatic breaks should only happen at whitespace
+%}
+
+\usepackage{algorithmic}
+\usepackage{algorithm}
+
+\setlength{\parindent}{15pt}
+
+\newlength{\OBLS}\setlength{\OBLS}{\baselineskip}
+\newlength{\OPAR}\setlength{\OPAR}{\parindent}
+\newcommand{\pgskip}{\hspace{\mathindent}\=\+}
+\newcommand{\FORhv}[1]{\FRM{\,#1\,}}
+\newcommand{\FRM}[1]{\mbox{$#1$}}
+\newcommand{\DERIVE}
+  {\setlength{\baselineskip}{1.3\baselineskip}
+  \begin{tabbing}
+  \hspace{\OPAR}\=\hspace{\OPAR}\=\hspace{\OPAR}\=\hspace{\OPAR}\=\hspace{\OPAR}\=\hspace{\OPAR}\=\kill
+  }
+\newcommand{\form}[1]
+  {\>\>\FORhv{#1}}
+\newcommand{\hint}[2]
+  {\\*\>\FRM{#1}\>\>\{#2\}\\}
+\newcommand{\STARTPROOF}[1]
+  {\TOPROVE{#1}\\$\vartriangleright$ \>\>}
+\newcommand{\TOPROVE}[1]
+  {#1}
+\newcommand{\ENDDERIVE}
+  {\end{tabbing}\setlength{\baselineskip}{\OBLS}
+}
+\newcommand{\ENDPROOF}
+  {$\rbrack\arrowvert$\\
+  $\square$\\\\}
+\newcommand {\IND}
+  {\setlength{\parindent}{\OPAR}\\
+  \begin{indent}}
+\newcommand {\ENDIND}
+  {\end{indent}\\
+  \setlength{\parindent}{0 pt}\\}
+%\newcommand {\IF}
+%  {\mathbf{if} \:\:}
+\newcommand {\BAR}
+  {\ [\!] \:\:\:}
+\newcommand {\FI}
+  {\mathbf{fi} \:\:}
+\newcommand {\ARROW}
+  {\rightarrow}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\newcommand{\TT} {\textit{true}}
+\newcommand{\FF} {\textit{false}}
+
+\usepackage{float}
+\newfloat{trace}{tbp}{lop}[section]
+\newfloat{tablehv}{tbp}{lop}[section]
+\newfloat{Program}{tbp}{lop}[section]
+%\floatstyle{plain}
+\newfloat{Figure}{htb}{lop}[chapter]
+\floatstyle{boxed}
+\newfloat{BFigure}{htb}{lop}[chapter]
+\floatname{BFigure}{Figure}
+
+@

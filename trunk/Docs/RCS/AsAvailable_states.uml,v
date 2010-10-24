@@ -1,0 +1,59 @@
+head	1.1;
+access;
+symbols;
+locks
+	hendrivi:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2010.06.26.18.58.30;	author hendrivi;	state Exp;
+branches;
+next	;
+
+
+desc
+@Initial checkin
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4jZp4Hu4Ed-ICeNGhPHulQ">
+  <elementImport xmi:id="_4kSasHu4Ed-ICeNGhPHulQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_4kTBwHu4Ed-ICeNGhPHulQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_4kTBwXu4Ed-ICeNGhPHulQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_4kTBwnu4Ed-ICeNGhPHulQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_6bd-wHu4Ed-ICeNGhPHulQ" name="test">
+    <region xmi:id="_6b3AUHu4Ed-ICeNGhPHulQ" name="Region">
+      <subvertex xmi:type="uml:State" xmi:id="_7edFwHu4Ed-ICeNGhPHulQ" name="WaitingForProcesses"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_EV6OoHu5Ed-ICeNGhPHulQ"/>
+      <subvertex xmi:type="uml:State" xmi:id="_H6DDwHu5Ed-ICeNGhPHulQ" name="ProcessesAvailable"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_sRKmwHu5Ed-ICeNGhPHulQ" kind="choice"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_7qgIQHu5Ed-ICeNGhPHulQ" kind="join"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_Hf3zwHu6Ed-ICeNGhPHulQ" kind="terminate"/>
+      <transition xmi:id="_FjAT4Hu5Ed-ICeNGhPHulQ" source="_EV6OoHu5Ed-ICeNGhPHulQ" target="_7edFwHu4Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_MJITUHu5Ed-ICeNGhPHulQ" source="_7edFwHu4Ed-ICeNGhPHulQ" target="_H6DDwHu5Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_MyyUUHu5Ed-ICeNGhPHulQ" name="test" source="_H6DDwHu5Ed-ICeNGhPHulQ" target="_H6DDwHu5Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_kTx5cHu5Ed-ICeNGhPHulQ" source="_sRKmwHu5Ed-ICeNGhPHulQ" target="_7edFwHu4Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_oD8YYHu5Ed-ICeNGhPHulQ" source="_H6DDwHu5Ed-ICeNGhPHulQ" target="_sRKmwHu5Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_ySFAUHu5Ed-ICeNGhPHulQ" source="_sRKmwHu5Ed-ICeNGhPHulQ" target="_H6DDwHu5Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_97LKYHu5Ed-ICeNGhPHulQ" source="_H6DDwHu5Ed-ICeNGhPHulQ" target="_7qgIQHu5Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_-jiK4Hu5Ed-ICeNGhPHulQ" source="_7edFwHu4Ed-ICeNGhPHulQ" target="_7qgIQHu5Ed-ICeNGhPHulQ"/>
+      <transition xmi:id="_I5_BUHu6Ed-ICeNGhPHulQ" source="_7qgIQHu5Ed-ICeNGhPHulQ" target="_Hf3zwHu6Ed-ICeNGhPHulQ"/>
+    </region>
+  </packagedElement>
+</uml:Package>
+@

@@ -1,0 +1,882 @@
+head	1.14;
+access;
+symbols;
+locks
+	hvisage:1.14;
+comment	@# @;
+
+
+1.14
+date	2010.06.25.19.09.30;	author hendrivi;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2010.06.20.18.04.22;	author hvisage;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2010.06.20.18.01.42;	author hvisage;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2010.06.20.15.44.03;	author hvisage;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2010.06.20.15.06.28;	author hvisage;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2010.06.19.22.21.01;	author hvisage;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2010.06.19.21.55.52;	author hvisage;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2010.06.19.21.20.25;	author hvisage;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2010.06.19.18.59.25;	author hvisage;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2010.06.19.17.42.33;	author hvisage;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2010.06.19.17.40.50;	author hvisage;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2010.06.19.17.39.34;	author hvisage;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2010.06.19.17.25.56;	author hvisage;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2010.06.19.17.05.46;	author hvisage;	state Exp;
+branches;
+next	;
+
+
+desc
+@First insert
+@
+
+
+1.14
+log
+@The states=lists:sort(D) is added to make the DFAs equivalent especially after the mds:convert_dfa/1
+@
+text
+@%% Author: hvisage
+%% Created: Jun 18, 2010
+%% Description: TODO: Add description to hvp1
+-module(hvp1).
+%-import(hvt,[reduce/1,deriv/2]).
+-copyright("Hendrik Visage 2010").
+
+-vsn('$Revision: 1.13 $').
+%$Id: hvp1.erl,v 1.13 2010/06/20 18:04:22 hvisage Exp hvisage $
+
+%% --------------------------------------------------------------------
+%% Include files
+%% --------------------------------------------------------------------
+-include("mds.hrl").
+
+-export([hvp2/4]).
+
+%% ====================================================================!
+%% External functions
+%% ====================================================================!
+
+%The entry to hvp2
+% third paramter to chose roundrobin or available
+hvp2(RE,Sigma,available,N) ->
+	TimeOut=3000,
+	Res=self(),
+	Dist=spawn(fun()->hv_dist_avail_start(TimeOut,Res,N) end),
+	WiP=[],%Only the first (and last) one would be "empty"
+	Finish=[],
+	Dlist=[RE],%Start state.
+	Delta=dict:new(),
+	hv_brzp2(RE,Sigma,Dist,WiP,Finish,Dlist,Delta);
+hvp2(RE,Sigma,roundrobin,N) ->
+	TimeOut=3000,
+	Res=self(),
+	Dist=spawn(fun() -> hv_dist_rr_start(TimeOut,Res,N) end),
+	WiP=[],%Only the first (and last) one would be "empty"
+	Finish=[],
+	Dlist=[RE],%Start state.
+	Delta=dict:new(),
+	hv_brzp2(RE,Sigma,Dist,WiP,Finish,Dlist,Delta).
+
+%Specialized one with only two using the RoundRobin method 
+hvp2(RE,Sigma,rr_spec) ->
+	TimeOut=3000,
+	Res=self(),
+	Dist=spawn(fun() -> hv_dist_rr_spec_start(TimeOut,Res) end),
+	WiP=[],%Only the first (and last) one would be "empty"
+	Finish=[],
+	Dlist=[RE],%Start state.
+	Delta=dict:new(),
+	hv_brzp2(RE,Sigma,Dist,WiP,Finish,Dlist,Delta).
+
+%% ====================================================================
+%% Internal functions
+%% ====================================================================
+
+%For all the Sigma add {E,i} to the Work In Progress
+add_wip(WiP,E,[H|[]]) -> [{E,H}|WiP];
+add_wip(WiP,E,[H|SigmaT]) -> add_wip([{E,H}|WiP],E,SigmaT).
+
+%The receiver for the round robin/sequential tests
+%
+hv_rr_rec(Name,Res) -> 
+	%io:format(" starting: ~p self:~p REs:~p~n",[Name,pid_to_list(self()),pid_to_list(Res)]),
+	receive 
+		{stop} -> io:format("stopping ~p ~n",[Name]);
+		{process,E,I} -> Res!{results,E,I,mds:reduce(mds:deriv(E,I))},
+						 hv_rr_rec(Name,Res);
+		Other -> io:write(Other),throw(Other)
+		after 3000 ->	io:format("Timeout ~p quiting",[Name]),io:nl()
+	end.
+
+%Start N round-robin receivers that will send their results to Res
+% returning the list of  PIDs.
+list_start_servers(0,_Res) -> [];
+list_start_servers(N,Res) -> 
+	[spawn(fun()->hv_rr_rec("Receiver "++[N+$0],Res) end)|list_start_servers(N-1,Res)].
+
+%Number of servers variable, should make that a number to pass too, but 
+% for the moment this is adequate to test etc.
+hv_dist_rr_start(TimeOut,Res,N) -> 
+	hv_dist_rr(list_start_servers(N,Res),TimeOut).
+
+%Two specified servers
+hv_dist_rr_spec_start(TimeOut,Res)->
+	Rec1=spawn(fun() ->hv_rr_rec("Rec1",Res) end),receive after 100 -> true end,
+	Rec2=spawn(fun() ->hv_rr_rec("Rec2",Res) end),receive after 100 -> true end,
+	hv_dist_rr([Rec1,Rec2],TimeOut).
+
+%Round Robin distributor.. we know this is not "optimal" :)
+hv_dist_rr([H|T]=Receivers,TimeOut) ->
+	%io:format("Dist_rr starting: SendTo: ~p Self:~p ~n",[pid_to_list(H),pid_to_list(self())]),
+	receive
+		{stop} -> lists:foreach(fun(X)->X!{stop} end,Receivers);
+		{process,E,I} -> H!{process,E,I},hv_dist_rr(lists:append(T, [H]),TimeOut);
+		Other -> io:write(Other),throw(Other)
+		after TimeOut ->
+			io:format("Dist quiting and stopping receivers"),
+			lists:foreach(fun(X)->X!{stop} end,Receivers)
+	end.
+
+%The case when the WiP is empty
+hv_brzp2(receive_only,Sigma,Dist,[],Finish,Dlist,Delta) ->
+	%io:format("WiP finished"),
+	Dist!{stop},
+	#dfa{states=lists:sort(Dlist),symbols=Sigma,start=[lists:last(Dlist)],transition=Delta,finals=Finish};
+
+
+%Receive only, nothing to derive
+hv_brzp2(receive_only,Sigma,Dist,WiP,Finish,Dlist,Delta) ->
+	%io:format("Receive only ~n"),
+	receive
+		{results,E,I,DDI} -> 
+			Delta1=dict:store({E,I},DDI,Delta),
+			case lists:member(DDI,Dlist) of
+				true -> hv_brzp2(receive_only,Sigma,Dist,lists:delete({E,I},WiP),Finish,Dlist,Delta1);
+				false -> hv_brzp2(DDI,Sigma,Dist,lists:delete({E,I},WiP),Finish,[DDI|Dlist],Delta1)
+			end;
+		Other -> io:write(Other),throw(Other)
+		after 5000 ->	throw(timeoutRec_only)
+	end;
+
+% When we have an RE/E d/di that needs to be derived/etc.
+hv_brzp2(E,Sigma,Dist,WiP,Finish,Dlist,Delta) ->
+	%io:format("hv_brzp2  ~p ~n",[lists:flatten(io_lib:write(E,5))]),
+	%foreach(Sigma) send message to Dist
+	lists:foreach(fun(X) -> Dist!{process,E,X} end,Sigma),
+	%foreach(Sigma) insert {E,I} into WiP
+	NewWiP=add_wip(WiP,E,Sigma),
+	%nullable(RE),
+	% Add nullable states to F
+	F1=nullable(E,Finish),
+	%WiP would not be empty in this function :)
+	receive
+		{results,E,I,DDI} -> 
+			Delta1=dict:store({E,I},DDI,Delta),
+			case lists:member(DDI,Dlist)  of
+				true -> hv_brzp2(receive_only,Sigma,Dist,lists:delete({E,I},NewWiP),F1,Dlist,Delta1);
+				false -> hv_brzp2(DDI,Sigma,Dist,lists:delete({E,I},NewWiP),F1,[DDI|Dlist],Delta1)
+			end
+		after 5000 ->	throw(timeOut)
+	end.
+
+%The null check just functionized 
+nullable(E,F) ->
+	case mds:null(E) of
+		true ->
+			[E|F];
+		false -> F
+	end.
+
+%===============================================
+%The distributor that  have receivers that tells it when 
+% they are finished and ready for new processing
+%===============================================
+
+%Let the Distributor know when finished with processing
+% But this state engine not rock solid when more than one messages was sent 
+% etc.
+hv_rec_available(Timeout,Name,Res,Dist) ->
+	%io:format("~nEntering ~p ~p ~p ~p ~n",[Name,integer_to_list(Timeout),pid_to_list(Res),pid_to_list(Dist)]),
+	%First we handle all stop/process messages on the queue
+	%If the distributor works correct, this shouldn't be necesssary,
+	%But we could "modify" the distributor to send expected "short"
+	% requests in rapid fire??
+	receive
+		{stop} -> %io:format("stopping ~p~n",[Name]),
+			exit(0);
+		{process,E1,I1}->Res!{results,E1,I1,mds:reduce(mds:deriv(E1,I1))},
+						 hv_rec_available(Timeout,Name,Res,Dist)
+		after 0 -> Dist!{available,self()} %Nothing in queue, so we let the Distributor know
+	end,
+	receive %There were no "normal"/"expected" messages in the queue, so lets wait :)
+		{stop} -> %io:format("stopping ~p~n",[Name]),
+			exit(0);
+		{process,E,I} -> 
+			Res!{results,E,I,mds:reduce(mds:deriv(E,I))},
+			hv_rec_available(Timeout,Name,Res,Dist);
+		Other -> throw(Other)
+		after Timeout ->
+			io:format("Timeout ~p quiting ~n",[Name])
+	end.
+
+
+%The Available distributor
+%First the "empty" case
+hv_dist_available(Timeout,[]) ->
+	%io:format("Entering dist_available []~n"),
+	receive
+		{available,PID}->
+			receive %We check for the availability of a process message to "fast track", else call the normal wait
+				{process,E,I}->PID!{process,E,I},hv_dist_available(Timeout,[]) %Goody! a message available
+				after 0-> hv_dist_available(Timeout,[PID]) %Normal wait since no message
+			end;
+		{stop} -> io:format("Distributor stopping from empty state~n")
+		after Timeout ->
+			io:format("timeout distributor from empty state~n")
+	end;
+hv_dist_available(Timeout,[H|Tail])-> %At least have a PID to check
+	%io:format("Entering dist_available with~n"),
+	receive
+		{available,PID}->hv_dist_available(Timeout,[H,PID|Tail]); %H or PID, shouldn't matter which is first'
+		{process,E,I}->H!{process,E,I},
+					   hv_dist_available(Timeout,Tail);
+		{stop}-> lists:foreach(fun(X)->X!{stop} end,[H|Tail]);
+		Other -> throw(Other)
+		after Timeout ->
+			io:format("Timeout distributor~n")
+	end.
+
+%Start the receivers and the distributor
+hv_dist_avail_start(Timeout,_Res,0)	->
+		hv_dist_available(Timeout,[]);
+hv_dist_avail_start(Timeout,Res,N) when N>0 ->
+	%io:format("~n~p: Dist avail ~p ~p ~p~n~n",
+	%		  [pid_to_list(self()),erlang:integer_to_list(Timeout),
+	%		   erlang:pid_to_list(Res),erlang:integer_to_list(N)]),
+	Dist=self(),
+	spawn(fun() -> hv_rec_available(Timeout,"Receiver "++erlang:integer_to_list(N),Res,Dist) end),
+	hv_dist_avail_start(Timeout,Res,N-1).
+
+
+
+
+%% $Log: hvp1.erl,v $
+%% Revision 1.13  2010/06/20 18:04:22  hvisage
+%% some more cleaning up a bit of the code and comments etc.
+%%
+%% Revision 1.12  2010/06/20 18:01:42  hvisage
+%% cleaning up a bit of the code and comments etc.
+%%
+%% Revision 1.11  2010/06/20 15:44:03  hvisage
+%% Export
+%%
+%% Revision 1.10  2010/06/20 15:06:28  hvisage
+%% Available receiver distributor
+%%
+%% Revision 1.9  2010/06/19 22:21:01  hvisage
+%% Added receiver available code
+%%
+%% Revision 1.8  2010/06/19 21:55:52  hvisage
+%% Debugged... :)
+%%
+%% Revision 1.7  2010/06/19 21:20:25  hvisage
+%% debugging etc.
+%%
+%% Revision 1.6  2010/06/19 18:59:25  hvisage
+%% implemented??
+%%
+%% Revision 1.5  2010/06/19 17:42:33  hvisage
+%% With some keywords
+%%
+%% Revision 1.4  2010/06/19 17:40:50  hvisage
+%% With some keywords
+%%
+%% Revision 1.3  2010/06/19 17:39:34  hvisage
+%% With some keywords
+%%@
+
+
+1.13
+log
+@some more cleaning up a bit of the code and comments etc.
+@
+text
+@d8 2
+a9 2
+-vsn('$Revision: 1.12 $').
+%$Id: hvp1.erl,v 1.12 2010/06/20 18:01:42 hvisage Exp hvisage $
+d105 1
+a105 1
+	io:format("WiP finished"),
+d107 1
+a107 1
+	#dfa{states=Dlist,symbols=Sigma,start=lists:last(Dlist),transition=Delta,finals=Finish};
+d162 1
+a162 1
+	io:format("~nEntering ~p ~p ~p ~p ~n",[Name,integer_to_list(Timeout),pid_to_list(Res),pid_to_list(Dist)]),
+d168 2
+a169 1
+		{stop} -> io:format("stopping ~p~n",[Name]);
+d175 2
+a176 1
+		{stop} -> io:format("stopping ~p~n",[Name]);
+d227 3
+@
+
+
+1.12
+log
+@cleaning up a bit of the code and comments etc.
+@
+text
+@d8 2
+a9 2
+-vsn('$Revision: 1.11 $').
+%$Id: hvp1.erl,v 1.11 2010/06/20 15:44:03 hvisage Exp hvisage $
+d153 1
+d156 1
+a156 1
+
+d187 1
+a187 1
+	io:format("Entering dist_available []~n"),
+d189 1
+a189 1
+		{available,PID}->%hv_dist_available(Timeout,[PID]);
+d199 1
+a199 1
+	io:format("Entering dist_available with~n"),
+d214 3
+a216 1
+	io:format("~n~p: Dist avail ~p ~p ~p~n~n",[pid_to_list(self()),erlang:integer_to_list(Timeout),erlang:pid_to_list(Res),erlang:integer_to_list(N)]),
+a218 1
+	io:format("Testing~n~n"),
+d225 3
+@
+
+
+1.11
+log
+@Export
+@
+text
+@d8 2
+a9 2
+-vsn('$Revision: 1.10 $').
+%$Id: hvp1.erl,v 1.10 2010/06/20 15:06:28 hvisage Exp hvisage $
+d16 1
+a16 20
+-export([hvp2/4
+		]).
+
+%% --------------------------------------------------------------------
+%% Internal exports
+%% --------------------------------------------------------------------
+-export([]).
+
+%% --------------------------------------------------------------------
+%% Macros
+%% --------------------------------------------------------------------
+
+%% --------------------------------------------------------------------
+%% Records
+%% --------------------------------------------------------------------
+
+%% --------------------------------------------------------------------
+%% API Functions
+%% --------------------------------------------------------------------
+
+a21 1
+
+d23 1
+d43 1
+a53 3
+
+
+
+a58 1
+% 
+d71 1
+a71 2
+		after 3000 ->
+			io:format("Timeout ~p quiting",[Name]),io:nl()
+a73 1
+
+d77 2
+a78 1
+list_start_servers(N,Res) -> [spawn(fun()->hv_rr_rec("Receiver "++[N+$0],Res) end)|list_start_servers(N-1,Res)].
+a84 1
+
+d114 1
+a114 1
+		{results,E,I,DDI} -> %io:format("Receive_only: ~p~n",[lists:flatten(io_lib:write({E,I,DDI},5))]),
+d121 2
+a122 4
+		after 5000 ->
+			throw(timeoutRec_only)
+	end
+;
+a126 1
+	%io:write(E),io:nl(),
+d136 1
+a136 1
+		{results,E,I,DDI} -> %io:format("Received: ~p~n",[lists:flatten(io_lib:write({E,I,DDI},5))]),
+d142 2
+a143 5
+		after 5000 ->
+			throw(timeOut)
+	end
+.
+
+d146 1
+a146 1
+nullable(E,F) ->%io:write(E),io:write(F),
+d148 1
+a148 1
+		true -> %io:write([E|F]),
+a152 2
+
+
+d223 3
+@
+
+
+1.10
+log
+@Available receiver distributor
+@
+text
+@d8 2
+a9 2
+-vsn('$Revision: 1.9 $').
+%$Id: hvp1.erl,v 1.9 2010/06/19 22:21:01 hvisage Exp hvisage $
+d16 1
+a16 1
+-export([hvp2/2
+a40 1
+%brzp1(_RE,_Sigma) -> true.
+d42 19
+d62 1
+a62 2
+%The entry to hvp2
+hvp2(RE,Sigma) ->
+d65 1
+a65 2
+	%Dist=spawn(fun() -> hv_dist(TimeOut,Res) end),
+	Dist=spawn(fun()->hv_dist_avail_start(TimeOut,Res,5) end),
+d73 2
+d105 2
+a106 2
+hv_dist(TimeOut,Res) -> 
+	hv_dist_rr(list_start_servers(4,Res),TimeOut).
+d110 1
+a110 1
+hv_dist_rr_spec(TimeOut,Res)->
+d193 1
+d218 1
+d220 5
+a224 1
+		{available,PID}->hv_dist_available(Timeout,[PID]);
+d226 1
+a226 1
+	after Timeout ->
+d230 1
+d237 1
+a237 1
+	after Timeout ->
+d245 1
+d247 3
+a249 2
+	spawn(fun() -> hv_rec_available(Timeout,"Receiver "++erlang:integer_to_list(N,10),Res,Dist) end),
+	hv_dist_avail_start(timeout,Res,N-1).
+d255 3
+@
+
+
+1.9
+log
+@Added receiver available code
+@
+text
+@d8 2
+a9 2
+-vsn('$Revision: 1.8 $').
+%$Id: hvp1.erl,v 1.8 2010/06/19 21:55:52 hvisage Exp hvisage $
+d17 1
+a17 1
+        ]).
+d48 2
+a49 1
+	Dist=spawn(fun() -> hv_dist(TimeOut,Res) end),
+d61 2
+a62 2
+%Adding to the Work In Progress
+  % 
+a64 1
+%hv_dist(Receivers) -> hv_dist(Receivers,).
+d68 1
+a68 1
+hv_rec(Name,Res) -> 
+d73 2
+a74 2
+				 hv_rec(Name,Res);
+				Other -> io:write(Other),throw(Other)
+a78 12
+%Let the Distributor know when finished with processing
+% But this state engine not rock solid
+hv_rec_available(Name,Res,Dist) ->
+	receive
+  	{stop} -> io:format("stopping ~p~n",[Name]);
+	{process,E,I} -> Res!{results,E,I,mds:reduce(mds:deriv(E,I))},
+					 	Dist!{available,self()},
+						hv_rec_available(Name,Res,Dist);
+	Other -> throw(Other)
+  after 3000 ->
+	io:format("Timeout ~p quiting ~n",[Name])
+end.
+d80 2
+d83 1
+a83 1
+list_start_servers(N,Res) -> [spawn(fun()->hv_rec("Receiver "++[N+$0],Res) end)|list_start_servers(N-1,Res)].
+d85 2
+a86 1
+%Number of servers variable
+d92 3
+a94 3
+hv_dist_spec(TimeOut,Res)->
+	Rec1=spawn(fun() ->hv_rec("Rec1",Res) end),receive after 100 -> true end,
+	Rec2=spawn(fun() ->hv_rec("Rec2",Res) end),receive after 100 -> true end,
+d104 1
+a104 1
+	after TimeOut ->
+d113 1
+a113 1
+	   #dfa{states=Dlist,symbols=Sigma,start=lists:last(Dlist),transition=Delta,finals=Finish};
+d119 1
+a119 1
+		receive
+d121 5
+a125 5
+							 Delta1=dict:store({E,I},DDI,Delta),
+							case lists:member(DDI,Dlist) of
+								true -> hv_brzp2(receive_only,Sigma,Dist,lists:delete({E,I},WiP),Finish,Dlist,Delta1);
+								false -> hv_brzp2(DDI,Sigma,Dist,lists:delete({E,I},WiP),Finish,[DDI|Dlist],Delta1)
+								end;
+d127 4
+a130 4
+	after 5000 ->
+				throw(timeoutRec_only)
+		end
+	;
+d132 1
+a132 1
+  % When we have an RE/E d/di that needs to be derived/etc.
+d134 1
+a134 1
+    %io:format("hv_brzp2  ~p ~n",[lists:flatten(io_lib:write(E,5))]),
+d142 1
+a142 1
+    F1=nullable(E,Finish),
+d146 10
+a155 9
+							 Delta1=dict:store({E,I},DDI,Delta),
+							case lists:member(DDI,Dlist)  of
+								true -> hv_brzp2(receive_only,Sigma,Dist,lists:delete({E,I},NewWiP),F1,Dlist,Delta1);
+								false -> hv_brzp2(DDI,Sigma,Dist,lists:delete({E,I},NewWiP),F1,[DDI|Dlist],Delta1)
+								end
+	after 5000 ->
+	throw(timeOut)
+		end
+	.
+d157 1
+d160 64
+a223 4
+      true -> %io:write([E|F]),
+		  [E|F];
+      false -> F
+   end.
+d228 3
+@
+
+
+1.8
+log
+@Debugged... :)
+@
+text
+@d8 2
+a9 2
+-vsn('$Revision: 1.7 $').
+%$Id: hvp1.erl,v 1.7 2010/06/19 21:20:25 hvisage Exp hvisage $
+d60 2
+d66 2
+a67 1
+
+d79 23
+a101 1
+hv_dist(TimeOut,Res)->
+d175 3
+@
+
+
+1.7
+log
+@debugging etc.
+@
+text
+@d5 5
+a9 3
+-import(hvt,[reduce/1,deriv/2]).
+-vsn('$Revision: 1.6 $').
+%$Id: hvp1.erl,v 1.6 2010/06/19 18:59:25 hvisage Exp hvisage $
+d78 2
+a79 2
+	%Rec2=spawn(fun() ->hv_rec("Rec2",Res) end),receive after 100 -> true end,
+	hv_dist_rr([Rec1],TimeOut).
+d104 3
+a106 2
+		{results,E,I,DDI} -> Delta1=dict:store({E,I},DDI,Delta),
+							case lists:any(fun(X) -> DDI =:=X end, Dlist) of
+d118 2
+a119 1
+    %io:write(E),io:nl(),
+d129 3
+a131 2
+		{results,E,I,DDI} -> Delta1=dict:store({E,I},DDI,Delta),
+							case lists:any(fun(X) -> DDI =:=X end, Dlist) of
+d133 1
+a133 1
+								false -> hv_brzp2(E,Sigma,Dist,lists:delete({E,I},NewWiP),F1,[DDI|Dlist],Delta1)
+d140 4
+a143 2
+nullable(E,F) ->io:write(E),io:write(F),case mds:null(E) of
+      true -> io:write([E|F]),[E|F];
+d150 3
+@
+
+
+1.6
+log
+@implemented??
+@
+text
+@d6 2
+a7 2
+-vsn('$Revision: 1.5 $').
+%$Id: hvp1.erl,v 1.5 2010/06/19 17:42:33 hvisage Exp hvisage $
+d14 1
+a14 1
+-export([brzp1/2,hvp1/2
+d39 1
+a39 1
+brzp1(_RE,_Sigma) -> true.
+d41 19
+d64 1
+a64 1
+	%io:format(" starting: ~p~n",[Name]),io:write(self()),
+d67 3
+a69 2
+		{E,I} -> Res!{results,E,I,mds:reduce(mds:deriv(E,I))},
+				 hv_rec(Name,Res)
+d75 3
+a77 3
+	Rec1=spawn(fun() ->hv_rec("Rec1",Res) end),
+	Rec2=spawn(fun() ->hv_rec("Rec2",Res) end),
+	hv_dist_rr([Rec1,Rec2],TimeOut).
+d81 1
+a81 1
+	io:format("Dist starting: "),io:write(H),io:format("~nList:"),io:write(T),io:nl(),
+d84 2
+a85 1
+		{E,I} -> H!{E,I},hv_dist_rr(lists:append(T, [H]),TimeOut)
+d91 5
+a96 20
+hvp1(RE,Sigma) ->
+	TimeOut=3000,
+	Dist=spawn(fun() -> hv_dist(TimeOut,self()) end),
+	WiP=[],%Only the first one would be "empty"
+	Finish=[],
+	Dlist=[],
+	hv_brzp2(RE,Sigma,Dist,WiP,Finish,Dlist).
+	%L=[ {RE, X} ||X<-Sigma],
+	%io:write(RE),io:nl(),io:write(L),io:nl(),
+	%Rec!{'HVT'},
+	%[Dist ! {X}|| X<-L],
+	%Rec1 ! {stop}.
+	%ists:foreach(fun(X)->Dist!{X} end ,L).
+
+%% ====================================================================
+%% Internal functions
+%% ====================================================================
+
+add_wip(WiP,E,[H|[]]) -> [{E,H}|WiP];
+add_wip(WiP,E,[H,SigmaT]) -> add_wip([{E,H}|WiP],E,SigmaT).
+d98 3
+a100 2
+hv_brzp2(receive_only,Sigma,Dist,WiP,Finish,Dlist) ->
+	io:format("Receive only ~n"),
+d102 8
+a109 4
+		{result,E,I,DDI} -> case lists:any(fun(X) -> DDI =:=X end, Dlist) of
+								true -> hv_brzp2(receive_only,Sigma,Dist,lists:delete({E,I},WiP),Finish,Dlist);
+								false -> hv_brzp2(DDI,Sigma,Dist,lists:delete({E,I},WiP),Finish,[DDI|Dlist])
+								end
+d114 2
+a115 2
+hv_brzp2(E,Sigma,Dist,WiP,Finish,Dlist) ->
+ io:write(E),io:nl(),
+d125 4
+a128 3
+		{result,E,I,DDI} -> case lists:any(fun(X) -> DDI =:=X end, Dlist) of
+								true -> hv_brzp2(receive_only,Sigma,Dist,lists:delete({E,I},NewWiP),F1,Dlist);
+								false -> hv_brzp2(E,Sigma,Dist,lists:delete({E,I},NewWiP),F1,Dlist)
+d130 2
+d135 2
+a136 2
+nullable(E,F) ->case mds:null(E) of
+      true -> [E|F];
+d143 3
+@
+
+
+1.5
+log
+@With some keywords
+@
+text
+@d6 2
+a7 2
+-vsn('$Revision: 1.3$').
+%$Id: hvp1.erl,v 1.4 2010/06/19 17:40:50 hvisage Exp hvisage $
+d44 1
+a44 1
+hv_rec(Name) -> 
+d48 2
+a49 1
+		{E,I} -> io:format("~p:",[Name]),io:write(E), io:nl(),hv_rec(Name)
+d54 3
+a56 3
+hv_dist(TimeOut)->
+	Rec1=spawn(fun() ->hv_rec("Rec1") end),
+	Rec2=spawn(fun() ->hv_rec("Rec2") end),
+d73 5
+a77 2
+	Dist=spawn(fun() -> hv_dist(TimeOut) end),
+	hv_brzp2(RE,Sigma,Dist).
+d89 16
+a104 2
+% When we have an RE/E d/di that needs to be derived/etc.
+hv_brzp2(E,Sigma,Dist) ->
+d106 1
+d108 1
+d110 2
+d114 4
+a117 1
+		{result,E,I,DDI} -> true
+d121 6
+d129 3
+@
+
+
+1.4
+log
+@With some keywords
+@
+text
+@d6 2
+a7 2
+-vsn(Revision: 1.3 ).
+%$Id: hvp1.erl,v 1.3 2010/06/19 17:39:34 hvisage Exp hvisage $
+d98 3
+@
+
+
+1.3
+log
+@With some keywords
+@
+text
+@d6 2
+a7 2
+-vsn($Revision$)
+%$Id$
+d97 4
+a100 1
+%% $Log$@
+
+
+1.2
+log
+@Firs tries
+@
+text
+@d6 2
+d97 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d71 1
+a71 1
+	hv_brzp2(RE,Sigma).
+d90 2
+a91 2
+		{result,E,I,DDI} -> 
+		end,
+@
