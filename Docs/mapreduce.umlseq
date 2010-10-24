@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_5vQ0IH3pEd-2V_6fTYVoJg" type="UMLSequence" name="mapreduce.umlseq" measurementUnit="Pixel">
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_5vQ0IX3pEd-2V_6fTYVoJg"/>
+  <element xmi:type="uml:Package" href="mapreduce.uml#_5vO-8H3pEd-2V_6fTYVoJg"/>
+</notation:Diagram>

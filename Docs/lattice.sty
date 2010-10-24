@@ -1,0 +1,122 @@
+% lattice.sty
+% Command file for lattice papers
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lattice}
+   [1999/03/15 Commands for lattices, First Steps]
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{latexsym}
+\RequirePackage{eucal}
+
+% Lattice operations
+\newcommand{\jj}{\vee}% join
+\newcommand{\mm}{\wedge}% meet
+\newcommand{\JJ}{\bigvee}% big join
+\newcommand{\MM}{\bigwedge}% big meet
+\newcommand{\JJm}[2]{\JJ(\,#1\mid#2\,)}% big join with a middle
+\newcommand{\MMm}[2]{\MM(\,#1\mid#2\,)}% big meet with a middle
+
+% Set operations
+\newcommand{\uu}{\cup}% union
+\newcommand{\ii}{\cap}% intersection
+\newcommand{\UU}{\bigcup}% big union
+\newcommand{\II}{\bigcap}% big intersection
+\newcommand{\UUm}[2]{\UU(\,#1\mid#2\,)}% big union with a middle
+\newcommand{\IIm}[2]{\II(\,#1\mid#2\,)}% big intersection with a middle
+
+% Sets 
+\newcommand{\ci}{\subseteq}% contained in with equality
+\newcommand{\nc}{\nsubseteq}% not \ci
+\newcommand{\sci}{\subset}% strictly contained in with equality
+\newcommand{\nci}{\nc}% not \ci
+\newcommand{\ce}{\supseteq}% containing with equality
+\newcommand{\nce}{\nsupseteq}% not \ce
+\newcommand{\nin}{\notin}% not \in
+\newcommand{\es}{\varnothing}% the empty set
+\newcommand{\set}[1]{\{#1\}}% set 
+\newcommand{\setm}[2]{\{\,#1\mid#2\,\}}% set with a middle
+\def\vv<#1>{\langle#1\rangle}% vector 
+
+% Partial ordering
+\newcommand{\nle}{\nleq}% not \leq
+
+% Greek letters
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gc}{\chi}
+\newcommand{\gd}{\delta}
+\renewcommand{\ge}{\varepsilon}% use \geq for >=
+\newcommand{\gf}{\varphi}
+\renewcommand{\gg}{\gamma}% old use >>
+\newcommand{\gh}{\eta}
+\newcommand{\gi}{\iota}
+\newcommand{\gj}{\theta}
+\newcommand{\gk}{\kappa}
+\newcommand{\gl}{\lambda}
+\newcommand{\gm}{\mu}
+\newcommand{\gn}{\nu}
+\newcommand{\go}{\omega}
+\newcommand{\gp}{\pi}
+\newcommand{\gq}{\theta}
+\newcommand{\gr}{\varrho}
+\newcommand{\gs}{\sigma}
+\newcommand{\gt}{\tau}
+\newcommand{\gu}{\upsilon}
+\newcommand{\gv}{\vartheta}
+\newcommand{\gw}{\omega}
+\newcommand{\gx}{\xi}
+\newcommand{\gy}{\psi}
+\newcommand{\gz}{\zeta}
+
+\newcommand{\gC}{\Xi}
+\newcommand{\gG}{\Gamma}
+\newcommand{\gD}{\Delta}
+\newcommand{\gF}{\Phi}
+\newcommand{\gL}{\Lambda}
+\newcommand{\gO}{\Omega}
+\newcommand{\gP}{\Pi}
+\newcommand{\gQ}{\Theta}
+\newcommand{\gS}{\Sigma}
+\newcommand{\gU}{\Upsilon}
+\newcommand{\gW}{\Omega}
+\newcommand{\gX}{\Xi}
+\newcommand{\gY}{\Psi}
+
+% Font commands
+\newcommand{\tbf}{\textbf}% text bold
+\newcommand{\tit}{\textit}% text italic
+\newcommand{\tsl}{\textsl}% text slanted
+\newcommand{\tsc}{\textsc}% text small cap
+\newcommand{\ttt}{\texttt}% text typewriter
+\newcommand{\trm}{\textrm}% text roman
+\newcommand{\tsf}{\textsf}% text sans serif
+\newcommand{\tup}{\textup}% text upright
+
+\newcommand{\mbf}{\mathbf}% math bold
+%\newcommand{\mit}{\mathit}% math italic
+\newcommand{\msf}{\mathsf}% math sans serif
+\newcommand{\mrm}{\mathrm}% math roman
+\newcommand{\mtt}{\mathtt}% math typewriter
+
+\newcommand{\B}{\boldsymbol}
+   % Bold math symbol, use as \B{a}
+\DeclareMathAlphabet{\Bi}{OT1}{cmm}{b}{it}
+   % Bold math italic, use as \Bi{a}
+\newcommand{\C}[1]{\mathcal{#1}}
+   % Euler Script - only caps, use as \C{A}
+\newcommand{\D}[1]{\mathbb{#1}}
+   % Doubled - blackboard bold - only caps, use as \D{A}
+\newcommand{\E}[1]{\mathcal{#1}}% same as \C
+   % Euler Script - only caps, use as \E{A} 
+\newcommand{\F}[1]{\mathfrak{#1}}% Fraktur, use as \F{a}
+
+% Miscellaneous
+\newcommand{\nl}{\newline}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\providecommand{\bysame}{\makebox[3em]{\hrulefill}\thinspace}
+\newcommand{\q}{\quad}% spacing
+\newcommand{\qq}{\qquad}% more spacing
+\newcommand{\iso}{\cong}% isomorphic
+
+\endinput

@@ -1,0 +1,55 @@
+head	1.1;
+access;
+symbols;
+locks
+	hvisage:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2010.07.02.18.45.29;	author hvisage;	state Exp;
+branches;
+next	;
+
+
+desc
+@New
+@
+
+
+1.1
+log
+@After some tuning
+@
+text
+@%% Author: hendrivi
+%% Created: Jun 29, 2010
+%% Description: TODO: Add description to hv_loop
+-module(hv_loop).
+
+%%
+%% Include files
+%%
+
+%%
+%% Exported Functions
+%%
+-export([loop/2]).
+
+%%
+%% API Functions
+%%
+
+%%
+%% TODO: Add description of loop/function_arity
+%%
+loop(_X,0) -> true;
+loop(X,N) when is_integer(N)-> 
+	X(N),loop(X,N-1).
+
+
+%%
+%% Local Functions
+%%
+
+@

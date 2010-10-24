@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_alYicIFUEd-rC5nKkblEmg">
+  <elementImport xmi:id="_amq74IFUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_amq74YFUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_amq74oFUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_amq744FUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_pUBEoIFVEd-bPus94_pW9w" name="AsAvailable state machine">
+    <region xmi:id="_pUbUUIFVEd-bPus94_pW9w" name="Region">
+      <subvertex xmi:type="uml:State" xmi:id="_IeOd4IFWEd-bPus94_pW9w" name="Waiting for available process"/>
+      <subvertex xmi:type="uml:State" xmi:id="_JL8fgIFWEd-bPus94_pW9w" name="Waiting for messages"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_KD73cIFWEd-bPus94_pW9w" kind="choice"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_ccKL8IFWEd-bPus94_pW9w" kind="join"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_1EpkoIFWEd-bPus94_pW9w" kind="terminate"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_nVvIIIFXEd-bPus94_pW9w"/>
+      <transition xmi:id="_jQK2YIFWEd-bPus94_pW9w" source="_IeOd4IFWEd-bPus94_pW9w" target="_ccKL8IFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_j-n30IFWEd-bPus94_pW9w" source="_JL8fgIFWEd-bPus94_pW9w" target="_ccKL8IFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_lSeFUIFWEd-bPus94_pW9w" source="_JL8fgIFWEd-bPus94_pW9w" target="_KD73cIFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_mK6JMIFWEd-bPus94_pW9w" source="_KD73cIFWEd-bPus94_pW9w" target="_IeOd4IFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_njSRYIFWEd-bPus94_pW9w" source="_KD73cIFWEd-bPus94_pW9w" target="_JL8fgIFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_rNAKEIFWEd-bPus94_pW9w" source="_JL8fgIFWEd-bPus94_pW9w" target="_JL8fgIFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_u3OZEIFWEd-bPus94_pW9w" source="_IeOd4IFWEd-bPus94_pW9w" target="_JL8fgIFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_21FngIFWEd-bPus94_pW9w" source="_ccKL8IFWEd-bPus94_pW9w" target="_1EpkoIFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_TQf4MIFXEd-bPus94_pW9w" source="_6jjSwIFVEd-bPus94_pW9w" target="_IeOd4IFWEd-bPus94_pW9w"/>
+      <transition xmi:id="_oCh8sIFXEd-bPus94_pW9w" source="_nVvIIIFXEd-bPus94_pW9w" target="_IeOd4IFWEd-bPus94_pW9w"/>
+    </region>
+    <connectionPoint xmi:id="_6jjSwIFVEd-bPus94_pW9w"/>
+  </packagedElement>
+</uml:Package>

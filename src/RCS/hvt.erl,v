@@ -1,0 +1,253 @@
+head	1.1;
+access;
+symbols;
+locks
+	hvisage:1.1;
+comment	@# @;
+
+
+1.1
+date	2010.06.19.17.05.46;	author hvisage;	state Exp;
+branches;
+next	;
+
+
+desc
+@First insert
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@%% Starting with things for the PhD. Very experimental.
+
+%% Copyright (c) 2008, Tinus Strauss, All Rights Reserved.
+%% File : mds.erl
+%% Author: Tinus Strauss
+
+%% "fixed" some warnings from erlide etc.
+%% Hendrik Visage 2010
+
+%% Need to get versioning going inside erlide :()
+%% perhaps falling back to Aquamacs??
+%% - Also considers the is_integer() to the alphabet etc.
+
+
+
+-module(hvt).
+
+-copyright('Copyright (c) 2008 Tinus Strauss').
+-copyright('Copyright (c) 2010 Hendrik Visage').
+
+%-export([null/1,deriv/2,reduce/1,re_reverse/1,first/1,brz/2,equiv/5,compute_equiv/1,compute_equiv_par1/1]).
+-export([null/1,deriv/2,reduce/1,brz/2]).
+-compile(export_all).
+-include("mds.hrl").
+
+
+% Define an is_symbol function to test whether an input is a symbol. At
+% the moment it only tests whether the input is an integer.
+% However, guards cannot be user-defined functions. So for the moment
+% I'll use Is_integer directly. This should be improved.
+% I could use {symbol,$a} to represent the symbol a.
+is_symbol(Input) -> is_integer(Input).
+%HV: Using ints is a tad "limiting", as debugging (especially in Erlang without char/string "types") I
+% would prefer it to still work with: brz({concat,a,b},[a,b]),
+% which currently "fails" with no match :(
+
+%HV:Added list stuf, for example:
+% {concat,"web","ebay"}
+
+%% Define the boolean function Null (Bruce PhD Property 6.71)
+
+null(empty) -> false;
+null(epsilon) -> true;
+null(Symbol) when is_integer(Symbol) -> false;
+null({union,L,R}) -> null(L) or null(R);
+null({concat, L,R}) -> null(L) and null(R);
+null({kclosure,_}) -> true;
+null({pclosure,L}) -> null(L);
+null({optional,_}) -> true;
+%HV: Following added for lists, example "aa"
+null([H|[]])->null(H);
+null([H|Tail])->null({concat,H,Tail}).
+
+%% Define full derivatives (Bruce PhD Definition 6.60).
+%% deriv(RE, Symbol) -> RE
+deriv(empty, _) -> empty;
+deriv(epsilon, _) -> empty;
+deriv(Symbol1, Symbol2) 
+   when is_integer(Symbol1), is_integer(Symbol2) ->
+           case Symbol1 =:= Symbol2 of
+              true -> epsilon;
+              false -> empty
+           end;
+deriv({union,L,R},Symbol) ->
+   {union,deriv(L,Symbol), deriv(R,Symbol)};
+deriv({concat,L,R},Symbol) ->
+      case null(L) of
+         true -> {union,{concat,deriv(L,Symbol),R},deriv(R, Symbol)};
+         false -> {concat, deriv(L,Symbol),R}
+      end;
+%HV: list addition
+%deriv([H|[Tail|[]]],Symbol) -> deriv({concat,H,Tail},Symbol); %HV:Optimization
+deriv([H|[]],Symbol)->deriv(H,Symbol);
+deriv([H|Tail],Symbol)->deriv({concat,H,Tail},Symbol);
+
+deriv({kclosure,L},Symbol) ->
+   {concat,deriv(L, Symbol), {kclosure, L}};
+deriv({pclosure,L},Symbol) ->
+   {concat,deriv(L, Symbol), {kclosure, L}};
+deriv({optional, L},Symbol) ->
+   deriv(L,Symbol).
+
+
+% Implement reduce rules from Bruce Construction taxonomy Remark 5.32.
+% reduce : RE -> RE.
+% The concat and union rules needs some attention
+reduce(epsilon) -> epsilon;
+reduce(empty) -> empty;
+reduce(Symbol) when is_integer(Symbol) -> Symbol;
+reduce({union, E, E}) -> reduce(E);
+reduce({union, empty, E}) -> reduce(E);
+reduce({union, E, empty}) -> reduce(E);
+reduce({union, Sym1, Sym2}) when is_integer(Sym1), is_integer(Sym2) -> 
+   {union, Sym1, Sym2};
+reduce({union,E1,E2}) -> 
+   RE1 = reduce(E1), RE2 = reduce(E2),
+   case {RE1, RE2} of 
+      {empty, RE2} -> RE2;
+      {RE1, empty} -> RE1;
+      _Else -> {union, RE1, RE2}
+   end;
+
+reduce({concat,_,empty}) -> empty;
+reduce({concat,empty,_}) -> empty;
+reduce({concat, epsilon, E}) -> reduce(E);
+reduce({concat, E, epsilon}) -> reduce(E);
+reduce({concat, Sym1, Sym2}) when is_integer(Sym1), is_integer(Sym2) ->
+   {concat, Sym1, Sym2};
+reduce({concat,E1,E2}) -> 
+   RE1 = reduce(E1), RE2 = reduce(E2),
+   case {RE1, RE2} of
+      {empty, _} -> empty;
+      {_, empty} -> empty;
+      {epsilon, RE2} -> RE2;
+      {RE1, epsilon} -> RE1;
+      _Else -> {concat, RE1, RE2}
+   end;
+
+% reduce(list) added by HV
+reduce([H|[]]) -> reduce(H); 
+%reduce([]) -> throw({ whichempty});
+%reduce([H|[Tail|[]]]) -> reduce({concat,H,Tail}); %HV: "optimization" more than need...
+reduce([H|_Tail]) when _Tail=:=[] -> reduce(H);
+reduce([H|Tail]) -> reduce({concat,H,Tail});
+
+
+reduce({kclosure, empty}) -> epsilon;
+reduce({kclosure, epsilon}) -> epsilon;
+reduce({kclosure, {kclosure, E}}) -> reduce({kclosure, E});
+reduce({kclosure, E}) -> 
+   RE = reduce(E),
+   case RE of
+      empty -> epsilon;
+      epsilon -> epsilon;
+      _Else -> {kclosure, RE}
+   end;
+
+reduce({pclosure, empty}) -> empty;
+reduce({pclosure, epsilon}) -> epsilon;
+reduce({pclosure,{pclosure,E}}) -> {pclosure, reduce(E)};
+reduce({pclosure,RE}) -> {pclosure, reduce(RE)};
+
+reduce({optional, epsilon}) -> epsilon;
+reduce({optional, empty}) -> epsilon;
+reduce({optional, RE}) -> {optional, reduce(RE)}.
+
+
+
+% Implement Brzozowski's construction algorithm
+% At the moment I keep the "IDs" of the states, the RE representing the
+% state. I should rather change them to integers.
+% This is the interface function.
+% Brz : RE -> DFA
+brz(RE,Sigma) -> brz1(lists:usort(Sigma),dict:new(),[RE],[],[],[RE]).
+
+% Helper function to do the actual construction
+% brz1(Sigma,Delta,S,F,D,T) 
+
+brz1(Sigma,Delta,S,F,D,[]) ->
+   %T is empty, so we're done.
+   % Return the DFA record.
+   #dfa{states=D,symbols=Sigma,start=S,transition=Delta,finals=F};
+
+brz1(Sigma, Delta, S, F, D, [H|Tail]) ->
+   % Put the current node in the "done" set.
+	% H being the current node.
+	D1 = [H|D],
+   % Calculate the derivatives of the current node wrt all elements of
+   % Sigma. Also update the transition relation.
+	MF=fun(X,Delta0) ->
+            A=reduce(deriv(H,X)), 
+            {A,dict:store({H,X},A,Delta0)} end,
+   {Derivatives,Delta1} = lists:mapfoldl(MF,Delta,Sigma),
+   % Need to filter to add only "new" REs to T.
+   % Here is a first filter attempt.
+   %UniqDerivatives = lists:usort(Derivatives),
+   T1 = lists:umerge(
+		  lists:sort(lists:filter(fun(X) -> not lists:member(X,D1) end, lists:usort(Derivatives))),
+		  lists:sort(Tail)),
+
+   % Add nullable states to F
+   case null(H) of
+      true -> F1=[H|F];
+      false -> F1 = F
+   end,
+   % Now do it again, with the updated state.
+   brz1(Sigma, Delta1, S, F1, D1, T1).
+
+% Functions to take a DFA constructed by Brz and translate the states
+% into integers rather that REs. This could perhaps be done inside the
+% construction, but I keep it seperate now. (As an aside this mapping
+% from RE to integer could be a mapping based on some other function and
+% then, instead of storing the real RE in the todo/done sets one could
+% work with the value of the function. The function should then have a
+% number of properties. Being a real function is the most correct.
+% However, one could be a little bit less precise and still find
+% something, I think. . .)
+construct_mapping(States) -> 
+   construct_mapping(States, 1, []).
+
+construct_mapping([], _, Map) ->
+   % No more states to remap.
+   Map;
+construct_mapping([RE|States], Increment, []) ->
+   % Starting off, so we need a first element.
+   construct_mapping(States, Increment, [{RE,Increment}]);
+
+construct_mapping([RE|States], Increment, [{_,X}|_]=Map) ->
+   construct_mapping(States,Increment,[{RE,X+Increment}|Map]).
+
+convert_dfa(#dfa{states=Q,start=S,symbols=Symbols,transition=Delta,finals=F}) ->
+   Mapping = dict:from_list(construct_mapping(Q)),
+   Map = fun(X) -> dict:fetch(X,Mapping) end,
+   Snew = lists:map(Map,S),
+   Fnew = lists:map(Map,F),
+   Qnew = lists:map(Map,Q),
+   DeltaNew = dict:fold(fun(Key, Val, D) ->
+            {RE,Sym} = Key, 
+            dict:store({Map(RE),Sym},Map(Val),D) end,
+      dict:new(),
+      Delta),
+   #dfa{states=Qnew, symbols=Symbols, start=Snew, transition=DeltaNew,
+      finals=Fnew}.
+
+
+
+
+
+@

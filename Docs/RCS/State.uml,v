@@ -1,0 +1,52 @@
+head	1.1;
+access;
+symbols;
+locks
+	hendrivi:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2010.06.26.18.58.30;	author hendrivi;	state Exp;
+branches;
+next	;
+
+
+desc
+@Initial checkin
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_jwpLsHr_Ed-7_6h2hXlZJA">
+  <elementImport xmi:id="_j1pAcHr_Ed-7_6h2hXlZJA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_j1pAcXr_Ed-7_6h2hXlZJA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_j1pAcnr_Ed-7_6h2hXlZJA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_j1pAc3r_Ed-7_6h2hXlZJA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_2bp5UHr_Ed-7_6h2hXlZJA" name="StateMachine">
+    <region xmi:id="_2fBWYHr_Ed-7_6h2hXlZJA" name="Region">
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_38eL0Hr_Ed-7_6h2hXlZJA"/>
+      <subvertex xmi:type="uml:State" xmi:id="_8MG1AHr_Ed-7_6h2hXlZJA" name="State"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_itSUcHsDEd-7_6h2hXlZJA" kind="choice"/>
+      <transition xmi:id="_grwhkHsDEd-7_6h2hXlZJA" source="_38eL0Hr_Ed-7_6h2hXlZJA" target="_8MG1AHr_Ed-7_6h2hXlZJA"/>
+      <transition xmi:id="_jjYO8HsDEd-7_6h2hXlZJA" source="_8MG1AHr_Ed-7_6h2hXlZJA" target="_itSUcHsDEd-7_6h2hXlZJA"/>
+      <transition xmi:id="_mchmUHsDEd-7_6h2hXlZJA" source="_itSUcHsDEd-7_6h2hXlZJA" target="_38eL0Hr_Ed-7_6h2hXlZJA"/>
+    </region>
+    <connectionPoint xmi:id="_0UCvwHsDEd-7_6h2hXlZJA" name="Entry Point" kind="entryPoint"/>
+    <connectionPoint xmi:id="_078dQHsDEd-7_6h2hXlZJA" name="Exit Point" kind="exitPoint"/>
+  </packagedElement>
+</uml:Package>
+@

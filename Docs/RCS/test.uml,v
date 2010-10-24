@@ -1,0 +1,46 @@
+head	1.1;
+access;
+symbols;
+locks
+	hendrivi:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2010.06.26.18.58.31;	author hendrivi;	state Exp;
+branches;
+next	;
+
+
+desc
+@Initial checkin
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_alYicIFUEd-rC5nKkblEmg">
+  <elementImport xmi:id="_amq74IFUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_amq74YFUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_amq74oFUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_amq744FUEd-rC5nKkblEmg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_cCeykIFUEd-rC5nKkblEmg" name="test">
+    <region xmi:id="_cEQ7QIFUEd-rC5nKkblEmg" name="Region">
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_dqsGgIFUEd-rC5nKkblEmg"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_eNQBAIFUEd-rC5nKkblEmg"/>
+    </region>
+  </packagedElement>
+</uml:Package>
+@

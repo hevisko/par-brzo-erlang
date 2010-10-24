@@ -1,0 +1,26 @@
+head	1.1;
+access;
+symbols;
+locks
+	hvisage:1.1;
+comment	@# @;
+
+
+1.1
+date	2010.06.19.17.05.46;	author hvisage;	state Exp;
+branches;
+next	;
+
+
+desc
+@First insert
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@-module(hvt1).
+@
