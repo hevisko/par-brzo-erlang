@@ -6,6 +6,9 @@
 \newcommand{\trademark}{\textsuperscript{\texttt{TM}\ }}
 \newcommand{\Bad}{BadThing\trademark}
 \newcommand{\Good}{GoodThing\trademark}
+\usepackage{float} % lets you have non-floating floats
+
+\usepackage{url} % for typesetting urls
 
 \include{SPE780-inc}
 \author{Hendrik Visag\`e\\SN:91211108} 
@@ -16,6 +19,22 @@
  \date{\today}
 
 \begin{document}
+\maketitle
+
+\begin{abstract}
+
+This study researched Erlang, a functional language, using a
+Brzozowski DFA construction algorithm to firstly evaluate Erlang's
+concurrency features and secondly how much of the Brzozowski DFA
+construction can be optimally parallelized using Erlang.  The
+algorithms proposed and used, will be shown to be equivalent to the
+Google MapReduce algorithm. The conclusion of this study was the
+Erlang's language constructs and concurrency is very expressive and
+its concurrency is very easy to achieve. However, the actual
+Brzozowski algorithm did not achieve any speed improvements.
+
+\end{abstract}
+
 
 \lstset{ %
 escapeinside={(*@}{@*)},
@@ -35,22 +54,30 @@ breakatwhitespace=true				% sets if automatic breaks should only
 }
 
 
-\maketitle
+%\include{acknowledge}
+
+\tableofcontents
+
+% we want a list of the figures we defined
+%\listof{fig}{Figures}
+%\listof{prog}{Programs}
 
 \chapter{\textit{Raison d'etre}}
 
 \section{Becoming intrigued}
 
 Earlier this year, the author noticed several job advertiments for
-Erlang programmers on a South African job advertising
-website. Investigating this further, the author became quite intrigued
-by the Erlang language claims about concurrency and availability, and
-even more so because Erlang is a functional programming language. This
-alone is not a good enough reason to learn a language, especially when
-there is no task or project per se to code in the language. For that
-we need to find a reason to do a task in Erlang. But before we get to
-that question problem, let us examine some of the state of some
-aspects of Computer Science.
+Erlang programmers, on a South African website. Investigating this
+further, the author became quite intrigued by the Erlang language,
+which claims easy concurrency and high availability.  What intrigued
+the author even more, was the fact that Erlang is a functional
+programming language, and the author have always put of learning a
+functional laguage (like Haskell) for various unrelated reasons. These
+facts alone are not good enough reasons to learn a language,
+especially when there is no task or project per se to code in the
+language. For that we need to find a reason to do a task in
+Erlang. But before we get to that problem statement, let us examine
+some aspects of the current state of Computer Science.
 
 \subsection{Today's CPUs}
 Concurrent algorithms are becoming more important lately as the
@@ -58,21 +85,22 @@ commodity CPUs shipped on laptops and desktops, are nearly without
 exception multi-cored or multithreaded. \cite{ActorModel} already
 claimed in 1985 that massive parallelism is the future of computing,
 and it obviously have become a trend with CPUs when Intel's
-Hyperthreading, Sun's CoolThread
-CPUs and multi-core AMD Opteron CPUs got introduced.
-The idea is to rather have
-more processing units available than to try and raise the core
-clockspeeds. This apparently helps to keep CPUs cooler, and provide users more
-processing power. However, this necesitates the need for concurrent
-algorithms and parallel processing to be able to effectively and
-efficiently use the processing power available in these processing
-units, as the core clock is not faster, but the number of processing
-units increased.
-The Oracle\footnote{previously Sun Microsystems} SPARC T3 is at the
-extreme end at present with 128 threads across 16cores on a 1.65GHz
-CPU
-socket.\footnote{http://www.oracle.com/us/products/servers-storage/servers/sparc-enterprise/t-series/sparc-t3-171613.html
-accessed 17 October 2010}
+Hyperthreading, Sun's CoolThread CPUs and multi-core AMD Opteron CPUs
+got introduced.
+
+  The idea is to rather have more processing units
+available than to try and raise the core clockspeeds. This apparently
+helps to keep CPUs cooler, and provide users more processing
+power. The problem with pushing the GigaHertz, is that we are entering
+lightspeed limits, as well as power comsumption problems.
+
+ However, this necesitates the need for concurrent algorithms
+and parallel processing to be able to effectively and efficiently use
+the processing power available in these processing units, as the core
+clock is not faster, but the number of processing units increased.  On
+the extreme end today, Oracle\footnote{previously Sun Microsystems} in
+\cite{url:T3}, claimed their SPARC T3, does 128 threads across 16cores
+on a 1.65GHz CPU socket.
 
 \subsection{Determinate Finite Automata (DFA)}
 DFAs as a matching algorithm have big importance in the matching of
@@ -86,17 +114,17 @@ research into the concurrency of this algorithm.
 
 We will have to point out that in this research, we focussed on the
 construction of the DFA from an expression, and not the actual DFA
-application to the data to be matched, nor will this study look into the parsing of the
-regular expressions into expressions useful for our DFA construction.
+application to the data to be matched, nor will this study look into
+the parsing of the regular expressions into expressions useful for our
+DFA construction.
 
 
 \subsection{Erlang}
 
 Erlang in a functional language and for programmers used to procedural
-languages, there is a couple of
-interesting features (or some might say annoyances) that would make it
-at least a learning experience to guage the language. Armstrong boosts
-about Erlang's built-in
+languages, there is a couple of interesting features (or some might
+say annoyances) that would make it at least a learning experience to
+guage the language. Armstrong boosts about Erlang's built-in
 concurrency features, and this would be a perfect match to test both
 the language on multicore CPUs.
 
@@ -111,13 +139,13 @@ of todays CPUs, the Erlang language that boasts about its concurrency
 features as well as the quest for a concurrent Brzozowski DFA
 construction.
 
-\texttt{The rest of this document will first look at Erlang and its feature
+The rest of this document will first look at Erlang and its feature
 set and what makes Erlang (and to some degree functional languages)
 different from other programming languages especially its support for
 concurrency. Then we will look at the Brzozowski sequential algorithm
 and some parallelization proposals.  Lastly we will discuss the Erlang
 implementations for the parallelizations proposals.
-}
+
 \chapter{Erlang - the language}
 
 \section{Introduction}
@@ -129,7 +157,7 @@ constructs that is not obviously the same as in other computer
 languages like the C/C++ languages.	 For the purposes of explanation
 in later parts, we will briefly give an Erlang language introduction
 to some percularities. However, for proper detailed explanations we will refer
-the reader to \cite{Armstrong}.
+the reader to \cite{joe:09}.
 
 
 
@@ -176,7 +204,7 @@ glitches by restarting the processes.
 In this section, we will briefly introduce the reader to the Erlang
 language. This should be sufficient to be able to grasp the code
 presented in this research, and  it will not be a detailed
-reference. The reader are referred to Armstrong\cite{Armstrong} or
+reference. The reader are referred to Armstrong\cite{joe:09} or
 O'Reilly\cite{O'reilly} for further in depth explanations and
 references to the Erlang language.
 
@@ -353,7 +381,7 @@ factorial(N) -> N*factorial(N-1).
 \end{Program}
 
  Armstrong
-(\ref{thesis:armstrong} and \ref{pragmatic:erlang}) as well as Cesarini and
+(\ref{thesis:armstrong} and \ref{joe:09}) as well as Cesarini and
 Thompson \ref{oreily:Erlang}, have in depth discussions and examples
 related to tail recursion, but for the purposes of this project, the
 above will suffice.
@@ -364,7 +392,7 @@ above will suffice.
 Armstrong\cite{thesis:armstrong} coined the phrase
 \emph{Concurrency Oriented Programming} to describe how Erlang helps
 a program to be structured around the concurrency of the
-application. Armstrong\cite{book:armstrong} also states that the
+application. Armstrong\cite{joe:09} also states that the
 world is a concurrent place and that in the real world, even though we
 do things concurrently, we do not share memory as do most threading
 models in languages like C/C++. As such Erlang is
@@ -518,8 +546,8 @@ In \cite{brzozowski1964derivatives}, Brzozowski presented the notion
 of derivates for regular expressions, and showed how that leads to the
 construction of a state diagram from recursive derivation of a regular
 expression.  Watson in \cite{watson1995taxonomies}, shows several FA
-constructions, including Brzozowski's, in a generic mathematical
-presentation. This should help implementors (like programmers and
+constructions, including Brzozowski's, in generic mathematical
+presentations. This should help implementors (like programmers and
 algorithm designers) decide the algorithms to use and be able to
 implement it in the language they need. Watson was also used and
 referenced by the implementors of the sequential Erlang
@@ -532,13 +560,13 @@ Program\ref{prog:brzgcl}, shows a Guarded Command Language version of
 Brzozowski's DFA construction algorithm. This is copied from
 \cite{strauss2008concurrent}, with comments inserted to ease the
 discussions. Based on a brief glance over the code below (and in the
-source code we used as basis) it appears to be close a direct
+source code we used as basis) it appears to be direct
 implementation of the algorithms presented in
 \cite{watson1995taxonomies}. As such the code is considered to be
 functionally correct and we have not engaged in correctness proving
 of it. \begin{Program}[thf]
 \caption{Brzozowski GCL 
-\cite{Struass}}\label{prog:brzgcl}
+\cite{strauss2008concurrent}}\label{prog:brzgcl}
 \begin{gcl}
 \FUNC Brz(E,\Sigma)\ARROW
 \delta,S,F:=\emptyset,\{E\},\emptyset;
@@ -563,7 +591,7 @@ $\#Already inserted this $\frac{d}{di}$?:$
 \end{gcl}
 \end{Program}
 
-We will now give a look at this algorithm, and look at hw and where
+We will now give a look at this algorithm, and look at how and where
 this code could be parallelized.
 
 \subsection{Reduced derivatives}
@@ -578,14 +606,14 @@ $T$ if not. These two actions should either be atomic or inside
 critical areas if done through concurrent processes.
 
 \subsection{Path insertation}
-The path insertion $\delta(q,i):=d$ again is a independent operation
+The path insertion $\delta(q,i):=d$, again is a critical/serial operation
 that is effectively just a collection of the $RE,i,\frac{d}{di}RE$
-tuples, indexed on the $RE,i$ key.
+tuples, indexed on the $RE,i$ key. Thus this is not easily parallelized.
 
 \subsection{Nullable tests}
-The nullable tests ($\epsilon\in \mathcal{L}(q)$) is also independent
+The nullable tests ($\epsilon\in \mathcal{L}(q)$) is an independent
 once we have the list of reduced-derivative $RE$s (In the code it is
-the $q$s).
+the $q$s). This can be executed in parallel with others.
 
 \subsection{Sequential implementation}
 
@@ -602,7 +630,7 @@ coding it in Erlang and a commendable method in the sequential case!
 
 \section{Concurrent algorithms}
 
-\subsection{First attempt: ParMap}
+\subsection{First consideration: ParMap}
 \label{sec:strausparmap}
 
 The first obvious parallelization method comes from doing concurrency
@@ -614,14 +642,14 @@ The sequential code use the provided
 mapped over the $\Sigma$ alphabeth list. The function is constructed
 with the $RE/q$ to be derived and it is given an acumulator
 parameter. In this implementation, the accumulator is the
-$\delta()$ storage. The output in Struass's implementation is then a
+$\delta()$ storage. The output in the base implementation is then a
 list of reduced-derivatives which then is uniquely sorted
 with \texttt{lists:usort/1}\footnote{duplicates removed} and already
 handled derivatives (those in $D$ set) removed and then uniquely
 merged with the to-do list $T$.
 
 The first parallelization attempt was to make use of a
-parallelized-map function as described in Armstrong\cite{PRagmatic} and
+parallelized-map function as described in Armstrong\cite{joe:09} and
 then do the fold operation on the received messages. This will spawn a
 process\footnote{Remember erlang processes is not Unix processes, but
 	rather threads inside the virtual machine} for each of the
@@ -636,14 +664,33 @@ another set of $l$ processes be spawned. in short it will have bursts
 of requests, not a queue, which could cause thrashing.
 
 It should further be obvious that a small $l$ will have little
-concurrency, while a big $l$ might be too much. 
+concurrency, while a big $l$ might be too much, thus we (as programmer
+or algorithm designer) have
+no control over the amount of parallelization, other than the size of
+the $\Sigma$ alphabeth, which is outside of the programmer's
+control, but the user's perogative.
 
-It has to be noted that this was the first consideration during the
-literature study on the Erlang concurrency model as \cite{Pragmatic}
-have a nice example doing a similar example. Looking back, This might
-be a faste implementatino with lower overhead than the next revisions.
+It has to be noted that this was the author's first consideration
+during the literature study on the Erlang concurrency model as
+\cite{joe:09} have a easily understood example for \texttt{parmap}. Looking
+back, This might be a faster implementation with lower overhead than
+the next revisions, but have not been considered for this lack of
+concurrency control.
 
-\subsection{Second revision}
+\section{Distribution queues}
+
+Addressing the uncontrolled parallelization problem mentioned in
+\ref{sec:strausparmap}, the idea formed to have a central distributor,
+that will dispatch the processing requests to processing threads. This
+is not a new idea \emph{per se}, but the author would lie not to
+mention that the Apple MacOSX 10.6 (Snowleopard)'s Grand Central
+Dispatcher (GCD) have been a influence for the choice. 
+
+In simple terms, a couple of processing threads (or Erlang processes)
+are started, and then based on a chosen algorithm, the work submitted
+to the distributor gets sent out to the various processing threads. 
+
+\subsection{First distributor}
 
 \begin{Figure}[htbp] %	figure placement: here, top, bottom, or page
 	 \centering
@@ -652,16 +699,21 @@ be a faste implementatino with lower overhead than the next revisions.
 	 \label{fig:distflow}
 \end{Figure}
 After considering the issues mentioned in \ref{sec:strausparmap}, a
-second attempt is shown in figure \ref{fig:distflow}. What needs to be
+distributor is shown in figure \ref{fig:distflow}. What needs to be
 pointed out, is that \texttt{mapfoldl/3} or rather any
-\texttt{lists:map/2} was not usable in the method chosen, but rather I
-used \texttt{lists:foreach/2} over the $\Sigma$ alphabeth to generate
-and send the messages to the distributor.
+\texttt{lists:map/2} was not usable in the same way as done in the
+serial implementation, and thus \texttt{lists:foreach/2} was chosen to
+iterate over the $\Sigma$ alphabeth to generate
+and send the messages to the distributor. Looking back, a
+\texttt{lists:map/2} could have been used, but would have needed yet
+another paradigm and though pattern shift.
 
 
 \subsubsection{Diagram notation used}
-A few notes on the notation used in the diagrams (difficult to find an
-UML editor that can handle the \LaTeX\ symbols):
+The \LaTeX\  symbols used in the text, where not possible to be
+imported into the UML editor used by the author. For that reason we
+just give a short mapping between the symbols used in the text and
+those in the diagrams:
 \begin{description}
 \item[$RE$] the original regular expresion
 \item[$E$] an expresion, could be the original $RE$, or part of the $RE$, in other words a derivative.
@@ -676,32 +728,32 @@ UML editor that can handle the \LaTeX\ symbols):
 \label{sec:flow-description}
 
 
-
 The sequential algorithm put the original $RE$ on the Todo list
 $T$. Then it handles the $RE$ as it would handle the derivatives
-found. In this algorithm we do something similar by not
-differentiating between the $RE$ and the $\frac{d}{di}E$s in the first
-step.
+found. In this algorithm we do something similar, as there is no
+differentiation between the $RE$ and the $\frac{d}{di}E$s in the first
+step. This would seen similar to recursiveness of the derivations used
+in the description of this Brzozowski algorithm in
+\cite{brzozowski1964derivatives}
 
 \paragraph{"Inner Loop"}
 \label{sec:inner-loop}
 
 The inner loop for the sequential algorithm is a creation of messages
 to be send for processing. These messages ${E,i}$ consists of the $E$ and the
-letter ($i$) of the alphabeth $\Sigma$ to derive from.
+letter ($i$) of the alphabeth ($\Sigma$) to derive from.
 
 We also put those messages send in a WiP (Work in Progress) list to
-keep track of those messages send and those received as we do not have
-any guarantees on the order of messages received given the inherent
-asynchronous nature of concurrency.
+keep track of those messages send. We then remove those received, as
+we do not have any guarantees on the order of messages received given
+the inherent asynchronous nature of concurrency.
 
 \paragraph{Note: Message parallelization}
 
 It has to be noted that this algorithm is not concerned with the
 parallelization of those messages and will not consider it here, as it
 would be a function and optimization of the distributor. At this point
-the emphasis will be on the correctness of this algorithm as
-The
+the emphasis will be on the correctness of this algorithm as the
 distributor will be discussed seperately in \ref{sec:distributors}.
 
 \paragraph{Nullable($\frac{d}{di}$), Add $E$ to $D$}
@@ -734,27 +786,31 @@ $\frac{d}{di}E$ using the $\delta(E,i)=\frac{d}{di}E$ expresion.
 \paragraph{Checking $\frac{d}{di}E \in D$}
 
 The last step of this algorithm is to check whether the received
-$\frac{d}{di}E$ have already been looked at be checking the $D$
+$\frac{d}{di}E$ have already been considered. This is done by checking the $D$
 list. If it has been considered before, the algorithm loop back to the
-receiving portion, else it loops to the messages generation portion.
+receiving portion, else it loops to the messages generation portion so
+that this new $E$ could also be processed.
 
 \paragraph{no $T$ todo list, but WiP}
 \label{sec:no-t-todo}
 
 
-Note that the is no Todo list (the $T$) as in the sequential
+Note that there is no Todo list (the $T$) as in the sequential
 case. This is because the algorithm immediately generates messages for
 those Todo and put them on the $D$ list.
-
 There is however a WiP list that serves the same termination condition
 as the $T$ todo list in the sequential algorithm.
 
+Thus, the need for the ToDo list of the sequential operation, is
+replaced with the WiP list in the concurrent algorithms presented
+here.
 
 \subsubsection{Distributors}
 \label{sec:distributors}
 
 Based on the stream of messages that the algorithm generates, there is
-various methods how these messages could be handled.
+various methods how these messages could be handled, and we coded and
+researched three options here.
 
 \paragraph{Sequential}
 \label{sec:sequential}
@@ -765,17 +821,46 @@ order as the sequential algorithm), each message received will be
 processed and the result sent back without any concurrency. This could
 also be implemented as a single process case of the Round Robin
 (\ref{sec:round-robin}) and As-Available(\ref{sec:as-available})
-distributors. This will be implemented as a single instance Round Robin case.
+distributors, but for simplicity, the decision was made to implement
+this as a single instance Round Robin case.
 
 \paragraph{Round Robin}
 \label{sec:round-robin}
 
-The distributor will be given a list of processes that have been
-spawned and will handle requests. The first one on the list (head of
-list) will be sent the next available message. This process will then
-be added to the back of this list and the process repeated.
+ A Round-Robin  processing, is done when you have more than one queue,
+ with a pointer to one of these queues. When arequest comes in, it is
+ sent to the queue being pointed to, and then the pointer is advanced
+ to the next queue. This pointer switches to the next queue
+and assign with outh regard for queue lengths, and assumes a normal
+time/size distribution for the requests. It is a simple mechanism, but
+could cause a single big or time consuming request, to clog a queue
+and those requests waiting in that queue, in respective of the
+availability of other queues to process these requests. This similar
+(but not quite) as picking a paypoint in your supermarket.
+
+In our implementation, the distributor will be given a list of
+processes that have been spawned and will handle requests. The first
+one on the list (head of list) will be sent the next available
+message. This process will then be added to the back of this list and
+the process repeated for each equest sent to the distributor. As would
+be gathered from the discussion above, the queues would be at the
+processing thread side, and not the distributor side.
 
 \paragraph{As-Available}
+
+The problem mentioned with the Round-Robin distributor, is the fact
+that a single request could stall requests that could otherwise be
+processed on available processors, and thus the reason for the
+AsAvailable distributor. This distributor would have the requests
+queue at the distributor side, and sent out the requests to those
+processors that are available.
+
+This is similar to the snake queues at banks, where everybody gets in
+the same queue, but the person in front gets assigned to the next
+available teller, thus the queue is at the distributor, not at the
+teller!
+
+
 \label{sec:as-available}
 \begin{Figure}[htb] %	 figure placement: here, top, bottom, or page
 	 \centering
@@ -783,12 +868,13 @@ be added to the back of this list and the process repeated.
 	 \caption{State engine for the AsAvailable distributor}
 	 \label{fig:AsAvailable}
 \end{Figure}
-Figure~\ref{fig:AsAvailable} shows the states for this distributor.
 
-The distributor will start with no available processes in the
-WaitingForProcesses state and will wait to be sent the processes
-available for processing the requests. Once it receives an available
-process message, it will move to the ProcessesAvailable state.
+Figure~\ref{fig:AsAvailable} shows the state diagram for the
+As-Available distributor. The distributor will start with no available
+processes in the WaitingForProcesses state and will wait until a
+message from a processing thread about its availability. Once it receives
+an available process message, it will move to the ProcessesAvailable
+state, where it will wait for both processing and availability messages.
 
 When the distributor receives messages for processing, the distributor
 will remove the first process (again the head of the list) from the
@@ -798,57 +884,59 @@ the process that were sent a message). The distributor stays in this
 state while it still have processes available, but when it do not have
 any available processes, it will move to the WaitingForProcesses
 state.
-
+ 
 When a process/thread finished it processing, it will inform the
 Distributor that it is again available for processing. The distributor
 will add this to the head of the list of available processes and
 repeat the ProcessesAvailable state loop.
 
 
+\subsection{Nullable also?}
 
+At this point of the project's implementation, the author were so
+astonished by the ease of implementing the concurrency, that the
+author relooked the algorithm and noticed that the \texttt{nullable()}
+part also seemed to be distributable since it does not depend on
+anything else.  After analysis of the nullable implementation from the
+original code base and having looked at \cite{watson1995taxonomies},
+it was concluded that there is no need to keep it inside the
+inner loop, as it is an independent computation.
 
-\subsection{Nullable also? (third attempt)}
 \begin{Figure}[htb] %	 figure placement: here, top, bottom, or page
 	 \centering
 	 \includegraphics[scale=1]{Activity-3null.pdf} 
 	 \caption{Flow for distribution of $\frac{d}{di}$ and $null$}
 	 \label{fig:distflownull}
 \end{Figure}
-Having taken a relook at the algorithm, the \texttt{nullable()} part
-also seemed to be be distributable. After analysis of the nullable
-implementation from the original code base and having looked at
-Watson\cite{watson}PhD, it was concluded that there is no need to have
-it stuck inside the inner loop, as it is also an independent
-computation.
 
 The new control and data flow is shown in figure
-\ref{fig:distflownull} and we will explain this code module, line by
-line, in chapter~\ref{chap:code}. Note that the messages had to be
+\ref{fig:distflownull} and we will explain this code module in more
+detail, in chapter~\ref{chap:code}. Note that the messages had to be
 augmented to allow for the differentiation of the \sloppy
 \texttt{reduce(derive(E,i))} and the \texttt{nullable(E)} calculation
 requests. To be honest, it is not strictly needed in this system, as a
 simple match for \texttt{\{E\}} versus a match for \texttt{\{E,I\}}
-would have been sufficient.	 However, I would rather add this
+would have been sufficient.  However, I would rather add this
 functionality, as it would help make the distributor-receiver pairs to
 be more easily extended and the same distributor-receiver pair be
 usable by different mappers.
 
 
-I made a choice to have the receiver handled both the
+The author made a choice to have the receiver handle both the
 \texttt{reduce(derive())} and \texttt{nullable()} computations, as it
-would simplify the distributor, but having a seperate receiver(s) for
+would keep the distributor simple, but having a seperate receiver(s) for
 each would not be that difficult to add for Erlang.
 
-In this attempt we have moved all the computational intensive parts
-out of the core loop and delegated it to the receivers. The core loop
+In this version, we have moved all the computational parts
+out of the core loop and delegate it to the receivers. The core loop
 now only aggregates the results and distribute any results that need
 to be distributed.
 
 \section{Map Reduce - the Google connection}
 
 
-After implementation of the second and third attempts, a rereading of
-\cite{Armstrong} brough me to Google's MapReduce and a nice figure
+After implementation of the second and third versionsd, a rereading of
+\cite{joe:09} brough me to Google's MapReduce and a nice figure
 that explains map reduce. Further researching
 Google's MapReduce, \cite{Dean} shows how to use MapReduce for
 counting words in a distributed manner. To do that, the pieces of the
@@ -1015,7 +1103,7 @@ not available to test or confirm this hypothesis, we can not make any
 further remarks on the MacOSX Erlang VM as such.
 
 However, there is another story to be told given the results in tables
-\ref{test255} and \ref{textexp} and what \cite{armstrong} a;so refer
+\ref{test255} and \ref{textexp} and what \cite{joe:09} also refers
 to, and is the issue the overheads versus the work
 done. If the round robin and as-available algorithms are compared, it
 is obvious that the as-available algorithm have more overhead per
@@ -1056,6 +1144,9 @@ derivation of each sub-derived expresion for each of the alphabet
 entries, we concluded that it is too fine grained, and research could
 be looked at to rather spread the concurrency over each derivation
 with its alphabet as a processing unit.
+
+\bibliographystyle{alpha}
+\bibliography{hv-spe780}
 
 \appendix
 \chapter{Listings}
@@ -1115,3 +1206,7 @@ lists:sum(
 % Revision 1.6	2010/06/20 18:45:31	 hvisage
 % RCS keywords
 %
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

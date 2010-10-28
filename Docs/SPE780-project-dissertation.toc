@@ -1,0 +1,82 @@
+\contentsline {chapter}{\numberline {1}\textit {Raison d'etre}}{3}
+\contentsline {section}{\numberline {1.1}Becoming intrigued}{3}
+\contentsline {subsection}{\numberline {1.1.1}Today's CPUs}{3}
+\contentsline {subsection}{\numberline {1.1.2}Determinate Finite Automata (DFA)}{4}
+\contentsline {subsection}{\numberline {1.1.3}Erlang}{4}
+\contentsline {section}{\numberline {1.2}Research focus}{4}
+\contentsline {chapter}{\numberline {2}Erlang - the language}{5}
+\contentsline {section}{\numberline {2.1}Introduction}{5}
+\contentsline {section}{\numberline {2.2}Brief history}{5}
+\contentsline {section}{\numberline {2.3}Quick Language Introduction}{6}
+\contentsline {subsection}{\numberline {2.3.1}atoms and Variables}{6}
+\contentsline {section}{\numberline {2.4}Functional language features}{6}
+\contentsline {subsection}{\numberline {2.4.1}Pattern Matching - function overloading}{6}
+\contentsline {paragraph}{Guards}{7}
+\contentsline {paragraph}{Notation of functions}{7}
+\contentsline {subsection}{\numberline {2.4.2}Functions as first class members}{8}
+\contentsline {subsection}{\numberline {2.4.3}Imutable variables}{8}
+\contentsline {subsection}{\numberline {2.4.4}Tail recursion}{8}
+\contentsline {section}{\numberline {2.5}Concurency and distributed programming}{9}
+\contentsline {subsection}{\numberline {2.5.1}Communications}{10}
+\contentsline {subsubsection}{Guards in receiving messages}{11}
+\contentsline {subsection}{\numberline {2.5.2}Parameter List splitting}{11}
+\contentsline {chapter}{\numberline {3}Brzozowski's DFA construction}{13}
+\contentsline {section}{\numberline {3.1}Origins of algorithm}{13}
+\contentsline {section}{\numberline {3.2}Sequential algorithm}{13}
+\contentsline {subsection}{\numberline {3.2.1}Reduced derivatives}{13}
+\contentsline {subsection}{\numberline {3.2.2}Path insertation}{14}
+\contentsline {subsection}{\numberline {3.2.3}Nullable tests}{14}
+\contentsline {subsection}{\numberline {3.2.4}Sequential implementation}{15}
+\contentsline {section}{\numberline {3.3}Concurrent algorithms}{15}
+\contentsline {subsection}{\numberline {3.3.1}First consideration: ParMap}{15}
+\contentsline {section}{\numberline {3.4}Distribution queues}{16}
+\contentsline {subsection}{\numberline {3.4.1}First distributor}{16}
+\contentsline {subsubsection}{Diagram notation used}{16}
+\contentsline {subsubsection}{Flow description}{18}
+\contentsline {paragraph}{"Inner Loop"}{18}
+\contentsline {paragraph}{Note: Message parallelization}{18}
+\contentsline {paragraph}{Nullable($\frac {d}{di}$), Add $E$ to $D$}{18}
+\contentsline {paragraph}{WiP test}{18}
+\contentsline {paragraph}{Receiving ${E,i,\frac {d}{di}E}$ and $\delta (E,i):=\frac {d}{di}E$}{18}
+\contentsline {paragraph}{Checking $\frac {d}{di}E \in D$}{18}
+\contentsline {paragraph}{no $T$ todo list, but WiP}{19}
+\contentsline {subsubsection}{Distributors}{19}
+\contentsline {paragraph}{Sequential}{19}
+\contentsline {paragraph}{Round Robin}{19}
+\contentsline {paragraph}{As-Available}{19}
+\contentsline {subsection}{\numberline {3.4.2}Nullable also? (third attempt)}{20}
+\contentsline {section}{\numberline {3.5}Map Reduce - the Google connection}{21}
+\contentsline {chapter}{\numberline {4}Implementation}{24}
+\contentsline {chapter}{\numberline {5}Code Analysis}{25}
+\contentsline {section}{\numberline {5.1}What will be looked at}{25}
+\contentsline {paragraph}{Chosen code to explain}{25}
+\contentsline {paragraph}{Actual Brzozoswki code}{25}
+\contentsline {paragraph}{Generated DFA correctness proofs}{26}
+\contentsline {section}{\numberline {5.2}Ab Initio}{26}
+\contentsline {subsection}{\numberline {5.2.1}Entry Code}{26}
+\contentsline {subsubsection}{Repeated lines}{27}
+\contentsline {section}{\numberline {5.3}Processing (Receiver)}{28}
+\contentsline {subsection}{\numberline {5.3.1}WiP empty (nothing to do anymore}{28}
+\contentsline {subsection}{\numberline {5.3.2}Receive only}{28}
+\contentsline {paragraph}{Debugging statements}{30}
+\contentsline {subsubsection}{}{30}
+\contentsline {subsection}{\numberline {5.3.3}Expression to derive}{30}
+\contentsline {section}{\numberline {5.4}Receivers}{31}
+\contentsline {subsection}{\numberline {5.4.1}Round Robin}{31}
+\contentsline {subsection}{\numberline {5.4.2}AsAvailable Receiver}{32}
+\contentsline {subsection}{\numberline {5.4.3}Round Robin distributor}{34}
+\contentsline {section}{\numberline {5.5}AsAvailable distributor}{34}
+\contentsline {section}{\numberline {5.6}Anxillary functions}{35}
+\contentsline {subsection}{\numberline {5.6.1}Adding to Work in Progress}{35}
+\contentsline {subsubsection}{Mailbox debugging}{36}
+\contentsline {section}{\numberline {5.7}Optimization choices}{37}
+\contentsline {section}{\numberline {5.8}Coding enhancements}{37}
+\contentsline {subsection}{\numberline {5.8.1}Distributors}{37}
+\contentsline {subsection}{\numberline {5.8.2}Work in Progress}{37}
+\contentsline {chapter}{\numberline {6}Correctness proving????}{38}
+\contentsline {chapter}{\numberline {7}Performance}{39}
+\contentsline {section}{\numberline {7.1}Speed comparisons}{39}
+\contentsline {subsection}{\numberline {7.1.1}Discussion of the results}{40}
+\contentsline {chapter}{\numberline {8}Conclusion}{41}
+\contentsline {section}{\numberline {8.1}Future studies/work }{41}
+\contentsline {chapter}{\numberline {A}Listings}{43}
