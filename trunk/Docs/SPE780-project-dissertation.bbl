@@ -1,0 +1,28 @@
+\begin{thebibliography}{SKWH08}
+
+\bibitem[Arm07]{joe:09}
+Joe Armstrong.
+\newblock {\em {Programming Erlang}:{Software for a Concurrent World}}.
+\newblock Pragmatic Bookshelf, http://www.pragmaticbookshelf.com, 2007.
+
+\bibitem[Brz64]{brzozowski1964derivatives}
+J.A. Brzozowski.
+\newblock {Derivatives of regular expressions}.
+\newblock {\em Journal of the ACM (JACM)}, 11(4):481--494, 1964.
+
+\bibitem[Ora]{url:T3}
+Oracle.
+
+\bibitem[SKWH08]{strauss2008concurrent}
+T.~Strauss, D.G. Kourie, B.W. Watson, and J.~Holub.
+\newblock {A Concurrent Specification of Brzozowski's DFA Construction
+  Algorithm}.
+\newblock {\em International Journal of Foundations of Computer Science},
+  19(1):125--135, 2008.
+
+\bibitem[Wat95]{watson1995taxonomies}
+B.W. Watson.
+\newblock {\em {Taxonomies and toolkits of regular language algorithms}}.
+\newblock Citeseer, 1995.
+
+\end{thebibliography}

@@ -1,0 +1,244 @@
+
+/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex,7555
+\newcommand{\trademark}\trademark6,140
+\newcommand{\Bad}\Bad7,197
+\newcommand{\Good}\Good8,235
+\chapter{\textit{Raison d'etre}}\textit40,993
+\section{Becoming intrigued}Becoming42,1027
+\subsection{Today's CPUs}Today's55,1694
+exception multi-cored or multithreaded. \cite{ActorModel}ActorModel58,1851
+\subsection{Determinate Finite Automata (DFA)}Determinate77,2876
+\subsection{Erlang}Erlang93,3727
+\section{Research focus}Research103,4119
+\chapter{Erlang - the language}Erlang121,4915
+\section{Introduction}Introduction123,4948
+the reader to \cite{Armstrong}Armstrong132,5452
+\section{Brief history}Brief136,5487
+Armstrong \cite{thesis:armstrong}thesis:armstrong138,5512
+\section{Quick Language Introduction}Quick174,7519
+reference. The reader are referred to Armstrong\cite{Armstrong}Armstrong179,7750
+O'Reilly\cite{O'reilly}O'reilly180,7817
+\subsection{atoms and Variables}atoms183,7915
+\section{Functional language features}Functional194,8335
+\subsection{Pattern Matching - function overloading}Pattern202,8634
+\label{sec:pattern}sec:pattern203,8687
+\ref{prog:pattern}prog:pattern208,8903
+\label{prog:pattern}prog:pattern215,9204
+\label{par:guards}par:guards238,10000
+receiving discussed in section \ref{sec:communications}sec:communications247,10505
+program \ref{prog:recexample}prog:recexample248,10574
+\subsection{Functions as first class members}Functions266,11155
+\label{sec:func1st}sec:func1st267,11201
+\subsection{Imutable variables}Imutable285,11906
+\label{sec:imVar}sec:imVar286,11938
+\subsection{Tail recursion}Tail306,12763
+\label{sec:tailrec}sec:tailrec307,12791
+our distributor and receivers in \ref{sec:inner-loop}sec:inner-loop318,13381
+\ref{sec:distributors}sec:distributors319,13439
+ Program \ref{TailRec}TailRec322,13496
+\label{TailRec}TailRec326,13684
+Program \ref{NoTailRec}NoTailRec335,13868
+\label{NoTailRec}NoTailRec344,14333
+(\ref{thesis:armstrong}thesis:armstrong356,14566
+Thompson \ref{oreily:Erlang}oreily:Erlang357,14642
+\section{Concurency and distributed programming}Concurency361,14801
+Armstrong\cite{thesis:armstrong}thesis:armstrong364,14852
+application. Armstrong\cite{book:armstrong}book:armstrong367,15029
+\subsection{Communications}Communications399,16835
+\label{sec:communications}sec:communications400,16863
+section~\ref{sec:pattern}sec:pattern419,17705
+the AsAvailable distributor (section \ref{sec:as-available}sec:as-available421,17846
+\label{prog:recexample}prog:recexample426,18122
+\end{Program} Program \ref{prog:recexample}prog:recexample451,18899
+a single one in \texttt{Head} see section~\ref{sec:listsplit}sec:listsplit458,19412
+lock situations can be easily elimated (as program \ref{prog:recexample}prog:recexample466,19735
+\subsubsection{Guards in receiving messages}Guards470,19953
+\label{sec:guardRec}sec:guardRec471,19998
+paragraph~\ref{par:guards}par:guards475,20155
+program~\ref{prog:recexample2}prog:recexample2477,20286
+program~\ref{prog:recexample}prog:recexample480,20467
+\label{prog:recexample2}prog:recexample2483,20557
+\subsection{Parameter List splitting}Parameter500,21067
+\label{sec:listsplit}sec:listsplit501,21105
+Program~\ref{prog:recexample}prog:recexample503,21128
+\chapter{Brzozowski's DFA construction}Brzozowski's511,21481
+\section{Origins of algorithm}Origins513,21522
+\label{sec:origins-algorithm}sec:origins-algorithm514,21553
+In \cite{brzozowski1964derivatives}brzozowski1964derivatives517,21585
+expression.  Watson in \cite{watson1995taxonomies}watson1995taxonomies520,21796
+\section{Sequential algorithm}Sequential528,22241
+\label{sec:seq-algo}sec:seq-algo529,22272
+Program\ref{prog:brzgcl}prog:brzgcl531,22294
+\cite{strauss2008concurrent}strauss2008concurrent533,22425
+\cite{watson1995taxonomies}watson1995taxonomies537,22659
+\cite{Struass}Struass541,22846
+\subsection{Reduced derivatives}Reduced569,23649
+\label{sec:brzredder}sec:brzredder570,23682
+\subsection{Path insertation}Path580,24232
+\subsection{Nullable tests}Nullable585,24477
+\subsection{Sequential implementation}Sequential590,24700
+As mentioned in \ref{sec:origins-algorithm}sec:origins-algorithm592,24740
+\texttt{lists:map/2} discussed in \ref{sec:func1st}sec:func1st595,24931
+\section{Concurrent algorithms}Concurrent603,25394
+\subsection{First consideration: ParMap}First605,25427
+\label{sec:strausparmap}sec:strausparmap606,25468
+parallelized-map function as described in Armstrong\cite{PRagmatic}PRagmatic624,26347
+\cite{Pragmatic}Pragmatic647,27600
+\section{Distribution queues}Distribution652,27836
+\ref{sec:strausparmap}sec:strausparmap655,27932
+\subsection{First distributor}First665,28471
+	 \label{fig:distflow}fig:distflow671,28679
+After considering the issues mentioned in \ref{sec:strausparmap}sec:strausparmap673,28715
+distributor is shown in figure \ref{fig:distflow}fig:distflow674,28783
+\subsubsection{Diagram notation used}Diagram684,29264
+\subsubsection{Flow description}Flow699,30030
+\label{sec:flow-description}sec:flow-description700,30063
+\label{sec:inner-loop}sec:inner-loop711,30509
+distributor will be discussed seperately in \ref{sec:distributors}sec:distributors729,31296
+\label{sec:nullablefracddi}sec:nullablefracddi732,31418
+\label{sec:wip-test}sec:wip-test745,32021
+\label{sec:receiving-e-i}sec:receiving-e-i752,32312
+\label{sec:no-t-todo}sec:no-t-todo766,32890
+\subsubsection{Distributors}Distributors777,33211
+\label{sec:distributors}sec:distributors778,33240
+\label{sec:sequential}sec:sequential784,33414
+(\ref{sec:round-robin}sec:round-robin791,33771
+\label{sec:round-robin}sec:round-robin795,33939
+\label{sec:as-available}sec:as-available803,34254
+	 \label{fig:AsAvailable}fig:AsAvailable808,34470
+Figure~\ref{fig:AsAvailable}fig:AsAvailable810,34509
+\subsection{Nullable also? (third attempt)}Nullable834,35565
+	 \label{fig:distflownull}fig:distflownull839,35802
+Watson\cite{watson}watson844,36042
+\ref{fig:distflownull}fig:distflownull849,36237
+line, in chapter~\ref{chap:code}chap:code850,36306
+\section{Map Reduce - the Google connection}Map871,37344
+\cite{Armstrong}Armstrong875,37461
+Google's MapReduce, \cite{Dean}Dean877,37574
+	\label{fig:mapreduce}fig:mapreduce888,38111
+In \ref{fig:mapreduce}fig:mapreduce891,38148
+\chapter{Implementation}Implementation904,38794
+\section{Optimization choices}Optimization918,39343
+\section{Coding enhancements}Coding923,39493
+\subsection{Distributors}Distributors924,39523
+\label{sec:codedist}sec:codedist925,39549
+\subsection{Work in Progress}Work939,40167
+\texttt{spawn\_link} as discussed in \ref{sec:codedist}sec:codedist945,40466
+\chapter{Correctness proving????}Correctness963,41451
+\chapter{Performance}Performance968,41557
+\section{Speed comparisons}Speed969,41579
+\ref{sec:speedcomp}sec:speedcomp970,41607
+In table \ref{RE:used}RE:used980,42088
+\label{RE:used}RE:used986,42310
+and then averaged the results.  In table \ref{test255}test255999,42563
+\ref{testexp}testexp1001,42696
+\label{test255}test2551006,42827
+\label{testexp}testexp1018,43102
+\subsection{Discussion of the results}Discussion1031,43382
+\label{sec:discresults}sec:discresults1032,43421
+As were mentioned early in \ref{sec:speedcomp}sec:speedcomp1034,43446
+\ref{test255}test2551042,43906
+\ref{testexp}testexp1053,44542
+\chapter{Conclusion}Conclusion1058,44746
+\section{Future studies/work }Future1076,45557
+\appendix1084,45895
+\chapter{Listings}Listings1085,45905
+
+/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-inc.tex,661
+\newcommand{\pgskip}\pgskip34,854
+\newcommand{\FORhv}\FORhv35,901
+\newcommand{\FRM}\FRM36,938
+\newcommand{\DERIVE}\DERIVE37,972
+\newcommand{\form}\form42,1166
+\newcommand{\hint}\hint44,1207
+\newcommand{\STARTPROOF}\STARTPROOF46,1259
+\newcommand{\TOPROVE}\TOPROVE48,1330
+\newcommand{\ENDDERIVE}\ENDDERIVE50,1362
+\newcommand{\ENDPROOF}\ENDPROOF53,1437
+\newcommand {\IND}\IND56,1502
+\newcommand {\ENDIND}\ENDIND59,1574
+\newcommand {\BAR}\BAR64,1689
+\newcommand {\FI}\FI66,1726
+\newcommand {\ARROW}\ARROW68,1765
+\newcommand{\clearemptydoublepage}\clearemptydoublepage70,1802
+\newcommand{\TT}\TT71,1882
+\newcommand{\FF}\FF72,1915
+
+/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex,4566
+\chapter{Code Analysis}Code1,0
+\section{What will be looked at}What4,78
+The reader would be justified to keep figures \ref{fig:AsAvailable}fig:AsAvailable11,364
+\ref{fig:RoundRobin}fig:RoundRobin12,436
+\ref{sec:nullable}sec:nullable29,1241
+closely follow Watson\cite{WatsonPhD}WatsonPhD41,1843
+\section{Ab Initio}\footnote{Ab Initio: Latin for from theAb54,2430
+\subsection{Entry Code}Entry66,2990
+hv_brz(RE, Sigma, available, N) ->(*@\label{line:FuncAsav}line:FuncAsav77,3523
+		TimeOut = 3000,(*@\label{line:DefStarts}line:DefStarts78,3585
+		Res = self(),(*@\label{self}self79,3631
+		Delta = dict:new(),(*@\label{line:DefEnds}line:DefEnds83,3768
+		Dist = spawn(fun () -> hv_dist_avail_start(TimeOut, Res, N)		 end),(*@\label{dist}dist84,3816
+Lines \ref{line:DefStarts}line:DefStarts88,3982
+Line \ref{dist}dist95,4417
+lines \ref{def_start}def_start104,4936
+from line \ref{dist}dist105,5007
+\ref{processing}processing107,5136
+that line \ref{func_rr}func_rr111,5334
+\ref{func_asav}func_asav113,5463
+hv_brz(RE, Sigma, roundrobin, N) ->(*@\label{func_rr}func_rr116,5572
+(*@\textit{Repeat lines \ref{def_starts}def_starts117,5629
+		Dist = spawn(fun () -> hv_dist_rr_start(TimeOut, Res, N) end),(*@\label{dist_rr}dist_rr118,5689
+		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta).(*@\label{processing}processing119,5775
+	(*@\textit{Repeat lines \ref{def_starts}def_starts128,6198
+\subsubsection{Repeated lines}Repeated133,6392
+\section{Processing (Receiver)}Processing142,6709
+\label{sec:proc_receiver}sec:proc_receiver143,6741
+ie. tail recursion at play as explained in \ref{sec:tail-recursion}sec:tail-recursion150,7080
+\ref{sec:wip-empty}sec:wip-empty153,7206
+\ref{sec:expr-derive}sec:expr-derive158,7445
+\subsection{WiP empty (nothing to do anymore}WiP162,7634
+\label{sec:wip-empty}sec:wip-empty163,7680
+of this record format in \cite{Armstrong}Armstrong181,8484
+\subsection{Receive only}Receive186,8727
+\label{sec:receive}sec:receive187,8753
+		{rd,E,I,DDI} -> (*@\label{line:rd_match}line:rd_match193,8916
+		NewDelta=dict:store({E,I},DDI,Delta),(*@\label{line:newdelta}line:newdelta195,9065
+		case lists:member(DDI,Dlist) of(*@\label{line:case}line:case196,9132
+			true ->hv_brzp_null(receive_only,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,Dlist,NewDelta);(*@\label{line:case_true}line:case_true197,9189
+			false -> hv_brzp_null(DDI,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,[DDI|Dlist],NewDelta)(*@\label{line:case_false}line:case_false198,9316
+		end;(*@\label{line:endcase}line:endcase199,9442
+		{null,E,true} -> (*@\label{line:null_true}line:null_true200,9475
+		{null,E,false} ->(*@\label{line:null_false}line:null_false204,9750
+		after 5000 ->(*@\label{line:timeout}line:timeout206,9886
+\item[\ref{line:rd_match}line:rd_match223,10631
+\item[\ref{line:newdelta}line:newdelta225,10741
+\item[\ref{line:case}line:case231,11113
+\item[\ref{line:case-true}line:case-true237,11507
+\item[\ref{line:case_false}line:case_false240,11665
+Line \ref{line:timeout}line:timeout246,11935
+our code. Line \ref{debug}debug257,12439
+linefeed. Line \ref{debug2}debug2263,12854
+\subsubsection{}268,13132
+\subsection{Expression to derive}Expression270,13150
+\label{sec:expr-derive}sec:expr-derive271,13184
+lines\ref{line:rec2}line:rec2274,13281
+\ref{line:E2}line:E2275,13334
+	lists:foreach(fun(X) -> Dist!{process,[rd,E,X]} end,Sigma),(*@\label{line:E2}line:E2282,13595
+	Dist!{process,[null,E]},(*@\label{line:dnull}line:dnull284,13738
+	NewWiP=[{null,E}|add_wip(WiP,rd,E,Sigma)],(*@\label{line:E2e}line:E2e286,13864
+	receive (*@\label{line:rec2}line:rec2289,13977
+end.(*@\label{line:rec2end}line:rec2end302,14823
+  \item[\ref{line:E2}line:E2307,14893
+  \item[\ref{line:null}line:null313,15259
+\section{Receivers}Receivers319,15424
+\subsection{Round Robin}Round321,15445
+\subsection{AsAvailable Receiver}AsAvailable339,16044
+\subsection{Round Robin distributor}Round406,18702
+\section{AsAvailable distributor}AsAvailable421,19297
+\section{Anxillary functions}Anxillary465,21078
+\subsection{Adding to Work in Progress}Adding466,21108
+add_wip(WiP, Type, E, [H]) -> [{Type, E, H}| WiP];(*@\label{AddHead}AddHead479,21778
+add_wip(WiP, Type, E, [H| SigmaT]) -> add_wip([{Type, E, H}| WiP], Type, E, SigmaT).(*@\label{line:AddList}line:AddList480,21850
+matching. Here we first check on line~\ref{line:AddHead}line:AddHead484,22042
+line~\ref{line:AddList}line:AddList487,22235
+\subsubsection{Mailbox debugging}Mailbox491,22431

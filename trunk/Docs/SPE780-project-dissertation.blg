@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: SPE780-project-dissertation.aux
+A level-1 auxiliary file: SPE780-code-analysis.aux
+The style file: alpha.bst
+Database file #1: hv-spe780.bib
+Warning--entry type for "url:T3" isn't style-file defined
+--line 45 of file hv-spe780.bib
+Warning--I didn't find a database entry for "ActorModel"
+Warning--I didn't find a database entry for "thesis:armstrong"
+Warning--I didn't find a database entry for "O'reilly"
+Warning--I didn't find a database entry for "Dean"
+You've used 5 entries,
+            2543 wiz_defined-function locations,
+            596 strings with 5230 characters,
+and the built_in function-call counts, 1658 in all, are:
+= -- 154
+> -- 63
+< -- 4
++ -- 20
+- -- 20
+* -- 110
+:= -- 280
+add.period$ -- 13
+call.type$ -- 5
+change.case$ -- 25
+chr.to.int$ -- 5
+cite$ -- 5
+duplicate$ -- 72
+empty$ -- 136
+format.name$ -- 29
+if$ -- 330
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 6
+newline$ -- 26
+num.names$ -- 15
+pop$ -- 36
+preamble$ -- 1
+purify$ -- 33
+quote$ -- 0
+skip$ -- 57
+stack$ -- 0
+substring$ -- 85
+swap$ -- 5
+text.length$ -- 4
+text.prefix$ -- 4
+top$ -- 0
+type$ -- 32
+warning$ -- 0
+while$ -- 15
+width$ -- 7
+write$ -- 60
+(There were 5 warnings)

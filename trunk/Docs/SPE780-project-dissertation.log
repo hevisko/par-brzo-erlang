@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.7.15)  24 OCT 2010 20:19
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.7.15)  26 OCT 2010 11:38
 entering extended mode
  %&-line parsing enabled.
 **\input SPE780-project-dissertation.tex
@@ -21,6 +21,18 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+(/usr/local/texlive/2009/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks14
+\float@box=\box26
+\@float@everytoks=\toks15
+\@floatcapt=\box27
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
 \@input{SPE780-inc.aux}
 \openout2 = `SPE780-inc.aux'.
 
@@ -33,12 +45,12 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks14
+\KV@toks@=\toks16
 )
-\c@ALC@unique=\count88
-\c@ALC@line=\count89
-\c@ALC@rem=\count90
-\c@ALC@depth=\count91
+\c@ALC@unique=\count89
+\c@ALC@line=\count90
+\c@ALC@rem=\count91
+\c@ALC@depth=\count92
 \ALC@tlm=\skip43
 \algorithmicindent=\skip44
 )
@@ -58,7 +70,7 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
-\Gread@gobject=\count92
+\Gread@gobject=\count93
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
@@ -118,7 +130,7 @@ Package: natbib 2009/11/07 8.31a (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count93
+\c@NAT@ctr=\count94
 ) (./pfs.sty)
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
@@ -130,7 +142,7 @@ Package: amstext 2000/06/29 v2.01
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks15
+\@emptytoks=\toks17
 \ex@=\dimen105
 ))
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -140,41 +152,41 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count94
+\inf@bad=\count95
 LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count95
-\leftroot@=\count96
+\uproot@=\count96
+\leftroot@=\count97
 LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count97
-\DOTSCASE@=\count98
+\classnum@=\count98
+\DOTSCASE@=\count99
 LaTeX Info: Redefining \ldots on input line 379.
 LaTeX Info: Redefining \dots on input line 382.
 LaTeX Info: Redefining \cdots on input line 467.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
+\Mathstrutbox@=\box28
+\strutbox@=\box29
 \big@size=\dimen107
 LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count99
-\c@MaxMatrixCols=\count100
-\dotsspace@=\muskip10
-\c@parentequation=\count101
-\dspbrk@lvl=\count102
-\tag@help=\toks16
-\row@=\count103
-\column@=\count104
-\maxfields@=\count105
-\andhelp@=\toks17
+\macc@depth=\count100
+\c@MaxMatrixCols=\count101
+\dotsspace@=\muskip11
+\c@parentequation=\count102
+\dspbrk@lvl=\count103
+\tag@help=\toks18
+\row@=\count104
+\column@=\count105
+\maxfields@=\count106
+\andhelp@=\toks19
 \eqnshift@=\dimen108
 \alignsep@=\dimen109
 \tagshift@=\dimen110
 \tagwidth@=\dimen111
 \totwidth@=\dimen112
 \lineht@=\dimen113
-\@envbody=\toks18
+\@envbody=\toks20
 \multlinegap=\skip48
 \multlinetaggap=\skip49
-\mathdisplay@stack=\toks19
+\mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
@@ -189,24 +201,24 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
 (/usr/local/texlive/2009/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count106
-\lst@gtempboxa=\box28
-\lst@token=\toks20
-\lst@length=\count107
+\lst@mode=\count107
+\lst@gtempboxa=\box30
+\lst@token=\toks22
+\lst@length=\count108
 \lst@currlwidth=\dimen114
-\lst@column=\count108
-\lst@pos=\count109
+\lst@column=\count109
+\lst@pos=\count110
 \lst@lostspace=\dimen115
 \lst@width=\dimen116
-\lst@newlines=\count110
-\lst@lineno=\count111
+\lst@newlines=\count111
+\lst@lineno=\count112
 \lst@maxwidth=\dimen117
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count112
-\lst@skipnumbers=\count113
-\lst@framebox=\box29
+\c@lstnumber=\count113
+\lst@skipnumbers=\count114
+\lst@framebox=\box31
 )
 (/usr/local/texlive/2009/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
@@ -215,7 +227,7 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box30
+\@tempboxb=\box32
 ) (/usr/local/texlive/2009/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
 
@@ -223,7 +235,7 @@ Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen118
 \extrarowheight=\dimen119
-\NC@list=\toks21
+\NC@list=\toks23
 \extratabsurround=\skip50
 \backup@length=\skip51
 )
@@ -235,23 +247,23 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-\everycr=\toks22
+\everycr=\toks24
 \minrowclearance=\skip52
 )
 (/usr/local/texlive/2009/texmf-dist/tex/latex/xtab/xtab.sty
 Package: xtab 2010/02/06 v2.3e Extended supertabular package
-\c@tracingst=\count114
+\c@tracingst=\count115
 \PWSTcapht=\dimen120
 \ST@wd=\dimen121
 \ST@rightskip=\skip53
 \ST@leftskip=\skip54
 \ST@parfillskip=\skip55
-\c@PWSTtable=\count115
-\PWSTlastpage=\count116
-\PWSTpenultimate=\count117
-\PWSTcurpage=\count118
-\PWSTtempc=\count119
-\PWSTlines=\count120
+\c@PWSTtable=\count116
+\PWSTlastpage=\count117
+\PWSTpenultimate=\count118
+\PWSTcurpage=\count119
+\PWSTtempc=\count120
+\PWSTlines=\count121
 \PWST@lastht=\dimen122
 \PWST@generalht=\dimen123
 \PWST@ht=\dimen124
@@ -265,7 +277,7 @@ Package: xtab 2010/02/06 v2.3e Extended supertabular package
 \ST@prevht=\dimen132
 \ST@toadd=\dimen133
 \ST@dimen=\dimen134
-\ST@pbox=\box31
+\ST@pbox=\box33
 )
 (/usr/local/texlive/2009/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
@@ -273,17 +285,17 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \LTright=\skip57
 \LTpre=\skip58
 \LTpost=\skip59
-\LTchunksize=\count121
+\LTchunksize=\count122
 \LTcapwidth=\dimen135
-\LT@head=\box32
-\LT@firsthead=\box33
-\LT@foot=\box34
-\LT@lastfoot=\box35
-\LT@cols=\count122
-\LT@rows=\count123
-\c@LT@tables=\count124
-\c@LT@chunks=\count125
-\LT@p@ftn=\toks23
+\LT@head=\box34
+\LT@firsthead=\box35
+\LT@foot=\box36
+\LT@lastfoot=\box37
+\LT@cols=\count123
+\LT@rows=\count124
+\c@LT@tables=\count125
+\c@LT@chunks=\count126
+\LT@p@ftn=\toks25
 )
 (/usr/local/texlive/2009/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
@@ -297,15 +309,6 @@ File: lstlang3.sty 2004/09/05 1.3 listings language file
 (/usr/local/texlive/2009/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
-
-(/usr/local/texlive/2009/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count126
-\float@exts=\toks24
-\float@box=\box36
-\@float@everytoks=\toks25
-\@floatcapt=\box37
-)
 \@float@every@algorithm=\toks26
 \c@algorithm=\count127
 )
@@ -325,18 +328,18 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 (./SPE780-project-dissertation.aux (./SPE780-code-analysis.aux))
 \openout1 = `SPE780-project-dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 (/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -352,11 +355,11 @@ LaTeX Font Info:    ... okay on input line 18.
 \everyMPtoPDFconversion=\toks33
 )
 \c@lstlisting=\count138
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
+LaTeX Font Info:    Try loading font information for U+msa on input line 22.
  (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
+LaTeX Font Info:    Try loading font information for U+msb on input line 22.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -364,207 +367,132 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 
 
-{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1]
+(./SPE780-project-dissertation.toc [1
+
+])
+\tf@toc=\write3
+\openout3 = `SPE780-project-dissertation.toc'.
+
+ [2]
 Chapter 1.
 
-Package natbib Warning: Citation `ActorModel' on page 1 undefined on input line
- 58.
+Package natbib Warning: Citation `ActorModel' on page 3 undefined on input line
+ 85.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
-[][]\OT1/cmr/m/n/9 http://www.oracle.com/us/products/servers-storage/servers/sp
-arc-enterprise/t-
- []
-
-[1
-
-]
-Overfull \hbox (40.16208pt too wide) in paragraph at lines 120--121
-[]\OT1/cmtt/m/n/10.95 The rest of this document will first look at Erlang and i
-ts feature
- []
-
-
-Overfull \hbox (25.16208pt too wide) in paragraph at lines 120--121
-\OT1/cmtt/m/n/10.95 set and what makes Erlang (and to some degree functional la
-nguages)
- []
-
-
-Overfull \hbox (13.6647pt too wide) in paragraph at lines 120--121
-\OT1/cmtt/m/n/10.95 different from other programming languages especially its s
-upport
- []
-
-
-Overfull \hbox (7.91602pt too wide) in paragraph at lines 120--121
-\OT1/cmtt/m/n/10.95 for concurrency. Then we will look at the Brzozowski sequen
-tial
- []
-
-
-Overfull \hbox (36.65945pt too wide) in paragraph at lines 120--121
-\OT1/cmtt/m/n/10.95 algorithm and some parallelization proposals. Lastly we wil
-l discuss
- []
-
-
-Overfull \hbox (7.91602pt too wide) in paragraph at lines 120--121
-\OT1/cmtt/m/n/10.95 the Erlang implementations for the parallelizations proposa
-ls.  
- []
-
-[2]
-Chapter 2.
-
-Package natbib Warning: Citation `Armstrong' on page 3 undefined on input line 
-132.
-
-
-Package natbib Warning: Citation `thesis:armstrong' on page 3 undefined on inpu
-t line 138.
+Package natbib Warning: Citation `url:T3' on page 3 undefined on input line 102
+.
 
 [3
 
+] [4]
+Chapter 2.
+
+Package natbib Warning: Citation `thesis:armstrong' on page 5 undefined on inpu
+t line 166.
+
+[5
+
 ]
 
-Package natbib Warning: Citation `Armstrong' on page 4 undefined on input line 
-179.
+Package natbib Warning: Citation `O'reilly' on page 6 undefined on input line 2
+08.
 
-
-Package natbib Warning: Citation `O'reilly' on page 4 undefined on input line 1
-80.
-
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 217.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 245.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/b/it' tried instead on input line 217.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 217.
+(Font)              Font shape `OML/cmm/b/it' tried instead on input line 245.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 245.
 
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 217.
- [4] [5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 245.
+ [6] [7]
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 329.
- [6]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 357.
+ [8]
 
-LaTeX Warning: Reference `thesis:armstrong' on page 7 undefined on input line 3
-56.
-
-
-LaTeX Warning: Reference `pragmatic:erlang' on page 7 undefined on input line 3
-56.
+LaTeX Warning: Reference `thesis:armstrong' on page 9 undefined on input line 3
+84.
 
 
-LaTeX Warning: Reference `oreily:Erlang' on page 7 undefined on input line 357.
+LaTeX Warning: Reference `joe:09' on page 9 undefined on input line 384.
+
+
+LaTeX Warning: Reference `oreily:Erlang' on page 9 undefined on input line 385.
 
 
 
-Package natbib Warning: Citation `thesis:armstrong' on page 7 undefined on inpu
-t line 364.
+Package natbib Warning: Citation `thesis:armstrong' on page 9 undefined on inpu
+t line 392.
 
-
-Package natbib Warning: Citation `book:armstrong' on page 7 undefined on input 
-line 367.
-
-[7]
+[9]
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 431.
- [8] [9] [10]
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 459.
+ [10] [11] [12]
 Chapter 3.
+[13
 
-Package natbib Warning: Citation `brzozowski1964derivatives' on page 11 undefin
-ed on input line 514.
-
-
-Package natbib Warning: Citation `watson1995taxonomies' on page 11 undefined on
- input line 518.
-
-
-Package natbib Warning: Citation `Struass' on page 11 undefined on input line 5
-24.
-
-
-Package natbib Warning: Citation `Struass' on page 11 undefined on input line 5
-27.
-
-[11
-
-] [12]
-
-Package natbib Warning: Citation `PRagmatic' on page 13 undefined on input line
- 606.
-
-
-Package natbib Warning: Citation `Pragmatic' on page 13 undefined on input line
- 624.
-
-<Activity.pdf, id=62, 434.62375pt x 476.78125pt>
+] [14] [15] <Activity.pdf, id=74, 434.62375pt x 476.78125pt>
 File: Activity.pdf Graphic file (type pdf)
- <use Activity.pdf>
-Overfull \hbox (74.62268pt too wide) in paragraph at lines 632--635
+
+<use Activity.pdf>
+Overfull \hbox (74.62268pt too wide) in paragraph at lines 697--700
  [][] 
  []
 
-[13] [14 <./Activity.pdf>] [15]
-<AsAvailable_states.pdf, id=85, 418.56375pt x 285.065pt>
+[16] [17 <./Activity.pdf>] [18]
+<AsAvailable_states.pdf, id=98, 418.56375pt x 285.065pt>
 File: AsAvailable_states.pdf Graphic file (type pdf)
 
 <use AsAvailable_states.pdf>
-Overfull \hbox (58.56271pt too wide) in paragraph at lines 764--767
+Overfull \hbox (58.56271pt too wide) in paragraph at lines 834--837
  [][] 
  []
 
-[16] <Activity-3null.pdf, id=89, 442.65375pt x 476.78125pt>
+<Activity-3null.pdf, id=99, 442.65375pt x 476.78125pt>
 File: Activity-3null.pdf Graphic file (type pdf)
 
 <use Activity-3null.pdf>
-Overfull \hbox (82.65265pt too wide) in paragraph at lines 795--798
+Overfull \hbox (82.65265pt too wide) in paragraph at lines 865--868
  [][] 
  []
 
+[19]
 
-Package natbib Warning: Citation `watson' on page 17 undefined on input line 80
-2.
+LaTeX Warning: Reference `chap:code' on page 20 undefined on input line 878.
 
-[17 <./AsAvailable_states.pdf>]
-
-LaTeX Warning: Reference `chap:code' on page 18 undefined on input line 808.
-
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 812
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 882
 .
-LaTeX Font Info:    No file OMScmtt.fd. on input line 812.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 882.
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 812.
+(Font)              for symbol `textbraceleft' on input line 882.
+
+[20 <./AsAvailable_states.pdf>]
+
+Package natbib Warning: Citation `Dean' on page 21 undefined on input line 905.
 
 
-Package natbib Warning: Citation `Armstrong' on page 18 undefined on input line
- 833.
-
-
-Package natbib Warning: Citation `Dean' on page 18 undefined on input line 835.
-
-
-<MapReduce-process.pdf, id=98, 464.99463pt x 323.32016pt>
+<MapReduce-process.pdf, id=111, 464.99463pt x 323.32016pt>
 File: MapReduce-process.pdf Graphic file (type pdf)
 
 <use MapReduce-process.pdf>
-Overfull \hbox (11.9962pt too wide) in paragraph at lines 844--847
+Overfull \hbox (11.9962pt too wide) in paragraph at lines 914--917
  [][] 
  []
 
-[18] [19 <./Activity-3null.pdf>] [20 <./MapReduce-process.pdf>]
+[21] [22 <./Activity-3null.pdf>] [23 <./MapReduce-process.pdf>]
 Chapter 4.
-[21
+[24
 
 ]
 \openout2 = `SPE780-code-analysis.aux'.
@@ -572,57 +500,49 @@ Chapter 4.
  (./SPE780-code-analysis.tex
 Chapter 5.
 
-LaTeX Warning: Reference `fig:RoundRobin' on page 22 undefined on input line 12
+LaTeX Warning: Reference `fig:RoundRobin' on page 25 undefined on input line 12
 .
 
 
-LaTeX Warning: Reference `sec:nullable' on page 22 undefined on input line 29.
+LaTeX Warning: Reference `sec:nullable' on page 25 undefined on input line 29.
+
+[25
 
 
-Package natbib Warning: Citation `WatsonPhD' on page 22 undefined on input line
- 41.
+] [26]
 
-[22
-
-
-] [23]
-
-LaTeX Warning: Reference `def_start' on page 24 undefined on input line 104.
+LaTeX Warning: Reference `def_start' on page 27 undefined on input line 104.
 
 
-LaTeX Warning: Reference `func_asav' on page 24 undefined on input line 113.
+LaTeX Warning: Reference `func_asav' on page 27 undefined on input line 113.
 
 
-LaTeX Warning: Reference `def_starts' on page 24 undefined on input line 117.
+LaTeX Warning: Reference `def_starts' on page 27 undefined on input line 117.
 
 
-LaTeX Warning: Reference `def_ends' on page 24 undefined on input line 117.
+LaTeX Warning: Reference `def_ends' on page 27 undefined on input line 117.
 
 
-LaTeX Warning: Reference `def_starts' on page 24 undefined on input line 128.
+LaTeX Warning: Reference `def_starts' on page 27 undefined on input line 128.
 
 
-LaTeX Warning: Reference `def_ends' on page 24 undefined on input line 128.
+LaTeX Warning: Reference `def_ends' on page 27 undefined on input line 128.
 
 
-LaTeX Warning: Reference `sec:tail-recursion' on page 24 undefined on input lin
+LaTeX Warning: Reference `sec:tail-recursion' on page 27 undefined on input lin
 e 150.
 
-[24]
+[27]
 Overfull \hbox (34.2041pt too wide) in paragraph at lines 167--168
 [][][][][][][][][][][][][][][][][][][][][] 
  []
-
-
-Package natbib Warning: Citation `Armstrong' on page 25 undefined on input line
- 181.
 
 
 Overfull \hbox (87.05444pt too wide) in paragraph at lines 194--195
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[25]
+[28]
 Overfull \hbox (21.35376pt too wide) in paragraph at lines 198--199
 [][][][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
@@ -638,10 +558,10 @@ Overfull \hbox (205.31567pt too wide) in paragraph at lines 205--206
  []
 
 
-LaTeX Warning: Reference `line:case-true' on page 26 undefined on input line 23
+LaTeX Warning: Reference `line:case-true' on page 29 undefined on input line 23
 7.
 
-[26] [27]
+[29] [30]
 Overfull \hbox (251.30615pt too wide) in paragraph at lines 293--294
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
@@ -666,17 +586,17 @@ Overfull \hbox (21.35376pt too wide) in paragraph at lines 326--327
 [][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[28]
+[31]
 Overfull \hbox (133.04492pt too wide) in paragraph at lines 351--352
 [][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[29] [30]
+[32] [33]
 Overfull \hbox (100.19458pt too wide) in paragraph at lines 430--431
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[31]
+[34]
 Overfull \hbox (41.06396pt too wide) in paragraph at lines 440--441
 [][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -691,47 +611,57 @@ Overfull \hbox (1.64355pt too wide) in paragraph at lines 459--460
 [][][][][][][][][][][][][][][][][]  
  []
 
-[32]
+[35]
 
-LaTeX Warning: Reference `line:AddHead' on page 33 undefined on input line 484.
+LaTeX Warning: Reference `line:AddHead' on page 36 undefined on input line 484.
 
 
-) [33] [34
+) [36] [37
 
 ]
 Chapter 6.
-[35
+[38
 
 ]
 Chapter 7.
 
-LaTeX Warning: Reference `sec:speedcomp' on page 36 undefined on input line 928
+LaTeX Warning: Reference `sec:speedcomp' on page 39 undefined on input line 998
 .
 
 
-LaTeX Warning: Reference `sec:speedcomp' on page 36 undefined on input line 992
-.
+LaTeX Warning: Reference `sec:speedcomp' on page 39 undefined on input line 106
+2.
 
-[36
+[39
 
 ]
 
-LaTeX Warning: Reference `textexp' on page 37 undefined on input line 1000.
+LaTeX Warning: Reference `textexp' on page 40 undefined on input line 1070.
 
-
-Package natbib Warning: Citation `armstrong' on page 37 undefined on input line
- 1000.
-
-[37]
+[40]
 Chapter 8.
-[38
+(./SPE780-project-dissertation.bbl [41
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+[]\OT1/cmr/m/n/10.95 Joe Arm-strong.  \OT1/cmr/m/it/10.95 Pro-gram-ming Er-lang
+:Software
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+\OT1/cmr/m/it/10.95 for a Con-cur-rent World\OT1/cmr/m/n/10.95 .  Prag-matic Bo
+ok-shelf,
+ []
+
+) [42
 
 ]
 Appendix A.
 
 Package natbib Warning: There were undefined citations.
 
-[39
+[43
 
 ] (./SPE780-project-dissertation.aux (./SPE780-code-analysis.aux))
 
@@ -742,11 +672,11 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5116 strings out of 493773
- 68290 string characters out of 3145346
- 250044 words of memory out of 3000000
- 8273 multiletter control sequences out of 15000+200000
- 18160 words of font info for 68 fonts, out of 3000000 for 9000
+ 5203 strings out of 493773
+ 69579 string characters out of 3145346
+ 253551 words of memory out of 3000000
+ 8350 multiletter control sequences out of 15000+200000
+ 18818 words of font info for 70 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  45i,11n,40p,327b,1465s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pf
@@ -769,9 +699,9 @@ e/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
 009/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/20
 09/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2009
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on SPE780-project-dissertation.pdf (40 pages, 531132 bytes).
+Output written on SPE780-project-dissertation.pdf (45 pages, 539334 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
+ 272 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
