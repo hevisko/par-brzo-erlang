@@ -23,207 +23,255 @@
 
 (eof "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-inc.tex")
 
-(toc "toc" "  1 \\textit{Raison d'etre}" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "1" "\\chapter{\\textit{Raison d'etre}}" 994)
+(toc "toc" "  1 \\textit{Raison d'etre}" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "1" "\\chapter{\\textit{Raison d'etre}}" 1994)
 
-(toc "toc" "    1.1 Becoming intrigued" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "1.1" "\\section{Becoming intrigued}" 1028)
+(toc "toc" "    1.1 Becoming intrigued" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "1.1" "\\section{Becoming intrigued}" 2028)
 
-(toc "toc" "      1.1.1 Today's CPUs" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "1.1.1" "\\subsection{Today's CPUs}" 1695)
+(toc "toc" "      1.1.1 Today's CPUs" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "1.1.1" "\\subsection{Today's CPUs}" 2843)
 
-(toc "toc" "      1.1.2 Determinate Finite Automata (DFA)" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "1.1.2" "\\subsection{Determinate Finite Automata (DFA)}" 2877)
+(toc "toc" "      1.1.2 Determinate Finite Automata (DFA)" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "1.1.2" "\\subsection{Determinate Finite Automata (DFA)}" 4038)
 
-(toc "toc" "      1.1.3 Erlang" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "1.1.3" "\\subsection{Erlang}" 3728)
+(toc "toc" "      1.1.3 Erlang" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "1.1.3" "\\subsection{Erlang}" 4889)
 
-(toc "toc" "    1.2 Research focus" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "1.2" "\\section{Research focus}" 4120)
+(toc "toc" "    1.2 Research focus" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "1.2" "\\section{Research focus}" 5281)
 
-(toc "toc" "  2 Erlang - the language" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "2" "\\chapter{Erlang - the language}" 4916)
+(toc "toc" "  2 Erlang - the language" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "2" "\\chapter{Erlang - the language}" 6068)
 
-(toc "toc" "    2.1 Introduction" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.1" "\\section{Introduction}" 4949)
+(toc "toc" "    2.1 Introduction" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.1" "\\section{Introduction}" 6101)
 
-(toc "toc" "    2.2 Brief history" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.2" "\\section{Brief history}" 5488)
+(toc "toc" "    2.2 Brief history" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.2" "\\section{Brief history}" 6637)
 
-(toc "toc" "    2.3 Quick Language Introduction" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.3" "\\section{Quick Language Introduction}" 7520)
+(toc "toc" "    2.3 Quick Language Introduction" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.3" "\\section{Quick Language Introduction}" 8670)
 
-(toc "toc" "      2.3.1 atoms and Variables" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.3.1" "\\subsection{atoms and Variables}" 7916)
+(toc "toc" "      2.3.1 atoms and Variables" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.3.1" "\\subsection{atoms and Variables}" 9063)
 
-(toc "toc" "    2.4 Functional language features" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.4" "\\section{Functional language features}" 8336)
+(toc "toc" "    2.4 Functional language features" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.4" "\\section{Functional language features}" 9483)
 
-(toc "toc" "      2.4.1 Pattern Matching - function overloading" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.1" "\\subsection{Pattern Matching - function overloading}" 8635)
+(toc "toc" "      2.4.1 Pattern Matching - function overloading" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.1" "\\subsection{Pattern Matching - function overloading}" 9782)
 
 ("sec:pattern" "s" "One of the strengths of Erlang (and the author understood other functional languages too, but have n" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("prog:pattern" "s" "\\begin{lstlisting} area(square,Side) -> Side*Side; area(cube,Side) -> area(square,Side)*6; area(circ" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          2.4.1.0.1 Guards" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "2.4.1.0.1" "\\paragraph{Guards}" 9975)
+(toc "toc" "          2.4.1.0.1 Guards" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "2.4.1.0.1" "\\paragraph{Guards}" 11132)
 
-("par:guards" "s" "An even more advanced technique is the use guards statements inside functions. These help firstly wi" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("par:guards" "s" "Another code flow technique is the use of guards (\\texttt{when} statements) inside functions. These " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          2.4.1.0.2 Notation of functions" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "2.4.1.0.2" "\\paragraph{Notation of functions}" 10818)
+(toc "toc" "          2.4.1.0.2 Notation of functions" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "2.4.1.0.2" "\\paragraph{Notation of functions}" 12019)
 
-(toc "toc" "      2.4.2 Functions as first class members" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.2" "\\subsection{Functions as first class members}" 11115)
+(toc "toc" "      2.4.2 Functions as first class members" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.2" "\\subsection{Functions as first class members}" 12316)
 
 ("sec:func1st" "s" "By definition a function in a functional language is a first class member, where a function can be p" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      2.4.3 Imutable variables" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.3" "\\subsection{Imutable variables}" 11866)
+(toc "toc" "      2.4.3 Immutable variables" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.3" "\\subsection{Immutable variables}" 13067)
 
-("sec:imVar" "s" "Variables in Erlang is an algebraic variable that have a fixed value during a run of a function bloc" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("sec:imVar" "s" "Variables in Erlang is like algebraic variables that have a fixed value during a run of a function b" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      2.4.4 Tail recursion" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.4" "\\subsection{Tail recursion}" 12721)
+(toc "toc" "      2.4.4 Tail recursion" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.4.4" "\\subsection{Tail recursion}" 13925)
 
 ("sec:tailrec" "s" "Tail recursion is achieved when the compiler can optimize the code to be a \\texttt{goto/jump}\\footno" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-("TailRec" "s" "\\begin{lstlisting}[language=erlang,numbers=left] loop(0) -> true; loop(N) when N > 0 -> io:format(\" " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
-
 ("NoTailRec" "s" "\\begin{lstlisting}[language=erlang,numbers=left] loop(N) when N > 0 -> loop(N-1), io:format(\" iterat" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "    2.5 Concurency and distributed programming" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.5" "\\section{Concurency and distributed programming}" 14759)
+(toc "toc" "    2.5 Concurrency and distributed programming" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "2.5" "\\section{Concurrency and distributed programming}" 15949)
 
-(toc "toc" "      2.5.1 Communications" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.5.1" "\\subsection{Communications}" 16793)
+(toc "toc" "      2.5.1 Communications" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.5.1" "\\subsection{Communications}" 17975)
 
 ("sec:communications" "s" "In the real world we use messages to communicate. We also choose to ignore some and to give priority" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("prog:recexample" "s" "\\begin{lstlisting}[language=erlang,numbers=left,numberstyle=\\tiny] start_loop() -> loop(waiting). lo" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "        2.5.1.1 Guards" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "2.5.1.1" "\\subsubsection{Guards}" 19911)
+(toc "toc" "        2.5.1.1 Process Identifiers and nodes" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "2.5.1.1" "\\subsubsection{Process Identifiers and nodes}" 21120)
+
+("sec:PID" "s" "In Erlang the destination of a message, is the PID (Process Identifier) of the process. Thus each pr" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "        2.5.1.2 Guards in receiving messages" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "2.5.1.2" "\\subsubsection{Guards in receiving messages}" 22431)
 
 ("sec:guardRec" "s" "Although none of our code used the guard statements, it have to be noted that it is one of the nice " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("prog:recexample2" "s" "\\begin{lstlisting}[language=erlang,numbers=left,numberstyle=\\tiny] loop(available,[Head|Tail]=WholeL" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      2.5.2 Parameter List splitting" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.5.2" "\\subsection{Parameter List splitting}" 21003)
+(toc "toc" "      2.5.2 Parameter List splitting" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "2.5.2" "\\subsection{Parameter List splitting}" 23558)
 
-("sec:listsplit" "s" "Program~\\ref{prog:recexample} shows another parameter feature that is quite frequently used in Erlan" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("sec:listsplit" "s" "Program~\\autoref{prog:recexample} shows another parameter feature that is quite frequently used in E" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "  3 Brzozowski's DFA construction" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "3" "\\chapter{Brzozowski's DFA construction}" 21417)
+(toc "toc" "  3 Brzozowski's DFA construction" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "3" "\\chapter{Brzozowski's DFA construction}" 23976)
 
-(toc "toc" "    3.1 Sequential algorithm" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.1" "\\section{Sequential algorithm}" 21458)
+("cha:brzoz-dfa-constr" "s" "\\section{Origins of algorithm}  In \\cite{brzozowski1964derivatives}, Brzozowski presented the notion" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "    3.1 Origins of algorithm" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.1" "\\section{Origins of algorithm}" 24046)
+
+("sec:origins-algorithm" "s" "In \\cite{brzozowski1964derivatives}, Brzozowski presented the notion of derivates for regular expres" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "    3.2 Sequential algorithm" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.2" "\\section{Sequential algorithm}" 24765)
+
+("sec:seq-algo" "s" "Program\\autoref{prog:brzgcl}, shows a Guarded Command Language version of Brzozowski's DFA construct" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("prog:brzgcl" "s" "\\begin{gcl} \\FUNC Brz(E,\\Sigma)\\ARROW \\delta,S,F:=\\emptyset,\\{E\\},\\emptyset; D,T:=\\emptyset,S; \\DO (" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      3.1.1 Reduced derivatives" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.1.1" "\\subsection{Reduced derivatives}" 22436)
+(toc "toc" "      3.2.1 Reduced derivatives" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.1" "\\subsection{Reduced derivatives}" 26179)
 
 ("sec:brzredder" "s" "When looking at this algorithm, the only dependency or shared state between iterations and derivativ" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      3.1.2 Path insertation" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.1.2" "\\subsection{Path insertation}" 23019)
+(toc "toc" "      3.2.2 Path insertion" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.2" "\\subsection{Path insertion}" 26762)
 
-(toc "toc" "      3.1.3 Nullable tests" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.1.3" "\\subsection{Nullable tests}" 23221)
+("sec:path-insertion" "s" "The path insertion $\\delta(q,i):=d$, again is a critical/serial operation that is effectively just a" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      3.1.4 Sequential implementation" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.1.4" "\\subsection{Sequential implementation}" 23400)
+(toc "toc" "      3.2.3 Nullable tests" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.3" "\\subsection{Nullable tests}" 27033)
 
-(toc "toc" "    3.2 Concurrent algorithms" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.2" "\\section{Concurrent algorithms}" 24034)
+("sec:nullable-tests" "s" "The nullable tests ($\\epsilon\\in \\mathcal{L}(q)$) is an independent once we have the list of reduced" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      3.2.1 First attempt: ParMap" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.1" "\\subsection{First attempt: ParMap}" 24067)
+(toc "toc" "      3.2.4 Sequential implementation" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.4" "\\subsection{Sequential implementation}" 27283)
 
-("sec:strausparmap" "s" "The first obvious parallelization method comes from doing concurrency over the alphabeth on the inne" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("sec:sequ-impl" "s" "As mentioned in \\autoref{sec:origins-algorithm}, we started with an already implemented sequential E" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      3.2.2 Second revision" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.2" "\\subsection{Second revision}" 26159)
+(toc "toc" "    3.3 Concurrent algorithms" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.3" "\\section{Concurrent algorithms}" 28007)
+
+("sec:conc-algor" "s" "\\subsection{First consideration: ParMap}  The first obvious parallelization method comes from doing " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "      3.3.1 First consideration: ParMap" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.3.1" "\\subsection{First consideration: ParMap}" 28063)
+
+("sec:strausparmap" "s" "The first obvious parallelization method comes from doing concurrency over the $\\Sigma$ alphabeth on" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "    3.4 Distribution queues" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.4" "\\section{Distribution queues}" 30468)
+
+("sec:distribution-queues" "s" "Addressing the uncontrolled parallelization problem mentioned in \\autoref{sec:strausparmap}, the ide" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "      3.4.1 First distributor" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.4.1" "\\subsection{First distributor}" 31139)
+
+("sec:firstdist" "s" "\\begin{Figure}[htbp] % figure placement: here, top, bottom, or page \\centering \\includegraphics[scal" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("fig:distflow" "s" " " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "        3.2.2.1 Diagram notation used" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "3.2.2.1" "\\subsubsection{Diagram notation used}" 26780)
+(toc "toc" "        3.4.1.1 Diagram notation used" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "3.4.1.1" "\\subsubsection{Diagram notation used}" 31962)
 
-(toc "toc" "        3.2.2.2 Flow description" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "3.2.2.2" "\\subsubsection{Flow description}" 27444)
+("sec:notation" "s" "The \\LaTeX\\ symbols used in the text, where not possible to be imported into the UML editor used by " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "        3.4.1.2 Flow description" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "3.4.1.2" "\\subsubsection{Flow description}" 32750)
 
 ("sec:flow-description" "s" "The sequential algorithm put the original $RE$ on the Todo list $T$. Then it handles the $RE$ as it " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.2.1 \"Inner Loop\"" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.1" "\\paragraph{\"Inner Loop\"}" 27772)
+(toc "toc" "          3.4.1.2.1 Core Loop" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.1" "\\paragraph{Core Loop}" 33235)
 
 ("sec:inner-loop" "s" "The inner loop for the sequential algorithm is a creation of messages to be send for processing. The" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.2.2 Note: Message parallelization" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.2" "\\paragraph{Note: Message parallelization}" 28269)
+(toc "toc" "          3.4.1.2.2 Note: Message parallelization" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.2" "\\paragraph{Note: Message parallelization}" 33744)
 
-(toc "toc" "          3.2.2.2.3 Nullable($\\frac{d}{di}$), Add $E$ to $D$" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.3" "\\paragraph{Nullable($\\frac{d}{di}$), Add $E$ to $D$}" 28653)
+("sec:note:-mess-parall" "s" "It has to be noted that this algorithm is not concerned with the parallelization of those messages a" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+
+(toc "toc" "          3.4.1.2.3 Nullable($\\frac{d}{di}$), Add $E$ to $D$" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.3" "\\paragraph{Nullable($\\frac{d}{di}$), Add $E$ to $D$}" 34162)
 
 ("sec:nullablefracddi" "s" "While writing this and considering the formal aspects to proof the correctness of this algorithm, th" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.2.4 WiP test" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.4" "\\paragraph{WiP test}" 29288)
+(toc "toc" "          3.4.1.2.4 WiP test" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.4" "\\paragraph{WiP test}" 34798)
 
 ("sec:wip-test" "s" "Check for an empty WiP list. If it is empty this process will terminate (perhaps also telling the di" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.2.5 Receiving ${E,i,\\frac{d}{di}E}$ and $\\delta(E,i):=\\frac{d}{di}E$" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.5" "\\paragraph{Receiving ${E,i,\\frac{d}{di}E}$ and $\\delta(E,i):=\\frac{d}{di}E$}" 29523)
+(toc "toc" "          3.4.1.2.5 Receiving ${E,i,\\frac{d}{di}E}$ and $\\delta(E,i):=\\frac{d}{di}E$" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.5" "\\paragraph{Receiving ${E,i,\\frac{d}{di}E}$ and $\\delta(E,i):=\\frac{d}{di}E$}" 35033)
 
 ("sec:receiving-e-i" "s" "Once a message is received, the corresponding ${E,i}$ is removed from the WiP list. The Paths is the" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.2.6 Checking $\\frac{d}{di}E \\in D$" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.6" "\\paragraph{Checking $\\frac{d}{di}E \\in D$}" 29826)
+(toc "toc" "          3.4.1.2.6 Checking $\\frac{d}{di}E \\in D$" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.6" "\\paragraph{Checking $\\frac{d}{di}E \\in D$}" 35336)
 
-(toc "toc" "          3.2.2.2.7 no $T$ todo list, but WiP" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.2.7" "\\paragraph{no $T$ todo list, but WiP}" 30140)
+(toc "toc" "          3.4.1.2.7 no $T$ todo list, but WiP" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.2.7" "\\paragraph{no $T$ todo list, but WiP}" 35710)
 
-("sec:no-t-todo" "s" "Note that the is no Todo list (the $T$) as in the sequential case. This is because the algorithm imm" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("sec:no-t-todo" "s" "Note that there is no Todo list (the $T$) as in the sequential case. This is because the algorithm i" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "        3.2.2.3 Distributors" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "3.2.2.3" "\\subsubsection{Distributors}" 30499)
+(toc "toc" "        3.4.1.3 Distributors" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 4 "3.4.1.3" "\\subsubsection{Distributors}" 36207)
 
 ("sec:distributors" "s" "Based on the stream of messages that the algorithm generates, there is various methods how these mes" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.3.1 Sequential" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.3.1" "\\paragraph{Sequential}" 30679)
+(toc "toc" "          3.4.1.3.1 Sequential" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.3.1" "\\paragraph{Sequential}" 36435)
 
 ("sec:sequential" "s" "As a first test to confirm the correct algorithm in at least the sequential case (or the messages al" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.3.2 Round Robin" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.3.2" "\\paragraph{Round Robin}" 31203)
+(toc "toc" "          3.4.1.3.2 Round Robin" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.3.2" "\\paragraph{Round Robin}" 37002)
 
-("sec:round-robin" "s" "The distributor will be given a list of processes that have been spawned and will handle requests. T" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("sec:round-robin" "s" "A Round-Robin processing, is done when you have more than one queue, with a pointer to one of these " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "          3.2.2.3.3 As-Available" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.2.2.3.3" "\\paragraph{As-Available}" 31517)
+(toc "toc" "          3.4.1.3.3 As-Available" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 5 "3.4.1.3.3" "\\paragraph{As-Available}" 38179)
+
+("sec:as-available-1" "s" "The problem mentioned with the Round-Robin distributor, is the fact that a single request could stal" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("sec:as-available" "s" "\\begin{Figure}[htb] % figure placement: here, top, bottom, or page \\centering \\includegraphics[scale" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("fig:AsAvailable" "s" " " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      3.2.3 Nullable also? (third attempt)" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.2.3" "\\subsection{Nullable also? (third attempt)}" 32853)
+(toc "toc" "      3.4.2 Nullable also?" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "3.4.2" "\\subsection{Nullable also?}" 40206)
+
+("sec:nullable-also" "s" "At this point of the project's implementation, the author were so astonished by the ease of implemen" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("fig:distflownull" "s" " " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "    3.3 Map Reduce - the Google connection" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.3" "\\section{Map Reduce - the Google connection}" 34632)
+(toc "toc" "    3.5 Map Reduce - the Google connection" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "3.5" "\\section{Map Reduce - the Google connection}" 42182)
+
+("sec:map-reduce-google" "s" "After implementation of the second and third versions, a rereading of \\cite{joe:09} brought theautho" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
 ("fig:mapreduce" "s" " " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "  4 Implementation" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "4" "\\chapter{Implementation}" 36082)
+(toc "toc" "  4 Implementation" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "4" "\\chapter{Implementation}" 43671)
 
 (bof "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex")
 
 (toc "toc" "  5 Code Analysis" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 1 "5" "\\chapter{Code Analysis}" 1)
 
-(toc "toc" "    5.1 What will be looked at" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.1" "\\section{What will be looked at}" 79)
+(toc "toc" "    5.1 What will be looked at" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.1" "\\section{What will be looked at}" 768)
 
-(toc "toc" "          5.1.0.0.1 Chosen code to explain" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.1.0.0.1" "\\paragraph{Chosen code to explain}" 1152)
+(toc "toc" "      5.1.1 Chosen code to explain" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.1.1" "\\subsection{Chosen code to explain}" 1920)
 
-(toc "toc" "          5.1.0.0.2 Actual Brzozoswki code" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.1.0.0.2" "\\paragraph{Actual Brzozoswki code}" 1483)
+(toc "toc" "      5.1.2 \\emph{Ab Initio}\\footnote{\\emph{Ab Initio}: Latin for \\emph{from the beginning}. Introduced to this " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.1.2" "\\subsection[\\emph{Ab Initio}]{\\emph{Ab Initio}\\footnote{\\emph{Ab
+      Initio}: Latin for \\emph{from the beginning}. Introduced to this
+    term from the name of a product/company u" 2150)
 
-(toc "toc" "          5.1.0.0.3 Generated DFA correctness proofs" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.1.0.0.3" "\\paragraph{Generated DFA correctness proofs}" 2009)
+(toc "toc" "      5.1.3 Actual Brzozowski code" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.1.3" "\\subsection{Actual Brzozowski code}" 3734)
 
-(toc "toc" "    5.2 Ab Initio" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.2" "\\section{Ab Initio}" 2431)
+(toc "toc" "      5.1.4 Generated DFA correctness proofs" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.1.4" "\\subsection{Generated DFA correctness proofs}" 4292)
 
-(toc "toc" "      5.2.1 Entry Code" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.2.1" "\\subsection{Entry Code}" 2991)
+(toc "toc" "      5.1.5 Code formatting" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.1.5" "\\subsection{Code formatting}" 4716)
 
-("line:FuncAsav" "s" "@*) TimeOut = 3000,(*@@*) Res = self(),(*@\\label{self}@*) WiP = [],%Only the first (and last) one wo" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("sec:code-formatting" "s" "Typesetting is never the easiest of things, and typically needs to be taken into consideration as th" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "          5.1.5.0.1 Comments" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.1.5.0.1" "\\paragraph{Comments}" 5593)
+
+("sec:comments" "s" "We have to point out that the $\\%$ sign is used to indicate the start of a comment line, and those h" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "    5.2 Entry Code" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.2" "\\section{Entry Code}" 5778)
+
+("line:FuncAsav" "s" "@*) TimeOut = 3000,(*@@*) Res = self(),(*@\\label{line:self}@*) WiP = [],%Only the first (and last) o" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
 ("line:DefStarts" "s" "@*) Res = self(),(*@@*) WiP = [],%Only the first (and last) one would be \"empty\" Finish = [], Dlist " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("self" "s" "@*) WiP = [],%Only the first (and last) one would be \"empty\" Finish = [], Dlist = [RE],%Start state." "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:self" "s" "@*) WiP = [],%Only the first (and last) one would be \"empty\" Finish = [], Dlist = [RE],%Start state." "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
 ("line:DefEnds" "s" "@*) Dist = spawn(fun () -> hv_dist_avail_start(TimeOut, Res, N) end),(*@@*) hv_brzp_null(RE, Sigma, " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("dist" "s" "@*) hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta); " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:dist" "s" "@*) hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta); (*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("func_rr" "s" "@*) (*@\\textit{Repeat lines \\ref{def_starts}-\\ref{def_ends}}@*) Dist = spawn(fun () -> hv_dist_rr_st" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:corecall" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("dist_rr" "s" "@*) hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta).(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:func_rr" "s" "@*) (*@\\textit{Repeat lines \\autoref{def_starts}-\\autoref{def_ends}}@*) Dist = spawn(fun () -> hv_di" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("processing" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:dist_rr" "s" "@*) hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta).(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "        5.2.1.1 Repeated lines" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.2.1.1" "\\subsubsection{Repeated lines}" 6393)
+("line:processing" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "    5.3 Processing (Receiver)" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.3" "\\section{Processing (Receiver)}" 6710)
+(toc "toc" "      5.2.1 Repeated lines" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.2.1" "\\subsection{Repeated lines}" 9893)
 
-("sec:proc_receiver" "s" "The function \\texttt{hvp2:hv\\_brzp\\_null\\/7} is the core receiver we will discuss in this section. T" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+(toc "toc" "    5.3 Result Aggregator a.k.a. Reducer" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.3" "\\section{Result Aggregator a.k.a. Reducer}" 10208)
 
-(toc "toc" "      5.3.1 WiP empty (nothing to do anymore" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.3.1" "\\subsection{WiP empty (nothing to do anymore}" 7635)
+("sec:proc_receiver" "s" "The function \\texttt{hvp2:hv\\_brzp\\_null\\/7} is the core of the whole algorithm and it implements \\a" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "      5.3.1 WiP empty (nothing to do anymore" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.3.1" "\\subsection{WiP empty (nothing to do anymore}" 11293)
 
 ("sec:wip-empty" "s" "\\begin{lstlisting}[name=hvp2] %The case when the WiP is empty hv_brzp_null(receive_only,Sigma,Dist,[" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "      5.3.2 Receive only" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.3.2" "\\subsection{Receive only}" 8728)
+(toc "toc" "      5.3.2 Receive only" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.3.2" "\\subsection{Receive only}" 12384)
 
-("sec:receive" "s" "\\begin{lstlisting}[name=hvp2] %Receive only, nothing to derive hv_brzp_null(receive_only, Sigma, Dis" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("sec:receive" "s" "This part of the receiver, is executed based on \\texttt{receive\\_only} matching the first parameter," "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:rd_match" "s" "@*) % io:format(\"brzp_null_2:\"),io:write({rd,E,I,DDI}),io:format(\"~n\"),(*@@*) NewDelta=dict:store({E" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:rec_only" "s" "@*) receive {rd,E,I,DDI} -> (*@@*) %io:format(\"brzp_null_2:\"), io:write({rd,E,I,DDI}), io:format(\"~n" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:rd_match" "s" "@*) %io:format(\"brzp_null_2:\"), io:write({rd,E,I,DDI}), io:format(\"~n\"),(*@@*) NewDelta=dict:store({" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
 ("debug" "s" "@*) NewDelta=dict:store({E,I},DDI,Delta),(*@@*) case lists:member(DDI,Dlist) of(*@\\label{line:case}@" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" t)
 
@@ -233,75 +281,157 @@
 
 ("line:case_true" "s" "@*) false -> hv_brzp_null(DDI,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,[DDI|Dlist],NewDelta)(*@" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:case_false" "s" "@*) end;(*@@*) {null,E,true} -> (*@\\label{line:null_true}@*) % io:format(\"brzp_null_2: ~p true~n\",[E" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:case_false" "s" "@*) end;(*@@*) {null,E,true} -> (*@\\label{line:null_true}@*) %io:format(\"brzp_null_2: ~p true~n\",[E]" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:endcase" "s" "@*) {null,E,true} -> (*@@*) % io:format(\"brzp_null_2: ~p true~n\",[E]), (*@\\label{debug2}@*) hv_brzp_" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:endcase" "s" "@*) {null,E,true} -> (*@@*) %io:format(\"brzp_null_2: ~p true~n\",[E]), (*@\\label{line:debug2}@*) hv_b" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:null_true" "s" "@*) % io:format(\"brzp_null_2: ~p true~n\",[E]), (*@@*) hv_brzp_null(receive_only,Sigma,Dist, " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:null_true" "s" "@*) %io:format(\"brzp_null_2: ~p true~n\",[E]), (*@@*) hv_brzp_null(receive_only, Sigma, Dist, lists:d" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("debug2" "s" "@*) hv_brzp_null(receive_only,Sigma,Dist, lists:delete({null,E},WiP),[E|Finish],Dlist,Delta); % Add " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" t)
+("line:debug2" "s" "@*) hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},WiP), [E|Finish], Dlist, Delta); %" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" t)
 
-("line:null_false" "s" "@*) hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},WiP),Finish,Dlist,Delta) after 5000 -" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:null_false" "s" "@*) hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},WiP), Finish, Dlist, Delta) after " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
 ("line:timeout" "s" "@*) io:write(WiP), output_mailbox(1), throw(timeoutRec_only) end; " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "          5.3.2.0.1 Debugging statements" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.3.2.0.1" "\\paragraph{Debugging statements}" 12265)
+(toc "toc" "          5.3.2.0.1 Debugging statements" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.3.2.0.1" "\\paragraph{Debugging statements}" 16119)
 
-(toc "toc" "        5.3.2.1  " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.3.2.1" "\\subsubsection{}" 13133)
+(toc "toc" "      5.3.3 Expression to derive" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.3.3" "\\subsection{Expression to derive}" 16997)
 
-(toc "toc" "      5.3.3 Expression to derive" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.3.3" "\\subsection{Expression to derive}" 13151)
+("sec:expr-derive" "s" "This part of the function, have the same code than the receive\\_only in \\autoref{line:rec2}-\\ref{lin" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("sec:expr-derive" "s" "This part of the function, have the same code than the receive\\_only in lines\\ref{line:rec2}-\\ref{li" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:E2" "s" "@*) %foreach(Sigma) send message to Dist: lists:foreach(fun(X) -> Dist!{process,[rd,E,X]} end,Sigma)" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:E2" "s" "@*) %F1=nullable(E,Finish),nullable(RE),(*@@*) Dist!{process,[null,E]},(*@\\label{line:dnull}@*) %for" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:distribute" "s" "@*) Dist!{process,[null,E]},(*@@*) %And then also sent a nullable process request NewWiP=[{null,E}|a" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:null" "s" "@*) Dist!{process,[null,E]},(*@@*) %foreach(Sigma) insert {E,I} into WiP, and add the null to the be" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" t)
+("line:dnull" "s" "@*) %And then also sent a nullable process request NewWiP=[{null,E}|add_wip(WiP,rd,E,Sigma)],(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:dnull" "s" "@*) %foreach(Sigma) insert {E,I} into WiP, and add the null to the begining ;) NewWiP=[{null,E}|add_" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:NewWip" "s" "@*) % foreach(Sigma) insert {E,I} into WiP, and add the null to the beginning ;) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("line:E2e" "s" "@*) %WiP would not be empty in this function :) receive (*@@*) {rd,E,I,DDI} -> %io:format(\"brzp_null" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
-
-("line:rec2" "s" "@*) {rd,E,I,DDI} -> %io:format(\"brzp_null_why: \"),io:write({rd,E,I,DDI}),io:format(\"~n\"),%\"~p ~p ~p~" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:rec2" "s" "@*) {rd,E,I,DDI} -> NewDelta=dict:store({E,I},DDI,Delta), case lists:member(DDI,Dlist) of true -> hv" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
 ("line:rec2end" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "    5.4 Receivers" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.4" "\\section{Receivers}" 15425)
+(toc "toc" "    5.4 Mappers" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.4" "\\section{Mappers}" 20879)
 
-(toc "toc" "      5.4.1 Round Robin" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.4.1" "\\subsection{Round Robin}" 15446)
+(toc "toc" "      5.4.1 Round Robin mappers" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.4.1" "\\subsection{Round Robin mappers}" 21770)
 
-(toc "toc" "      5.4.2 AsAvailable Receiver" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.4.2" "\\subsection{AsAvailable Receiver}" 16045)
+(toc "toc" "        5.4.1.1 RoundRobin Distributor" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.4.1.1" "\\subsubsection{RoundRobin Distributor}" 22102)
 
-(toc "toc" "      5.4.3 Round Robin distributor" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.4.3" "\\subsection{Round Robin distributor}" 18703)
+("sec:roundr-distr" "s" "The distributors consists of two part, the first being the entry portion that spawns the threads, an" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "    5.5 AsAvailable distributor" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.5" "\\section{AsAvailable distributor}" 19298)
+(toc "toc" "          5.4.1.1.1 Spawning the receivers" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.1.1" "\\paragraph{Spawning the receivers}" 22295)
 
-(toc "toc" "    5.6 Anxillary functions" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.6" "\\section{Anxillary functions}" 21079)
+("sec:spawning-receivers" "s" "After the parameters for the algorithm (like the number of threads to use etc.) have been configured" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "      5.6.1 Adding to Work in Progress" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.6.1" "\\subsection{Adding to Work in Progress}" 21109)
+("line:rr_d_start" "s" "@*) hv_dist_rr(list_start_servers(N,Res),TimeOut). (*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-("AddHead" "s" "@*) add_wip(WiP, Type, E, [H| SigmaT]) -> add_wip([{Type, E, H}| WiP], Type, E, SigmaT).(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+("line:rr-d-call" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:lss0" "s" "@*) list_start_servers(N,Res) -> (*@@*) [spawn(fun()->hv_rr_rec(\"Receiver \"++[N+\\$0],Res), end) (*@\\" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:lss" "s" "@*) [spawn(fun()->hv_rr_rec(\"Receiver \"++[N+\\$0],Res), end) (*@@*) |list_start_servers(N-1,Res)].(*@" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("lss-head" "s" "@*) |list_start_servers(N-1,Res)].(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("lss-tail" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:spec_start" "s" "@*) Rec1=spawn(fun() ->hv_rr_rec(\"Rec1\",Res) end) end, Rec2=spawn(fun() ->hv_rr_rec(\"Rec2\",Res) end)" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:spec_end" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "          5.4.1.1.2 Chain of processes" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.1.2" "\\paragraph{Chain of processes}" 24455)
+
+("sec:chain-processes" "s" "Note how we received the PID of the results receiver from the output of \\texttt{self/1} in the initi" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "          5.4.1.1.3 The Real Distributor" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.1.3" "\\paragraph{The Real Distributor}" 25177)
+
+("line:real_dist_start" "s" "@*) receive {stop} -> lists:foreach(fun(X)->X!{stop} end,Receivers); {process,Param} -> H!{process,P" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:send_rec" "s" "@*) hv_dist_rr(lists:append(T, [H]),TimeOut);(*@@*) Other -> io:write(Other),throw(Other) after Time" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:dist_cont" "s" "@*) Other -> io:write(Other),throw(Other) after TimeOut -> io:format( \"Dist time-out and stopping re" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "        5.4.1.2 RoundRobin Receiver" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.4.1.2" "\\subsubsection{RoundRobin Receiver}" 26974)
+
+("sec:roundrobin-receiver" "s" "Just looking at the code below, the reader should notice it is nothing more than a switching stateme" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:rrr-init" "s" "@*) receive {stop} -> false; %Actually *any* terminating statement would suffice(*@@*) {process,[rd," "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:exit1" "s" "@*) {process,[rd,E,I]} -> Res!{rd,E,I,mds:reduce(mds:deriv(E,I))},hv_rr_rec(Name,Res);(*@@*) {proces" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" t)
+
+("line:proc-rd" "s" "@*) {process,[null,E]} -> Res!{null,E,mds:null(E)},hv_rr_rec(Name,Res);(*@@*) Other -> io:write(Othe" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:proc-nul" "s" "@*) Other -> io:write(Other),throw(Other)(*@@*) after 3000 -> io:format(\"Timeout ~p quitting\",[Name]" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:other" "s" "@*) after 3000 -> io:format(\"Timeout ~p quitting\",[Name]),io:nl()(*@@*) end. " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:timeout" "s" "@*) end. " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "          5.4.1.2.1 Erlang's claims of ease of concurrency" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.2.1" "\\paragraph{Erlang's claims of ease of concurrency}" 29669)
+
+("sec:erlangs-claims-ease" "s" "At this point in the code analysis, the author would have to emphasize his appreciation of the clean" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "        5.4.1.3 AsAvailable Mappers" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.4.1.3" "\\subsubsection{AsAvailable Mappers}" 30188)
+
+(toc "toc" "          5.4.1.3.1 Spawning the AsAvailable receivers" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.3.1" "\\paragraph{Spawning the AsAvailable receivers}" 30531)
+
+("line:das_guard" "s" "@*) Dist=self(),(*@@*) spawn(fun() -> hv_rec_available(Timeout,\"Receiver \"++erlang:integer_to_list(N" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:self_bad" "s" "@*) spawn(fun() -> hv_rec_available(Timeout,\"Receiver \"++erlang:integer_to_list(N),Res,Dist) end),(*" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:aa_rec_params" "s" "@*) hv_dist_avail_start(Timeout,Res,N-1).(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:das_recurse" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "          5.4.1.3.2 AsAvailable distributor" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.3.2" "\\paragraph{AsAvailable distributor}" 32345)
+
+("line:aad_start" "s" "@*) receive {available,PID}-> hv_dist_available(Timeout,[PID])(*@@*) after Timeout -> io:format(\"tim" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:1_avail" "s" "@*) after Timeout -> io:format(\"timeout distributor from waiting state~n\") end; " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:aad_normal" "s" "@*) receive {available,PID}->hv_dist_available(Timeout,[PID|Receivers]);(*@@*) {process,Param}->H!{p" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:add_avail" "s" "@*) {process,Param}->H!{process,Param}, hv_dist_available(Timeout,Tail);(*@@*) {stop}-> lists:foreac" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:aad_recurse" "s" "@*) {stop}-> lists:foreach(fun(X)->X!{stop} end,Receivers); Other -> throw(Other) after Timeout -> i" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "          5.4.1.3.3 AsAvailable receiver" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 5 "5.4.1.3.3" "\\paragraph{AsAvailable receiver}" 34579)
+
+("line:must_exit" "s" "@*) {process,[rd,E1,I1]}-> Res!{rd,E1,I1,mds:reduce(mds:deriv(E1,I1))}, hv_rec_available(Timeout,Nam" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" t)
+
+(toc "toc" "    5.5 Ancillary functions" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 2 "5.5" "\\section{Ancillary functions}" 37478)
+
+("sec:ancillary-functions" "s" "\\subsection{Adding to Work in Progress}  The Work in Progress (WiP) is a list of the type of process" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+(toc "toc" "      5.5.1 Adding to Work in Progress" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 3 "5.5.1" "\\subsection{Adding to Work in Progress}" 37541)
+
+("sec:adding-work-progress" "s" "The Work in Progress (WiP) is a list of the type of processing that have been sent out to the distri" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
+
+("line:AddHead" "s" "@*) add_wip(WiP, Type, E, [H| SigmaT]) -> add_wip([{Type, E, H}| WiP], Type, E, SigmaT).(*@@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
 ("line:AddList" "s" "@*) " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil)
 
-(toc "toc" "        5.6.1.1 Mailbox debugging" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.6.1.1" "\\subsubsection{Mailbox debugging}" 22432)
+(toc "toc" "        5.5.1.1 Mailbox debugging" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex" nil 4 "5.5.1.1" "\\subsubsection{Mailbox debugging}" 38912)
 
 (eof "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-code-analysis.tex")
 
-(toc "toc" "    5.7 Optimization choices" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "5.7" "\\section{Optimization choices}" 36631)
+(toc "toc" "    5.6 Optimization choices" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "5.6" "\\section{Optimization choices}" 44073)
 
-(toc "toc" "    5.8 Coding enhancements" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "5.8" "\\section{Coding enhancements}" 36781)
+("sec:optimization-choices" "s" "In this section we will explain some of the code and give critique how this could be made more resil" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      5.8.1 Distributors" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "5.8.1" "\\subsection{Distributors}" 36811)
+(toc "toc" "    5.7 Coding enhancements" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "5.7" "\\section{Coding enhancements}" 44541)
 
-("sec:codedist" "s" "The main decison here was that the distributors will not ``really'' control the receivers (other tha" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+(toc "toc" "      5.7.1 Distributors" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "5.7.1" "\\subsection{Distributors}" 44571)
 
-(toc "toc" "      5.8.2 Work in Progress" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "5.8.2" "\\subsection{Work in Progress}" 37455)
+("sec:codedist" "s" "The main decision here was that the distributors will not ``really'' control the receivers (other th" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "  6 Correctness proving????" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "6" "\\chapter{Correctness proving????}" 38739)
+(toc "toc" "      5.7.2 Work in Progress" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "5.7.2" "\\subsection{Work in Progress}" 45268)
 
-(toc "toc" "  7 Performance" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "7" "\\chapter{Performance}" 38845)
+(toc "toc" "  6 Correctness proving????" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "6" "\\chapter{Correctness proving????}" 46592)
 
-(toc "toc" "    7.1 Speed comparisons" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "7.1" "\\section{Speed comparisons}" 38867)
+(toc "toc" "  7 Performance" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "7" "\\chapter{Performance}" 47048)
+
+(toc "toc" "    7.1 Speed comparisons" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "7.1" "\\section{Speed comparisons}" 47070)
 
 ("RE:used" "t" "Expression used for testing" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
@@ -309,17 +439,19 @@
 
 ("testexp" "t" "NO MATCH FOR CONTEXT REGEXP" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "      7.1.1 Discussion of the results" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "7.1.1" "\\subsection{Discussion of the results}" 40670)
+(toc "toc" "      7.1.1 Discussion of the results" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 3 "7.1.1" "\\subsection{Discussion of the results}" 48901)
 
-("sec:discresults" "s" "As were mentioned early in \\ref{sec:speedcomp} we noticed the CPU utilization never increased above " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
+("sec:discresults" "s" "As were mentioned early in \\autoref{sec:speedcomp} we noticed the CPU utilization never increased ab" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil)
 
-(toc "toc" "  8 Conclusion" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "8" "\\chapter{Conclusion}" 42034)
+(toc "toc" "  8 Conclusion" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "8" "\\chapter{Conclusion}" 50284)
 
-(toc "toc" "    8.1 Future studies/work " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "8.1" "\\section{Future studies/work }" 42845)
+(toc "toc" "    8.1 Future studies/work " "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 2 "8.1" "\\section{Future studies/work }" 51096)
 
 (appendix . t)
 
-(toc "toc" "  A Listings" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "A" "\\chapter{Listings}" 43193)
+(toc "toc" "  A Listings" "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex" nil 1 "A" "\\chapter{Listings}" 51496)
+
+(bib "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/hv-spe780.bib")
 
 (eof "/Users/hendrivi/Hons/SPE780/SPE-project/Code/Docs/SPE780-project-dissertation.tex")
 ))

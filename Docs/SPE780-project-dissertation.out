@@ -1,0 +1,63 @@
+\BOOKMARK [0][-]{chapter.1}{Raison d'etre}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Becoming intrigued}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Today's CPUs}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Determinate Finite Automata \(DFA\)}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Erlang}{section.1.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Research focus}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Erlang - the language}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Brief history}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Quick Language Introduction}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{atoms and Variables}{section.2.3}% 11
+\BOOKMARK [1][-]{section.2.4}{Functional language features}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.4.1}{Pattern Matching - function overloading}{section.2.4}% 13
+\BOOKMARK [2][-]{subsection.2.4.2}{Functions as first class members}{section.2.4}% 14
+\BOOKMARK [2][-]{subsection.2.4.3}{Immutable variables}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.4}{Tail recursion}{section.2.4}% 16
+\BOOKMARK [1][-]{section.2.5}{Concurrency and distributed programming}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.5.1}{Communications}{section.2.5}% 18
+\BOOKMARK [2][-]{subsection.2.5.2}{Parameter List splitting}{section.2.5}% 19
+\BOOKMARK [0][-]{chapter.3}{Brzozowski's DFA construction}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Origins of algorithm}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.2}{Sequential algorithm}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.2.1}{Reduced derivatives}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.2}{Path insertion}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.3}{Nullable tests}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.4}{Sequential implementation}{section.3.2}% 26
+\BOOKMARK [1][-]{section.3.3}{Concurrent algorithms}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.1}{First consideration: ParMap}{section.3.3}% 28
+\BOOKMARK [1][-]{section.3.4}{Distribution queues}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.4.1}{First distributor}{section.3.4}% 30
+\BOOKMARK [2][-]{subsection.3.4.2}{Nullable also?}{section.3.4}% 31
+\BOOKMARK [1][-]{section.3.5}{Map Reduce - the Google connection}{chapter.3}% 32
+\BOOKMARK [0][-]{chapter.4}{Code Analysis}{}% 33
+\BOOKMARK [1][-]{section.4.1}{General code remarks}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.2}{What will be looked at}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.2.1}{Chosen code to explain}{section.4.2}% 36
+\BOOKMARK [2][-]{subsection.4.2.2}{Ab Initio}{section.4.2}% 37
+\BOOKMARK [2][-]{subsection.4.2.3}{Actual Brzozowski code}{section.4.2}% 38
+\BOOKMARK [2][-]{subsection.4.2.4}{Generated DFA correctness proofs}{section.4.2}% 39
+\BOOKMARK [2][-]{subsection.4.2.5}{Code formatting}{section.4.2}% 40
+\BOOKMARK [1][-]{section.4.3}{Entry Code}{chapter.4}% 41
+\BOOKMARK [2][-]{subsection.4.3.1}{Repeated lines}{section.4.3}% 42
+\BOOKMARK [1][-]{section.4.4}{Result Aggregator a.k.a. Reducer}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.1}{WiP empty \(nothing to do anymore}{section.4.4}% 44
+\BOOKMARK [2][-]{subsection.4.4.2}{Receive only}{section.4.4}% 45
+\BOOKMARK [2][-]{subsection.4.4.3}{Expression to derive}{section.4.4}% 46
+\BOOKMARK [1][-]{section.4.5}{Mappers}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.5.1}{Round Robin mappers}{section.4.5}% 48
+\BOOKMARK [1][-]{section.4.6}{Ancillary functions}{chapter.4}% 49
+\BOOKMARK [2][-]{subsection.4.6.1}{Adding to Work in Progress}{section.4.6}% 50
+\BOOKMARK [0][-]{chapter.5}{Code critique}{}% 51
+\BOOKMARK [1][-]{section.5.1}{Optimization vs Elegance}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.2}{Coding enhancements}{chapter.5}% 53
+\BOOKMARK [2][-]{subsection.5.2.1}{Distributors}{section.5.2}% 54
+\BOOKMARK [2][-]{subsection.5.2.2}{Work in Progress}{section.5.2}% 55
+\BOOKMARK [1][-]{section.5.3}{Correctness proving}{chapter.5}% 56
+\BOOKMARK [0][-]{chapter.6}{Performance}{}% 57
+\BOOKMARK [1][-]{section.6.1}{Speed comparisons}{chapter.6}% 58
+\BOOKMARK [2][-]{subsection.6.1.1}{Discussion of the results}{section.6.1}% 59
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 60
+\BOOKMARK [1][-]{section.7.1}{Future studies/work }{chapter.7}% 61
+\BOOKMARK [0][-]{appendix.A}{Test listings}{}% 62
+\BOOKMARK [1][-]{section.A.1}{Test listing}{appendix.A}% 63
