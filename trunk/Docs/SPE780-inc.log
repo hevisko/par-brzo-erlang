@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.2.25)  28 JUN 2010 13:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.7.15)  30 OCT 2010 14:39
 entering extended mode
  %&-line parsing enabled.
 **\input SPE780-inc.tex
 (./SPE780-inc.tex
 
-./SPE780-inc.tex:1: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -16,7 +16,7 @@ l.1 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:2: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -28,7 +28,7 @@ l.2 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:3: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -40,7 +40,7 @@ l.3 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:4: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -52,7 +52,7 @@ l.4 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:5: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -64,7 +64,7 @@ l.5 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:6: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -76,7 +76,7 @@ l.6 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:7: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -88,7 +88,7 @@ l.7 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:8: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -100,7 +100,7 @@ l.8 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:9: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -112,56 +112,68 @@ l.9 \usepackage{
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:11: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.11 \usepackage{
-                 threeparttable}
+l.10 \usepackage{
+                 courier}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:12: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.12 \usepackage{
-                 colortbl}
+                 threeparttable}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:13: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.13 \usepackage{
-                 xtab}
+                 colortbl}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:14: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.14 \usepackage{
+                 xtab}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+! LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 \usepackage{
                  longtable}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./SPE780-inc.tex:16: Undefined control sequence.
-l.16 \lstloadlanguages
-                      {erlang,C++}
+! Undefined control sequence.
+l.17 \lstloadlanguages
+                      {erlang}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -169,14 +181,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./SPE780-inc.tex:16: LaTeX Error: Missing \begin{document}.
+! LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.16 \lstloadlanguages{e
-                        rlang,C++}
+l.17 \lstloadlanguages{e
+                        rlang}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -186,12 +198,8 @@ Missing character: There is no l in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no g in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no + in font nullfont!
-Missing character: There is no + in font nullfont!
-./SPE780-inc.tex:17: Undefined control sequence.
-l.17 \lstset
+! Undefined control sequence.
+l.28 \lstset
             { %
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -199,49 +207,65 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no l in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no g in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no l in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no p in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no , in font nullfont!
+Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no m in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no @ in font nullfont!
+Missing character: There is no @ in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
 Missing character: There is no b in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no = in font nullfont!
-./SPE780-inc.tex:20: Undefined control sequence.
-l.20 numberstyle=\tiny
+! Undefined control sequence.
+l.38 numberstyle=\tiny
                       ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -249,111 +273,146 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no , in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no w in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no w in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no k in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no k in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no w in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no e in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 16--26
+Overfull \hbox (20.0pt too wide) in paragraph at lines 17--48
 []
  []
 
 
-./SPE780-inc.tex:27: LaTeX Error: \usepackage before \documentclass.
+Overfull \hbox (2.77779pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 ,
+ []
+
+
+Overfull \hbox (21.61113pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 num-
+ []
+
+
+Overfull \hbox (41.19452pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 bers=left,
+ []
+
+
+Overfull \hbox (21.61113pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 num-
+ []
+
+
+Overfull \hbox (16.63892pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 ber-
+ []
+
+
+Overfull \hbox (12.83334pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 by-
+ []
+
+
+Overfull \hbox (22.91669pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 chap-
+ []
+
+
+Overfull \hbox (38.66675pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 ter=true,
+ []
+
+
+Overfull \hbox (17.00003pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 key-
+ []
+
+
+Overfull \hbox (23.19449pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 word-
+ []
+
+
+Overfull \hbox (29.44449pt too wide) in paragraph at lines 17--48
+\OT1/cmss/m/n/10 style=\OT1/cmss/bx/n/10 ,
+ []
+
+
+Overfull \hbox (23.55565pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 num-
+ []
+
+
+Overfull \hbox (18.41675pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 ber-
+ []
+
+
+Overfull \hbox (32.2307pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 style=,
+ []
+
+
+Overfull \hbox (71.68367pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 showtabs=true,
+ []
+
+
+Overfull \hbox (30.35014pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 shows-
+ []
+
+
+Overfull \hbox (55.17526pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 paces=true,
+ []
+
+
+Overfull \hbox (26.13345pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 show-
+ []
+
+
+Overfull \hbox (85.03929pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 stringspaces=true,
+ []
+
+
+Overfull \hbox (28.36124pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 break-
+ []
+
+
+Overfull \hbox (153.57843pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 lines=true,breakautoindent=true,
+ []
+
+
+Overfull \hbox (66.0225pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 breakatwhites-
+ []
+
+
+Overfull \hbox (47.903pt too wide) in paragraph at lines 17--48
+\OT1/cmss/bx/n/10 pace=true
+ []
+
+
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.27 \usepackage{
+l.49 \usepackage{
                  algorithmic}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./SPE780-inc.tex:28: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 \usepackage{
+l.50 \usepackage{
                  algorithm}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -361,19 +420,19 @@ between \documentclass and \begin{document}.
 \OBLS=\skip41
 \OPAR=\skip42
 
-./SPE780-inc.tex:74: LaTeX Error: \usepackage before \documentclass.
+! LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.74 \usepackage{
+l.96 \usepackage{
                  float}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./SPE780-inc.tex:75: Undefined control sequence.
-l.75 \newfloat
+! Undefined control sequence.
+l.97 \newfloat
               {trace}{tbp}{lop}[section]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -382,13 +441,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./SPE780-inc.tex:75: LaTeX Error: Missing \begin{document}.
+! LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.75 \newfloat{t
+l.97 \newfloat{t
                 race}{tbp}{lop}[section]
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -413,8 +472,8 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no ] in font nullfont!
-./SPE780-inc.tex:76: Undefined control sequence.
-l.76 \newfloat
+! Undefined control sequence.
+l.98 \newfloat
               {tablehv}{tbp}{lop}[section]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -444,8 +503,8 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no ] in font nullfont!
-./SPE780-inc.tex:77: Undefined control sequence.
-l.77 \newfloat
+! Undefined control sequence.
+l.99 \newfloat
               {Program}{tbp}{lop}[section]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -475,9 +534,9 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no ] in font nullfont!
-./SPE780-inc.tex:79: Undefined control sequence.
-l.79 \newfloat
-              {Figure}{htb}{lop}[chapter]
+! Undefined control sequence.
+l.101 \newfloat
+               {Figure}{htb}{lop}[chapter]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -505,9 +564,9 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no ] in font nullfont!
-./SPE780-inc.tex:80: Undefined control sequence.
-l.80 \floatstyle
-                {boxed}
+! Undefined control sequence.
+l.102 \floatstyle
+                 {boxed}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -519,9 +578,9 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no x in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
-./SPE780-inc.tex:81: Undefined control sequence.
-l.81 \newfloat
-              {BFigure}{htb}{lop}[chapter]
+! Undefined control sequence.
+l.103 \newfloat
+               {BFigure}{htb}{lop}[chapter]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -550,9 +609,9 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no ] in font nullfont!
-./SPE780-inc.tex:82: Undefined control sequence.
-l.82 \floatname
-               {BFigure}{Figure}
+! Undefined control sequence.
+l.104 \floatname
+                {BFigure}{Figure}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -573,7 +632,7 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 75--83
+Overfull \hbox (15.0pt too wide) in paragraph at lines 97--105
 []
  []
 
@@ -585,11 +644,11 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 75--83
 
  
 Here is how much of TeX's memory you used:
- 28 strings out of 493848
- 283 string characters out of 3149207
- 48936 words of memory out of 3000000
- 3404 multiletter control sequences out of 15000+200000
- 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 33 strings out of 493773
+ 332 string characters out of 3145346
+ 49042 words of memory out of 3000000
+ 3419 multiletter control sequences out of 15000+200000
+ 4239 words of font info for 16 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 7i,0n,10p,127b,16s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 12i,1n,10p,127b,81s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!

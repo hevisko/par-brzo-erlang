@@ -8,10 +8,11 @@ Warning--entry type for "url:T3" isn't style-file defined
 Warning--I didn't find a database entry for "ActorModel"
 Warning--I didn't find a database entry for "thesis:armstrong"
 Warning--I didn't find a database entry for "O'reilly"
+Warning--I didn't find a database entry for "oreily:Erlang"
 Warning--I didn't find a database entry for "Dean"
 You've used 5 entries,
             2543 wiz_defined-function locations,
-            596 strings with 5230 characters,
+            598 strings with 5256 characters,
 and the built_in function-call counts, 1658 in all, are:
 = -- 154
 > -- 63
@@ -50,4 +51,4 @@ warning$ -- 0
 while$ -- 15
 width$ -- 7
 write$ -- 60
-(There were 5 warnings)
+(There were 6 warnings)

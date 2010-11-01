@@ -1,0 +1,19 @@
+some extra work
+
+--This line, and those below, will be ignored--
+
+M    Docs/SPE780-project-dissertation.log
+A    Docs/SPE780-project-dissertation.toc
+M    Docs/SPE780-project-dissertation.aux
+A    Docs/SPE780-project-dissertation.bbl
+A    Docs/TAGS
+M    Docs/SPE780-project-dissertation.tex
+AM   Docs/.DS_Store
+A    Docs/SPE780-project-dissertation.blg
+M    Docs/SPE780-project-dissertation.pdf
+M    Docs/SPE780-code-analysis.aux
+M    Docs/SPE780-project-dissertation.synctex.gz
+M    Docs/SPE780-code-analysis.tex
+M    Docs/SPE780-inc.aux
+AM   Docs/hv-spe780.bib
+A    svn-commit.tmp

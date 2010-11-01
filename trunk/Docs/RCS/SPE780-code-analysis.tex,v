@@ -1,9 +1,34 @@
-head	1.5;
+head	1.10;
 access;
 symbols;
 locks;
 comment	@% @;
 
+
+1.10
+date	2010.10.31.18.42.01;	author hendrivi;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2010.10.30.10.07.25;	author hendrivi;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2010.10.29.18.01.06;	author hendrivi;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2010.10.29.17.10.26;	author hendrivi;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2010.10.28.20.52.47;	author hendrivi;	state Exp;
+branches;
+next	1.5;
 
 1.5
 date	2010.10.09.19.58.41;	author hendrivi;	state Exp;
@@ -35,9 +60,9 @@ desc
 @@
 
 
-1.5
+1.10
 log
-@*** empty log message ***
+@Added extra stuff
 @
 text
 @\chapter{Code Analysis}
@@ -45,17 +70,18 @@ text
 
 \section{What will be looked at}
 
-In this chapter we will analyze the code to show the expressive nature
-of the Erlang language and the ease it was to be able to create the
-concurrent threading of the Brozozswki DFA generation and to make
-changes for different concurrency algorithms.
+In the previous chapters we described the history and gave some
+overviews of Erlang and the algorithms used.  In this chapter we will
+analyze the code to show the expressive nature of the Erlang language
+and the ease it was to be able to create the concurrent threading of
+the Brzozowski DFA generation.
 
-The reader would be justified to keep figures \ref{fig:AsAvailable} and
-\ref{fig:RoundRobin} next to the code to be able to fully understand the
-code explanations. Even though we will put in an effort follow the flow of the
-code, the concurrent nature of the code (as the different paths in
-those figures would attest to) would not make that entirely
-possible.
+The reader would be justified to keep \autoref{fig:AsAvailable},
+\autoref{fig:distflow} and \autoref{fig:distflownull} next to the code
+to be able to fully understand the code explanations. Even though we
+will put in an effort follow the flow of the code, the concurrent
+nature of the code (as the different paths in those figures would
+attest to) would not make that entirely possible.
 
 The most ``important'' reason the author would apologize for not
 following the logical flow of the code to ease the understanding, is
@@ -65,99 +91,157 @@ authors would argue that the code design and Erlang features would be
 appreciated by understanding the reasons for the ordering as done in
 this paper.
 
-\paragraph{Chosen code to explain}
+\subsection{Chosen code to explain}
 
 Given the bit more complexity of the nullable code of
-\ref{sec:nullable}, and it being the last written code, that will be
-the code set used as basis for explanation in this chapter. Certain
-function names (like \texttt{hv\_brzp\_null}) should be replaced for
-the previous function names used.
+\autoref{sec:nullable}, and it being the last written code, the author
+decided to use that code as basis for explanation in this chapter.
 
-\paragraph{Actual Brzozoswki code}
+\subsection[\emph{Ab Initio}]{\emph{Ab Initio}\footnote{\emph{Ab
+      Initio}: Latin for \emph{from the beginning}. Introduced to this
+    term from the name of a product/company used in massive
+    extract-transform-load (ETL) environments like telcos and
+    financials}}
+
+Referring to \autoref{fig:mapreduce}, we will start to discuss the
+code by starting at the request and entry function.
+This being the begining of the code flow, as this would set the parameters
+for the rest of the code portions discussed. This process PID is the
+results receiver, typically designated with the \texttt{Res}
+variable. This portion also spawns the distributor, and bounds the PID
+to the \texttt{Dist} variable that gets passed on to the core result
+aggregator function to use as destination for the processing requests.
+
+From there we will look at the Result Aggregator in
+\autoref{sec:proc_receiver}, which is the core of the processing. This
+function will generate the requests, and pass them on to the
+\texttt{Dist}ributor, while itself is the \texttt{Res}ults receiver
+that reduces the mapped data.
+
+After that we will discuss the two different mappers we have
+implemented. They (having their entry point the \texttt{Dist}ributor)
+send their processed output to the \texttt{Res}ult receiver.
+
+Lastly we will tied up some loose ends in discussing some of the
+ancillary code portions used to keep the code clean and simple.
+
+\textbf{Note:} this is not the actual chronological execution of the
+code, through time and code flow, but rather the flow of the
+Brzozowski algorithm's processing.
+
+\subsection{Actual Brzozowski code}
 
 As we have used a previously working Brozoswki sequential
-implementation, and just replaced the core innerloop with our
-concurrent methods, we will not discuss those code in this document as
-it was outside this project's scope and function. It will have to be
-stated that on analysis of those code, the author found it to be
-closely follow Watson\cite{WatsonPhD} and that would be a good place
-to research the specific workings of the Brozoswki DFA generator and
-the code related to that.
+implementation, and just replaced the core inner loop with our
+concurrent methods, we will not discuss that part of the code in this
+document as it was outside this project's scope and function. It will
+be stated that a brief overview analysis of that code, the author
+found it to be closely following Watson\cite{watson1995taxonomies} and
+that would be a good place to research the specific workings of the
+Brozoswki DFA generator and the code related to that.
 
-\paragraph{Generated DFA correctness proofs}
+\subsection{Generated DFA correctness proofs}
 
-The author would like to mention that it was not the scope of this work
-to investigate the correctnes of the code per se. The author have,
-however, checked and confirmed that the DFAs generated and used in
-this work, have been verified against the original implementation,
-thus errors from DFA generation, should be traced back to the original
-sequential implementation.
+The author would like to mention that it was not the scope of this
+work to investigate the correctness of the code per se. The author
+have, however, checked and confirmed that the DFAs generated and used
+in this work, have been verified against the original implementation,
+thus errors from DFA generation, would be traced back to the original
+sequential implementation used.
 
-\section{Ab Initio}\footnote{Latin: from the beginning. Introduced to
-  this term from the name of a similarly named product/company used in
-  massive extract-transform-load (ETL) environments like telcos and financials}
+\subsection{Code formatting}
+\label{sec:code-formatting}
 
-We will discuss the code by starting at the entry function. As this
-function starts the distributor that initiates the receiver processes,
-we will continue to the receiver processes. After we've explained the
-distributor/receiver workings, we will jump back to the actual core
-that does the decisions and work creation.
+Typesetting is never the easiest of things, and typically needs to be
+taken into consideration as the code is written. This is not the case
+when the code is first developed, and then we try to type set the
+code. Though there have been some effort in formatting the code in a
+readable format, this was not always achieved, especially given the
+limited width in typesetting, while the actual code is viewed and
+developed on wide screen displays.
 
+To help with keeping the references as close to the original code as
+possible, we have used an auto wrapping features of the \LaTeX\ style
+package called \texttt{\textbf{listings}}. And to indicate where the
+source code's original lines are, we have numbered them. Thus those
+lines without a number in front of them, is still continuations of the
+numbered line above them.
 
-\subsection{Entry Code}
+\paragraph{Comments}
+\label{sec:comments}
+
+We have to point out that the $\%$ sign is used to indicate the start
+of a comment line, and those have also been typeset in \emph{italics}.
+
+\section{Entry Code}
 
 Even though it could have been parameterized more generally, the author
-chose to have one function for each of the attempts/iterations of
-parallelism embedded in a seperate file/odule for each of the attempts.
- 
+chose to have one function for each of the different implementations,
+and also put it in a separate module.
+
 However, the \textsc{RoundRobin} and \textsc{AsAvailable} schedulers have been extracted
-as parameters. First lets look at the entry call for the \textsc{AsAvailable} scheduler:
+as parameters. First let us look at the entry call for the \textsc{AsAvailable} scheduler:
 \begin{lstlisting}[name=hvp2]
 %The entry to hvp2
 % third Parameter to chose the roundrobin or available scheduler
-hv_brz(RE, Sigma, available, N) ->(*@@\label{func_asav}@@*)
-		TimeOut = 3000,(*@@\label{def_starts}@@*)
-		Res = self(),(*@@\label{self}@@*)
+hv_brz(RE, Sigma, available, N) ->(*@@\label{line:FuncAsav}@@*)
+		TimeOut = 3000,(*@@\label{line:DefStarts}@@*)
+		Res = self(),(*@@\label{line:self}@@*)
 		WiP = [],%Only the first (and last) one would be "empty"
 		Finish = [],
 		Dlist = [RE],%Start state.
-		Delta = dict:new(),(*@@\label{def_ends}@@*)
-		Dist = spawn(fun () -> hv_dist_avail_start(TimeOut, Res, N)		 end),(*@@\label{dist}@@*)
-		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta);
+		Delta = dict:new(),(*@@\label{line:DefEnds}@@*)
+		Dist = spawn(fun () -> hv_dist_avail_start(TimeOut, Res, N)		 end),(*@@\label{line:dist}@@*)
+		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta); (*@@\label{line:corecall}@@*)
 \end{lstlisting}
 
-Lines \ref{def_starts}-\ref{def_ends} is the parameters we used for
-timeout values and the reference to ourself as the results receiver.
-We initiated the work in progress (\texttt{WiP}) and expressions
-already processed (\texttt{Finish}) as empty lists. \texttt{Dlist} is set to
-the list containing the single element of the regular expresion to be
-considered. These values are initialzed the same in all the entry functions.
+\begin{description}
+\item[\autoref{line:DefStarts}-\ref{line:DefEnds}] is the parameters
+  we used for timeout values and the reference to ourself (see
+  \autoref{sec:PID}) as the results receiver.  We initiated the work
+  in progress (\texttt{WiP}) and expressions already processed
+  (\texttt{Finish}) as empty lists. \texttt{Dlist} is set to the list
+  containing the single element of the regular expresion to be
+  considered. These values are initialized the same in all the entry
+  functions.
 
-Line \ref{dist} spawns the distributor process\footnote{Remember that
-	Erlang processes are comparable to C/Java threads, but from the
-	program's perspective they are processes}, and using the fourth
-parameter (bound to the variable \texttt{N}) as the number of worker
-threads to spawn. Also the timeout and our own process
-information(\texttt{Res}) is passed as parameters.
+\item[\autoref{line:dist}] spawns the distributor
+  process\footnote{Remember that Erlang processes are comparable to
+    C/Java threads, but from the program's perspective they are
+    processes}, and using the fourth parameter (bound to the variable
+  \texttt{N}) as the number of worker threads to spawn. Also the
+  timeout and our own process information(\texttt{Res}) is passed as
+  parameters.
 
-We then call the actual core of the processing function (\texttt{hv\_brzp\_null}
-in this case) with the parameters declared and initialized in
-lines \ref{def_start}-\ref{dist}. Notice that the \texttt{Dist}ributor
-from line \ref{dist} is passed as a parameter to this core processing
-function, and that this line is also verbatim copy of line
-\ref{processing} of the roundrobin scheduler!
+  \textbf{Note:} The distributor could also be a single process, not
+  doing any extra threading/distribution (and in retrospect should
+  have been the special serialized test case), as the actual
+  reducer/inner core do not care about the way the processing is
+  spread, just that it sent it to this process, and then receive
+  responses back. For that reason we will first look at the core
+  reducer/result aggregator, and lastly at the distributors and
+  receivers.
 
-Doing the \textsc{RoundRobin} scheduler, we do the same as the \textsc{AsAvailable}
-scheduler, except we spawn a roundrobin distributor. However, note
-that line \ref{func_rr} is the function called with the third
-parameter matched as the atom \texttt{roundrobin} compared to line
-\ref{func_asav} where the third parameter matched the atom
-\texttt{available}.
+\item[\autoref{line:corecall}] Lastly the call to the actual core of
+  the processing function (\texttt{hv\_brzp\_null} in this case) with
+  the parameters declared and initialized in \autoref{line:DefStarts}
+  to \autoref{line:DefEnds}. Notice that the \texttt{Dist}ributor from
+  \autoref{line:dist} is passed as a parameter to this core processing
+  function, and that this line is also verbatim copy of line
+  \autoref{line:processing} of the round robin scheduler!
+\end{description}
+
+Doing the \textsc{RoundRobin} scheduler, we do the same as the
+\textsc{AsAvailable} scheduler, except we spawn a round robin
+distributor. However, note that line \autoref{line:func_rr} is the function
+called with the third parameter matched as the atom
+\texttt{roundrobin} compared to line \autoref{line:func_asav} where the
+third parameter matched the atom \texttt{available}.
 \begin{lstlisting}[name=hvp2]
-hv_brz(RE, Sigma, roundrobin, N) ->(*@@\label{func_rr}@@*)
-(*@@\textit{Repeat lines \ref{def_starts}-\ref{def_ends}}@@*)
-		Dist = spawn(fun () -> hv_dist_rr_start(TimeOut, Res, N) end),(*@@\label{dist_rr}@@*)
-		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta).(*@@\label{processing}@@*)
+hv_brz(RE, Sigma, roundrobin, N) ->(*@@\label{line:func_rr}@@*)
+(*@@\textit{Repeat lines \autoref{def_starts}-\autoref{def_ends}}@@*)
+		Dist = spawn(fun () -> hv_dist_rr_start(TimeOut, Res, N) end),(*@@\label{line:dist_rr}@@*)
+		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta).(*@@\label{line:processing}@@*)
 \end{lstlisting}
 
 For special testing, we used a slightly modified distributor starting
@@ -166,12 +250,14 @@ matching to pick the right initialization function.
 \begin{lstlisting}[name=hvp2]
 %Specialized one with only two named receivers using the RoundRobin method 
 hv_brz(RE,Sigma,rr_spec) ->
-	(*@@\textit{Repeat lines \ref{def_starts}-\ref{def_ends}}@@*)
+	(*@@\textit{Repeat lines \autoref{def_starts}-\autoref{def_ends}}@@*)
 	Dist=spawn(fun() -> hv_dist_rr_spec_start(TimeOut,Res) end),
 	hv_brzp_null(RE,Sigma,Dist,WiP,Finish,Dlist,Delta).
 \end{lstlisting}
 
-\subsubsection{Repeated lines}
+
+
+\subsection{Repeated lines}
 
 In retrospect, we could have extracted those repeated lines and used an
 intermediary function to set and pass those on, but it was not
@@ -180,25 +266,30 @@ and as such not considered, though for production code this needs to
 be done.
 
 
-\section{Processing (Receiver)}
+
+\section{Result Aggregator a.k.a. Reducer}
 \label{sec:proc_receiver}
 
-The function \texttt{hvp2:hv\_brzp_null\/7} is the core receiver we
-will discuss in this section. The reader should notice the use
-of the function call pattern matching to follow the major paths in
-the receiver code, and that the receiver calls itself recursively
-until there is no more work in progress (WiP),
-ie. tail recursion at play as explained in \ref{sec:tail-recursion}.
+The function \texttt{hvp2:hv\_brzp\_null\/7} is the core of the whole
+algorithm and it implements \autoref{fig:distflownull}. We have
+explained in \autoref{fig:mapreduce} how this function relates to the
+reducer in the Google MapReduce.
+
+ The reader should notice the use of the
+function call pattern matching to follow the major paths in the
+receiver code, and that the receiver calls itself recursively until
+there is no more work in progress (WiP), ie. tail recursion at play as
+explained in \autoref{sec:tailrec}.
 
 The difference between the empty work in progress (WiP)
-\ref{sec:wip-empty} and the receive only in \ref{sec:receive}, is the
-empty (\texttt{[]}) fourth parameter\ldots and it must be in that
-order, else the empty WiP state would never be matched.
+\autoref{sec:wip-empty} and the receive only in \autoref{sec:receive},
+is the empty (\texttt{[]}) fourth parameter\ldots and it must be in
+that order, else the empty WiP state would never be matched.
 
 The derivation of a new expression is done in
-\ref{sec:expr-derive}. Here (again note the order for matching the
-fucntion parameters) the first parameter is the expression to derive,
-and did NOT match the atom \texttt{receive_only}!
+\autoref{sec:expr-derive}. Here (again note the order for matching the
+function parameters) the first parameter is the expression to derive,
+and did NOT match the atom \texttt{receive\_only}!
 
 \subsection{WiP empty (nothing to do anymore}
 \label{sec:wip-empty}
@@ -212,14 +303,14 @@ hv_brzp_null(receive_only,Sigma,Dist,[],Finish,Dlist,Delta) ->
 \end{lstlisting}
 As we have already mentioned, the fourth parameter is an empty list,
 and given the fact that we are only receiving (the
-\texttt{receive_only} atom matched in the first parameter) we conclude
+\texttt{receive\_only} atom matched in the first parameter) we conclude
 that we are finished processing as there is no more outstanding
 derivations, and we can stop the processes, thus we send the
 \texttt{Dist}ributor a stop message.
 
 Finally we will return the data in a format depicted by the
-\texttt{#dfa} record format. We will refer the author to the specifics
-of this record format in \cite{Armstrong}. Suficient to say that it is
+\texttt{\#dfa} record format. We will refer the author to the specifics
+of this record format in \cite{joe:09}. Sufficient to say that it is
 nothing different from a norma tuple, just a method to name and order
 the tuple into a record structure named elsewhere in the pre-compiled
 code, typically a header file.
@@ -227,54 +318,67 @@ code, typically a header file.
 \subsection{Receive only}
 \label{sec:receive}
 
-\begin{lstlisting}[name=hvp2]
-%Receive only, nothing to derive
-hv_brzp_null(receive_only, Sigma, Dist, WiP, Finish, Dlist, Delta) ->
-	receive
-		{rd,E,I,DDI} -> (*@@\label{line:rd_match}@@*)
-                % io:format("brzp_null_2:"),io:write({rd,E,I,DDI}),io:format("~n"),(*@@\label{debug}@@*)
-		NewDelta=dict:store({E,I},DDI,Delta),(*@@\label{line:newdelta}@@*)
-		case lists:member(DDI,Dlist) of(*@@\label{line:case}@@*)
-			true ->hv_brzp_null(receive_only,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,Dlist,NewDelta);(*@@\label{line:case_true@@*)
-			false -> hv_brzp_null(DDI,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,[DDI|Dlist],NewDelta)(*@@\label{line:case_false}@@*)
-		end;(*@@\label{line:endcase}@@*)
-		{null,E,true} -> (*@@\label{line:null_true}@@*)
-                % io:format("brzp_null_2: ~p true~n",[E]), (*@@\label{debug2}@@*)
-			hv_brzp_null(receive_only,Sigma,Dist,
-                           lists:delete({null,E},WiP),[E|Finish],Dlist,Delta);	% Add nullable states to F
-		{null,E,false} ->(*@@\label{line:null_false}@@*)
-			hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},WiP),Finish,Dlist,Delta)
-		after 5000 ->(*@@\label{line:timeout}@@*)
-                    io:write(WiP),
-                    output_mailbox(1),
-                    throw(timeoutRec_only)
-	end;
-\end{lstlisting}
-
 This part of the receiver, is executed based on \texttt{receive\_only}
 matching the first parameter, and it only waits for messages from the
 derivation processes. This should either be a result of a derivation
 tagged with the atom \texttt{rd}, or a result from a nullable test,
 tagged with \texttt{null}. It would remove this request from the WiP
-list, and recurse back to the same function name, but with slightly
-different parameters, modified based on the result received. 
-
+list, and recurse back to the same function name, but with the
+parameters modified based on the result received.
+\begin{lstlisting}[name=hvp2]
+%Receive only, nothing to derive
+hv_brzp_null(receive_only, Sigma, Dist, WiP, Finish, Dlist, Delta) ->(*@@\label{line:rec_only}@@*)
+	receive
+		{rd,E,I,DDI} -> (*@@\label{line:rd_match}@@*)
+		%io:format("brzp_null_2:"), io:write({rd,E,I,DDI}), io:format("~n"),(*@@\label{debug}@@*)
+		NewDelta=dict:store({E,I},DDI,Delta),(*@@\label{line:newdelta}@@*)
+		case lists:member(DDI,Dlist) of(*@@\label{line:case}@@*)
+			true ->hv_brzp_null(receive_only,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,Dlist,NewDelta);(*@@\label{line:case_true}@@*)
+			false -> hv_brzp_null(DDI,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,[DDI|Dlist],NewDelta)(*@@\label{line:case_false}@@*)
+		end;(*@@\label{line:endcase}@@*)
+		{null,E,true} -> (*@@\label{line:null_true}@@*)
+			%io:format("brzp_null_2: ~p true~n",[E]), (*@@\label{line:debug2}@@*)
+			hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},WiP), [E|Finish], Dlist, Delta);	% Add nullable states to F
+		{null,E,false} ->(*@@\label{line:null_false}@@*)
+			hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},WiP), Finish, Dlist, Delta)
+		after 5000 ->(*@@\label{line:timeout}@@*)
+					io:write(WiP),
+					output_mailbox(1),
+					throw(timeoutRec_only)
+	end;
+\end{lstlisting}
 But let us have a look at the options steps a bit more closely:
 \begin{description}
-\item[\ref{line:rd_match}] we have received a derivation result based
+\item[\autoref{line:rec_only}] This function matched the atom \texttt{receive\_only} in the first parameter. When there is an expression to derive, it would not match this function header, but rather \autoref{line:E2} in \autoref{sec:expr-derive}
+\item[\autoref{line:rd_match}] we have received a derivation result based
   on the \texttt{rd} atom that matched.
-\item[\ref{line:newdelta}] Modify the Delta dictionary by creating a
+\item[\autoref{line:newdelta}] Modify the Delta dictionary by creating a
   new  dictionary with the Expression and alphabet letter
   (\texttt{{E,I}}) tuple as a key, and the derived expression
-  \texttt{DDI} as the value. \textbf{Note:} the Delta variable is not
+  \texttt{DDI} as the value.
+
+ \textbf{Note:} the Delta variable is not
   changed at all, but a \textbf{new} variable with the name NewDelta
   is created and bounded to the new result.
+\item[\autoref{line:case}] Some expression and alphabet inputs might
+  provide the same derivations, we check if we have seen a similar one
+  before, in which case we do not waste time on deriving for the same
+  path multiple times. This is done by checking for the existence of
+  the DDI just received in the list Dlist, of previous expressions that
+  already have been issued derivation requests.
+\item[\autoref{line:case_true}] We have seen this derivation before, so we
+  just remove the {E,I} from the WiP list, and repeat the process by
+  recursing back.
+\item[\autoref{line:case_false}] here we have not seen this derived
+  expression before, thus we will call ourselves again, but this time
+  with the expression that need further derivation as the first
+  parameter. {E,I} is also remove from the WiP list.
 \end{description}
 
-Line \ref{line:timeout} we have assumed that after 5seconds of
+Line \autoref{line:timeout} we have assumed that after 5seconds of
 inactivity, there is a problem in the distributor or processor, at
 which point we exit, dumping the state of the mailbox and throwing an
-exception. This was a very usefull method to track a typing mistake
+exception. This was a very useful method to track a typing mistake
 where we have sent all the data, but with a mistyped atom!
 
 
@@ -282,76 +386,301 @@ where we have sent all the data, but with a mistyped atom!
 
 Even though we all want to present ourselves as invincible and perfect
 coders, we all make mistakes, and thus we need to debug or fault find
-our code. Line \ref{debug} is a typical line used to debug the
+our code. Line \autoref{debug} is a typical line used to debug the
 code. This line outputs a user format string with \texttt{io:format/2} similar to the Unix
 \texttt{printf(3)}\footnote{the 3 inside the brackets refers to the
   section 3 manual pages, which is the ``standard'' libc functions
-  on Unix}. This is  then followed by the Erlang formating of the
+  on Unix}. This is  then followed by the Erlang formatting of the
 data structure passed to \texttt{io:write/1}, and finally a
-linefeed. Line \ref{debug2} shows an example with some substitution
+linefeed. Line \autoref{debug2} shows an example with some substitution
 where the \texttt{~p} is substitute with the value bound to the
 variable \texttt{E} and note that it is a list \texttt{[E]} passed on
 to the function, and the substitution happens based on the list positions.
 
-\subsubsection{}
 
 \subsection{Expression to derive}
 \label{sec:expr-derive}
 
+This part of the function, have the same code than the receive\_only in
+\autoref{line:rec2}-\ref{line:rec2end} (except the debugging and
+comments removed). It is 
+\autoref{line:E2} to \autoref{line:NewWip} that is the interesting part in this
+function.
+
 \begin{lstlisting}[name=hvp2]
 % When we have an RE/E d/di that needs to be derived/etc.
-hv_brzp_null(E,Sigma,Dist,WiP,Finish,Dlist,Delta) ->
-	%io:format("hv_brzp2	~p ~n",[lists:flatten(io_lib:write(E,5))]),
-	%foreach(Sigma) send message to Dist
-	lists:foreach(fun(X) -> Dist!{process,[rd,E,X]} end,Sigma),
-	%F1=nullable(E,Finish),
-	%nullable(RE),
-	Dist!{process,[null,E]},
-	%foreach(Sigma) insert {E,I} into WiP, and add the null to the begining ;)
-	NewWiP=[{null,E}|add_wip(WiP,rd,E,Sigma)],
-	
-	%WiP would not be empty in this function :)
-	receive
-		{rd,E,I,DDI} -> %io:format("brzp_null_why:	"),io:write({rd,E,I,DDI}),io:format("~n"),%"~p ~p ~p~n",[E,I,DDI]),
+hv_brzp_null(E,Sigma,Dist,WiP,Finish,Dlist,Delta) ->(*@@\label{line:E2}@@*)
+	%foreach(Sigma) send message to Dist:
+	lists:foreach(fun(X) -> Dist!{process,[rd,E,X]} end,Sigma),(*@@\label{line:distribute}@@*)
+	Dist!{process,[null,E]},(*@@\label{line:dnull}@@*) %And then also sent a nullable process request
+	NewWiP=[{null,E}|add_wip(WiP,rd,E,Sigma)],(*@@\label{line:NewWip}@@*) % foreach(Sigma) insert {E,I} into WiP, and add the null to the beginning ;)
+\end{lstlisting}
+
+\begin{description}
+\item[\autoref{line:E2}] If the function parameter matching have not
+  matched the atom \texttt{receive\_only} in \autoref{line:rec_only},
+  we consider this to be an expression that needs to be further
+  derived, and the variable \texttt{E} gets bound to that expression.
+\item[\autoref{line:distribute}] This line generates
+  the messages for the derivations that need to be processed. The function
+  \lstinline|fun(X) -> Dist!{process,[rd,E,X]} end|, gets applied
+  \texttt{foreach/2} element \texttt{X} in the list \texttt{Sigma}, and sends out the tuple
+  \texttt{\{process,[rd,E,X]\}} to the \texttt{Dist}ributor, where:
+  \begin{description}
+  \item[\texttt{rd}] is the atom to indicate that we need to do a
+    derivation. Compare that to \autoref{line:dnul}, where the
+    \texttt{null} would indicate that a nullable check should be done.
+  \item[\texttt{E}] The expression that was passed on to this
+    function, and that needs to be further derived.
+  \item[\texttt{X}] The element that we need to derive on,
+    ie. $\frac{d}{dX}E$ where $X\in \Sigma$
+  \end{description}
+ Thus, with $X\in \Sigma$, and the atom
+  \texttt{rd} indicating that the request is to process and return $\frac{d}{dX}E$
+
+  A choice during the implementation was made to use a two pair tuple,
+  with the parameters a list, rather than an extended tuple. This
+  choice was just for convenience, but further implementations should
+  consider making it rather an extended tuple.
+\item[\autoref{line:dnull}] sends the \texttt{Dist}ributor a request to
+  process a nullable test of the expression \texttt{E}
+\item[\autoref{line:NewWip}] generates the new work in progress
+  list. This is done in two steps. First it calls \texttt{add\_wip/4}
+  (\autoref{sec:adding-work-progress}), that extends the current
+  \texttt{WiP} with the same list of \texttt{\{rd,E,X\}} that have
+  been sent to the \texttt{Dist}ributor. Then, using the
+  \texttt{[Head|Tail]} list expansion method, prepends the
+  \texttt{\{null,E\}} request to the list bound to \texttt{NewWip}
+\end{description}
+
+The rest of this function (\autoref{line:rec2} to
+\autoref{line:rec2end}), is the same as that in \autoref{sec:receive},
+with the exception of using the newly generated \texttt{NewWip}
+instead \texttt{WiP} passed to the function
+\begin{lstlisting}[name=hvp2]
+	receive (*@@\label{line:rec2}@@*)
+		{rd,E,I,DDI} -> 
 			NewDelta=dict:store({E,I},DDI,Delta),
 			case lists:member(DDI,Dlist)	of
-				true -> hv_brzp_null(receive_only,Sigma,Dist,lists:delete({rd,E,I},NewWiP),Finish,Dlist,NewDelta);
-				false -> hv_brzp_null(DDI,Sigma,Dist,lists:delete({rd,E,I},NewWiP),Finish,[DDI|Dlist],NewDelta)
+				true -> hv_brzp_null(receive_only, Sigma, Dist, lists:delete({rd,E,I},NewWiP), Finish, Dlist, NewDelta);
+				false -> hv_brzp_null(DDI, Sigma, Dist, lists:delete({rd,E,I}, NewWiP), Finish, [DDI|Dlist], NewDelta)
 			end;
-		{null,E,true} -> % io:format("brzp_null: ~p true~n",[E]),
-							hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},NewWiP),[E|Finish],Dlist,Delta);	% Add nullable states to Finish
-		{null,E,false} -> %io:format("brzp_null: ~p false~n",[E]),
-			hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},NewWiP),Finish,Dlist,Delta)
-		%Other -> throw (Other)
+		{null,E,true} -> hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},NewWiP), [E|Finish], Dlist, Delta);	
+		{null,E,false} ->	hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},NewWiP), Finish, Dlist, Delta)
 		after 5000 ->	io:write(WiP),throw(timeOut)
-end.
+end.(*@@\label{line:rec2end}@@*)
 
 \end{lstlisting}
 
 
-\section{Receivers}
+\section{Mappers}
 
-\subsection{Round Robin}
+Initially (and in the code) referred to as the distributor
+and receiver pairs, these pairs are the Google MapReduce mappers, as explained and shown
+in \autoref{sec:map-Reduce-google} and \autoref{fig:mapreduce}.
+
+The reader should refer to \autoref{sec:distribution-queues} for
+algorithmic choices and explanations. What we can expand on in this
+section, is to mention that the threads are started by the
+distributor when the distributor is initialized. The distributor also
+sends the stop messages to the receiver threads.
+
+The difference between the two type of mappers, is the way the
+distributor keeps track of the receivers and whether the receivers
+give any feedback to the distributor or not. With that in mind, we
+will highlight the differences when we discuss the AsAvailable mapper
+pair, but explain the main interactions and flows with the RoundRobin mappers.
+
+\subsection{Round Robin mappers}
+
+The Round Robin receiver is very simple, in so far as it just process
+a matched message, sends on the result, and then executes itself recursively\ldots until it
+receives a \texttt{\{stop\}} message.
+The RoundRobin distributor is a bit more involved, as it needs to
+rotate the list of receivers.
+
+
+\subsubsection{RoundRobin Distributor}
+\label{sec:roundr-distr}
+
+The distributors consists of two part, the first being the entry
+portion that spawns the threads,
+and the actual distributor. 
+
+\paragraph{Spawning the receivers}
+\label{sec:spawning-receivers}
+
+After the parameters for the algorithm (like the number of threads to
+use etc.) have been configured, we create a number of threads based on
+the parameters passed on to the distributor as can be seen on
+\autoref{line:rr_d_start}, that then call the real RoundRobin
+distributor with a list of receivers on \autoref{line:rr-d-call}
+
 \begin{lstlisting}[name=hvp2]
-%The receiver for the round robin/sequential tests
-%
-hv_rr_rec(Name,Res) -> 
-	%io:format(" starting: ~p self:~p REs:~p~n",[Name,pid_to_list(self()),pid_to_list(Res)]),
-	receive 
-		{stop} -> %io:format("stopping ~p ~n",[Name]),
-					false;
-		{process,[rd,E,I]} -> Res!{rd,E,I,mds:reduce(mds:deriv(E,I))},
-						 hv_rr_rec(Name,Res);
-		{process,[null,E]} -> Res!{null,E,mds:null(E)},
-													 hv_rr_rec(Name,Res);
+%Number of servers variable, should make that a number to pass too, but 
+% for the moment this is adequate to test etc.
+hv_dist_rr_start(TimeOut,Res,N) -> (*@@\label{line:rr_d_start}@@*)
+	hv_dist_rr(list_start_servers(N,Res),TimeOut). (*@@\label{line:rr-d-call}@@*)
+\end{lstlisting}
+
+The \texttt{list\_start\_servers/2} function recursively (because
+Erlang, being a functional language, do not have an iterative for-next
+loop), generates a list of PIDs, by prepending the list with the
+result of the \texttt{spawn/1} function on \autoref{line:lss-head},
+that have started a thread running the \texttt{hv\_rr\_rec} function,
+described in \autoref{sec:roundrobin-receiver}.
+
+\begin{lstlisting}[name=hvp2]
+%Start N round-robin receivers that will send their results to Res
+% returning the list of	 PIDs.
+list_start_servers(0,_Res) -> []; (*@@\label{line:lss0}@@*)
+list_start_servers(N,Res) -> (*@@\label{line:lss}@@*)
+	[spawn(fun()->hv_rr_rec("Receiver "++[N+\$0],Res), end) (*@@\label{lss-head}@@*)
+   |list_start_servers(N-1,Res)].(*@@\label{lss-tail}@@*)
+\end{lstlisting}
+
+The simplified special startup case I initial used to test the
+receiver algorithm's workings is listed in \autoref{line:spec_start}
+to \autoref{line:spec_end}. The \texttt{list\_start\_servers/2} with a
+parameter of \texttt{N=2} would have the same effect, just here the
+reader can clearly see the functional workings of the spawning of the
+receivers!
+
+
+\begin{lstlisting}[name=hvp2]
+%Two specific and specified servers
+hv_dist_rr_spec_start(TimeOut,Res)->(*@@\label{line:spec_start}@@*)
+	Rec1=spawn(fun() ->hv_rr_rec("Rec1",Res) end) end,
+	Rec2=spawn(fun() ->hv_rr_rec("Rec2",Res) end) end,
+	hv_dist_rr([Rec1,Rec2],TimeOut).(*@@\label{line:spec_end}@@*)
+\end{lstlisting}
+ 
+
+\paragraph{Chain of processes}
+\label{sec:chain-processes}
+
+Note how we received the PID of the results receiver from the output
+of \texttt{self/1} in the initialization function, that passed it on
+to the distributor via the \texttt{spawn/1} function's parameter
+function. That \texttt{spawn/1}'s output PID is then saved and used as
+the next destination for sending the processing requests.
+
+This process is then extended here, where we pass the \texttt{Res} PID
+yet again to the receivers when we initialized them (Note, the Round
+Robin receivers never know their parent!). In the Round Robin
+distributor, we \textbf{do} save the output of the \texttt{spawn/1},
+because we will use that to decide who is next inline.
+
+
+
+\paragraph{The Real Distributor}
+Now that all the receivers have been started (but not yet discussed
+which follow in \autoref{sec:roundrobin-receiver}), the real
+distributor function on \autoref{line:real_dist_start} gets called
+with a list of receivers and the \texttt{TimeOut} value.
+
+\begin{lstlisting}[name=hvp2]
+hv_dist_rr([H|T]=Receivers,TimeOut) ->(*@@\label{line:real_dist_start}@@*)
+	receive
+		{stop} -> lists:foreach(fun(X)->X!{stop} end,Receivers);
+		{process,Param} -> 
+			H!{process,Param}, (*@@\label{line:send_rec}@@*)
+			hv_dist_rr(lists:append(T, [H]),TimeOut);(*@@\label{line:dist_cont}@@*)
 		Other -> io:write(Other),throw(Other)
-		after 3000 ->	io:format("Timeout ~p quiting",[Name]),io:nl()
+		after TimeOut ->
+			io:format( "Dist time-out and stopping receivers"),
+			lists:foreach(fun(X)->X!{stop} end, Receivers)
 	end.
 \end{lstlisting}
 
-\subsection{AsAvailable Receiver}
-\begin{lstlisting}[name=hvp2]
+Looking again at that, function while documenting the code, the author had to
+pause yet again, and appreciate the beauty and elegance of the
+functional language aspect of Erlang.
 
+Given the details of code explanations given thus far, the author
+would only highlight the \texttt{[H|T]=Receivers} construct and
+point the reader to the \texttt{list:append(T,[H])} on
+\autoref{line:dist_cont}.
+
+The \texttt{[H|T]=Receivers} construct provides a method to firstly
+extract the head element and the tail list, and secondly provide a
+single variable bound to the whole list. This way could operate on the
+whole list when sending the stop messages to the receivers, and on the
+separate head element when sending the processing request to the next
+receiver.
+
+On \autoref{line:dist_cont} when append the list \texttt{[H]}
+(containing only the single element \texttt{H}) to the back of the
+list \texttt{T} in an efficient way. Thus we move the receiver that
+have just been sent a message, to the back of the queue!
+
+
+\subsubsection{RoundRobin Receiver}
+\label{sec:roundrobin-receiver}
+
+Just looking at the code below, the reader should notice it is nothing
+more than a switching statements, but encapsulated based on the
+messages received. But let us take a quick line by line explanation to
+clear any doubts.
+
+\begin{lstlisting}[name=hvp2]
+hv_rr_rec(Name,Res) -> (*@@\label{line:rrr-init}@@*)
+	receive 
+		{stop} -> false; %Actually *any* terminating statement would suffice(*@@\label{line:exit1}@@*)
+		{process,[rd,E,I]} -> Res!{rd,E,I,mds:reduce(mds:deriv(E,I))},hv_rr_rec(Name,Res);(*@@\label{line:proc-rd}@@*)
+		{process,[null,E]} -> Res!{null,E,mds:null(E)},hv_rr_rec(Name,Res);(*@@\label{line:proc-nul}@@*)
+		Other -> io:write(Other),throw(Other)(*@@\label{line:other}@@*)
+		after 3000 ->	io:format("Timeout ~p quitting",[Name]),io:nl()(*@@\label{line:timeout}@@*)
+	end.
+\end{lstlisting}
+
+\begin{description}
+\item[\autoref{line:rrr-init}] The only parameter in there needed, is
+  the \texttt{Res} variable, that tells the receiver where to send the
+  results it is computing. The \texttt{Name} variable was used in
+  debugging, and is referred to only in the timeout condition on \autoref{line:timeout}
+\item[\autoref{line:exit1}] This \texttt{\{stop\}} message in
+  \autoref{line:exit1}, could execute any terminating command, and the
+  receiver would exit. We just choose it to return as \texttt{false},
+  but true would have worked just as well.  
+\item[\autoref{line:proc-rd} and \ref{line:proc-nul}] The crux and
+  reason for this thread's existence, are theses two lines. All they
+  do, is just call the relevant function(s) from the \texttt{mds}
+  module, sent the result on to \texttt{Res}ult-receiver, a.k.a. the
+  Reducer, and then loop back to themselves
+\item[\autoref{line:other}] although not technically needed, nor
+  useful in the production case, it was a good way to find typing
+  errors in the core-loop. In essence the \texttt{Other} variable gets
+  bound to \emph{any} message not matched by \autoref{line:exit1} to
+  \autoref{line:proc-nul}. Then this get outputted to the console by
+  \texttt{io:write/1} in a format that Erlang decided the message was,
+  ie. list or tuple. As encore (to make sure things are noticed) it
+  also throw an exception with \texttt{throw/1}
+\item[\autoref{line:timeout}] We made an assumption here that the
+  receiver should never have to wait more than
+  3seconds\footnote{though this is something that should be
+    parameterized in production code} before considering a problem
+  with the distributor or other functions. At this point the name
+  given to the receiver is useful in tracking which receiver have been
+  stuck with which request.
+\end{description}
+
+\paragraph{Erlang's claims of ease of concurrency}
+\label{sec:erlangs-claims-ease}
+
+At this point in the code analysis, the author would have to emphasize
+his appreciation of the cleanliness and ease of the concurrency
+implementation, given the author's experience with TCP/IP on
+MS-DOS\copyright, SUN-RPC remote procedure calls, Unix pipes and
+messages. Given Erlang's ease of coding these concurrency features,
+the author would, at present, concede only to a Smalltalk client
+server model being easier to implement!
+
+\subsection{AsAvailable Mappers}
+
+After the 
+
+\begin{lstlisting}[name=hvp2]
 %===============================================
 %The distributor that	 have receivers that tells it when 
 % they are finished and ready for new processing
@@ -361,30 +690,29 @@ hv_rr_rec(Name,Res) ->
 % But this state engine not rock solid when more than one messages was sent 
 % etc.
 hv_rec_available(Timeout,Name,Res,Dist) ->
-	%io:format("~nEntering ~p ~p ~p ~p ~n",[Name,integer_to_list(Timeout),pid_to_list(Res),pid_to_list(Dist)]),
 	%First we handle all stop/process messages on the queue
-	%If the distributor works correct, this shouldn't be necesssary,
+	%If the distributor works correct, this shouldn't be necessary,
 	%But we could "modify" the distributor to send expected "short"
 	% requests in rapid fire??
 	receive
-		{stop} ->% io:format("stopping ~p~n",[Name]),
-					exit(0); %Need to do the exit here else continue to next
-		{process,[rd,E1,I1]}-> %io:format("~p ~p ~p~n",[Name,E1,I1]),
+		{stop} ->	exit(0); %Need to do the exit here else continue to next receive ;((*@@\label{line:must_exit}@@*)
+		{process,[rd,E1,I1]}-> 
 			Res!{rd,E1,I1,mds:reduce(mds:deriv(E1,I1))},
 			hv_rec_available(Timeout,Name,Res,Dist);
-		{process,[null,E1]} -> %io:format("Null: ~p ~p ~n",[Name,E1]),
+		{process,[null,E1]} ->
 			Res!{null,E1,mds:null(E1)},
 			hv_rec_available(Timeout,Name,Res,Dist);
 		Other1 -> throw(Other1)
 		after 0 -> Dist!{available,self()} %Nothing in queue, so we let the Distributor know
 	end,
-	receive %There were no "normal"/"expected" messages in the queue, so lets wait :)
-		{stop} -> %io:format("stopping ~p~n",[Name]),
+	%There were no "normal"/"expected" messages in the queue, so lets wait :)
+	receive
+		{stop} ->
 					true;
-		{process,[rd,E,I]} -> %io:format("~p ~p ~p~n",[Name,E,I]),
+		{process,[rd,E,I]} ->
 			Res!{rd,E,I,mds:reduce(mds:deriv(E,I))},
 			hv_rec_available(Timeout,Name,Res,Dist);
-		{process,[null,E]} -> %io:format("Null: ~p ~p ~n",[Name,E]),
+		{process,[null,E]} ->
 			Res!{null,E,mds:null(E)},
 			hv_rec_available(Timeout,Name,Res,Dist);
 		Other -> throw(Other)
@@ -394,42 +722,8 @@ hv_rec_available(Timeout,Name,Res,Dist) ->
 
 \end{lstlisting}
 
-\begin{lstlisting}[name=hvp2]
-%Start N round-robin receivers that will send their results to Res
-% returning the list of	 PIDs.
-list_start_servers(0,_Res) -> [];
-list_start_servers(N,Res) -> 
-	[spawn(fun()->hv_rr_rec("Receiver "++[N+$0],Res)
-				end)|list_start_servers(N-1,Res)].
-\end{lstlisting}%$
 
-\begin{lstlisting}[name=hvp2]
-%Number of servers variable, should make that a number to pass too, but 
-% for the moment this is adequate to test etc.
-hv_dist_rr_start(TimeOut,Res,N) -> 
-	hv_dist_rr(list_start_servers(N,Res),TimeOut).
 
-%Two specified servers
-hv_dist_rr_spec_start(TimeOut,Res)->
-	Rec1=spawn(fun() ->hv_rr_rec("Rec1",Res) end),receive after 100 -> true end,
-	Rec2=spawn(fun() ->hv_rr_rec("Rec2",Res) end),receive after 100 -> true end,
-	hv_dist_rr([Rec1,Rec2],TimeOut).
-\end{lstlisting}
-
-\subsection{Round Robin distributor}
-\begin{lstlisting}[name=hvp2]
-%Round Robin distributor.. we know this is not "optimal" :)
-hv_dist_rr([H|T]=Receivers,TimeOut) ->
-	%io:format("Dist_rr starting: SendTo: ~p Self:~p ~n",[pid_to_list(H),pid_to_list(self())]),
-	receive
-		{stop} -> lists:foreach(fun(X)->X!{stop} end,Receivers);
-		{process,Param} -> H!{process,Param},hv_dist_rr(lists:append(T, [H]),TimeOut);
-		Other -> io:write(Other),throw(Other)
-		after TimeOut ->
-			io:format( "Dist quiting and stopping receivers"),
-			lists:foreach(fun(X)->X!{stop} end, Receivers)
-	end.
-\end{lstlisting}
 
 \section{AsAvailable distributor}
 \begin{lstlisting}[name=hvp2]
@@ -475,29 +769,32 @@ hv_dist_avail_start(Timeout,Res,N) when N>0 ->
 	hv_dist_avail_start(Timeout,Res,N-1).
 \end{lstlisting}
 
-\section{Anxillary functions}
-\subsection{Adding to Work in Progress}
+\section{Ancillary functions}
+\label{sec:ancillary-functions}
 
-The Work in Progres (WiP) is a list of the type of processing that
+\subsection{Adding to Work in Progress}
+\label{sec:adding-work-progress}
+
+The Work in Progress (WiP) is a list of the type of processing that
 have been sent out to the distributors, and that we still have not
 received any responses back for. It is a (in our implementation) a
 simple list, but is perhaps a place to optimize if it grows too
 big. This is especially as we prepend the new work to the beginning of
 the list, but the expected responses to be received next are those at
 the back of the list that would need to be removed, so in retrospect a
-FIFO type queue would be a prefered implementation when optimizing.
+FIFO type queue would be a preferred implementation when optimizing.
 
 \begin{lstlisting}[name=hvp2]
 %For all the Sigma add {E,i} to the Work In Progress
-add_wip(WiP, Type, E, [H]) -> [{Type, E, H}| WiP];(*@@\label{add_head}@@*)
-add_wip(WiP, Type, E, [H| SigmaT]) -> add_wip([{Type, E, H}| WiP], Type, E, SigmaT).(*@@\label{add_list}@@*)
+add_wip(WiP, Type, E, [H]) -> [{Type, E, H}| WiP];(*@@\label{line:AddHead}@@*)
+add_wip(WiP, Type, E, [H| SigmaT]) -> add_wip([{Type, E, H}| WiP], Type, E, SigmaT).(*@@\label{line:AddList}@@*)
 \end{lstlisting}
 
 Again we saw the use of specialization by the use of parameter
-matching. Here we first check on line~\ref{add_head} if the fourth
+matching. Here we first check on line~\autoref{line:AddHead} if the fourth
 parameter is a list with a single element (and we bound the variable
 \texttt{H} to that single element), else we match on
-line~\ref{add_list} for a list with more than one element and we bind
+line~\autoref{line:AddList} for a list with more than one element and we bind
 the head (first element) to \texttt{H} while the tail (rest of the list
 excluding the head) is bound to \texttt{SigmaT}.
 
@@ -515,6 +812,637 @@ excluding the head) is bound to \texttt{SigmaT}.
 
 
 
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "SPE780-project-dissertation"
+%%% End: 
+@
+
+
+1.9
+log
+@some ordering
+@
+text
+@d42 5
+a46 1
+for the rest of the code portions discussed.
+d49 8
+a56 2
+\autoref{sec:proc_receiver}, which is the core of the processing.
+ After that we will discuss the two different mappers we have implemented.
+d59 1
+a59 1
+ancillary code portions.
+d263 1
+a263 1
+hv_brzp_null(receive_only, Sigma, Dist, WiP, Finish, Dlist, Delta) ->
+d285 1
+d291 3
+a293 1
+  \texttt{DDI} as the value. \textbf{Note:} the Delta variable is not
+d301 2
+a302 2
+  aready have been issued derivation requests.
+\item[\autoref{line:case_true}] We have seen this derivation befote, so we
+d338 4
+a341 3
+lines\autoref{line:rec2}-\autoref{line:rec2end}. It is lines
+\autoref{line:E2}-\autoref{line:E2e} that is the interesting part in this
+function part.
+d345 49
+a393 9
+hv_brzp_null(E,Sigma,Dist,WiP,Finish,Dlist,Delta) ->
+	%foreach(Sigma) send message to Dist
+	lists:foreach(fun(X) -> Dist!{process,[rd,E,X]} end,Sigma),(*@@\label{line:E2}@@*)
+	%F1=nullable(E,Finish),nullable(RE),(*@@\label{line:null}@@*)
+	Dist!{process,[null,E]},(*@@\label{line:dnull}@@*)
+	%foreach(Sigma) insert {E,I} into WiP, and add the null to the beginning ;)
+	NewWiP=[{null,E}|add_wip(WiP,rd,E,Sigma)],(*@@\label{line:E2e}@@*)
+	
+	%WiP would not be empty in this function :)
+d395 1
+a395 1
+		{rd,E,I,DDI} -> %io:format("brzp_null_why:	"),io:write({rd,E,I,DDI}),io:format("~n"),%"~p ~p ~p~n",[E,I,DDI]),
+d401 2
+a402 5
+		{null,E,true} -> % io:format("brzp_null: ~p true~n",[E]),
+			hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},NewWiP), [E|Finish], Dlist, Delta);	% Add nullable states to Finish
+		{null,E,false} -> %io:format("brzp_null: ~p false~n",[E]),
+			hv_brzp_null(receive_only, Sigma, Dist, lists:delete({null,E},NewWiP), Finish, Dlist, Delta)
+		%Other -> throw (Other)
+a407 11
+\begin{description}
+  \item[\autoref{line:E2}] This is an example where we apply a function
+	over the Sigma alphabet. The ``function'' in this case, is to sent
+	a message to the distributor \texttt{Dist}. This message consists
+	of the tuple \texttt{{process,[rd,E,X]}}. For some reason I made
+	it a two pair tuple, with the parameters a list, rather than an
+	extended tuple.
+  \item[\autoref{line:null}] The non-distributing versions, used theses
+	lines to check for the end conditions and whether the expression
+	is 
+\end{description}
+d411 15
+a425 2
+Before delving into the two types of receivers, it will be prudent to
+discuss some of the similarities and functioning of the receivers.
+d427 1
+a428 1
+\subsection{Round Robin}
+d430 84
+a513 2
+a matched message, and then executes itself recursively\ldots until it
+receives a \texttt{{stop}} message.
+d516 45
+a560 2
+%The receiver for the round robin/sequential tests  
+hv_rr_rec(Name,Res) -> 
+d570 41
+a610 3
+ This \texttt{{stop}} message in
+\autoref{line:exit1}, could execute any terminating command, and the
+receiver would exit.
+d612 1
+d614 1
+a615 1
+\subsection{AsAvailable Receiver}
+a616 1
+
+a625 1
+	%io:format("~nEntering ~p ~p ~p ~p ~n",[Name,integer_to_list(Timeout),pid_to_list(Res),pid_to_list(Dist)]),
+d631 2
+a632 3
+		{stop} ->% io:format("stopping ~p~n",[Name]),
+					exit(0); %Need to do the exit here else continue to next receive ;(
+		{process,[rd,E1,I1]}-> %io:format("~p ~p ~p~n",[Name,E1,I1]),
+d635 1
+a635 1
+		{process,[null,E1]} -> %io:format("Null: ~p ~p ~n",[Name,E1]),
+d641 3
+a643 2
+	receive %There were no "normal"/"expected" messages in the queue, so lets wait :)
+		{stop} -> %io:format("stopping ~p~n",[Name]),
+d645 1
+a645 1
+		{process,[rd,E,I]} -> %io:format("~p ~p ~p~n",[Name,E,I]),
+d648 1
+a648 1
+		{process,[null,E]} -> %io:format("Null: ~p ~p ~n",[Name,E]),
+a660 44
+\section{Spawning the receivers}
+\label{sec:spawning-receivers}
+
+After the parameters for the algorithm (like the number of threads to
+use etc.) have been configured, we create a number of 
+
+\begin{lstlisting}[name=hvp2]
+%Start N round-robin receivers that will send their results to Res
+% returning the list of	 PIDs.
+list_start_servers(0,_Res) -> [];
+list_start_servers(N,Res) -> 
+	[spawn(fun()->hv_rr_rec("Receiver "++[N+\$0],Res)
+				end)|list_start_servers(N-1,Res)].
+\end{lstlisting}%$
+
+\begin{lstlisting}[name=hvp2]
+%Number of servers variable, should make that a number to pass too, but 
+% for the moment this is adequate to test etc.
+hv_dist_rr_start(TimeOut,Res,N) -> 
+	hv_dist_rr(list_start_servers(N,Res),TimeOut).
+
+%Two specified servers
+hv_dist_rr_spec_start(TimeOut,Res)->
+	Rec1=spawn(fun() ->hv_rr_rec("Rec1",Res) end),receive after 100 -> true end,
+	Rec2=spawn(fun() ->hv_rr_rec("Rec2",Res) end),receive after 100 -> true end,
+	hv_dist_rr([Rec1,Rec2],TimeOut).
+\end{lstlisting}
+
+
+\subsection{Round Robin distributor}
+\begin{lstlisting}[name=hvp2]
+%Round Robin distributor.. we know this is not "optimal" :)
+hv_dist_rr([H|T]=Receivers,TimeOut) ->
+	%io:format("Dist_rr starting: SendTo: ~p Self:~p ~n",[pid_to_list(H),pid_to_list(self())]),
+	receive
+		{stop} -> lists:foreach(fun(X)->X!{stop} end,Receivers);
+		{process,Param} -> H!{process,Param},hv_dist_rr(lists:append(T, [H]),TimeOut);
+		Other -> io:write(Other),throw(Other)
+		after TimeOut ->
+			io:format( "Dist quiting and stopping receivers"),
+			lists:foreach(fun(X)->X!{stop} end, Receivers)
+	end.
+\end{lstlisting}
+
+d706 2
+d709 1
+@
+
+
+1.8
+log
+@Changed ref -> autoref
+@
+text
+@d10 1
+a10 1
+the Brozozswki DFA generation.
+d12 6
+a17 6
+The reader would be justified to keep figures \autoref{fig:AsAvailable}
+and \autoref{fig:RoundRobin} next to the code to be able to fully
+understand the code explanations. Even though we will put in an effort
+follow the flow of the code, the concurrent nature of the code (as the
+different paths in those figures would attest to) would not make that
+entirely possible.
+d33 21
+a53 10
+\subsection[\emph{Ab Initio}]{\emph{Ab Initio}\footnote{\emph{Ab Initio}: Latin for \emph{from the
+  beginning}. Introduced to this term from the name of a 
+  product/company used in massive extract-transform-load (ETL)
+  environments like telcos and financials}}
+
+We will discuss the code by starting at the entry function. As this
+function starts the distributor that initiates the receiver processes,
+we will continue to the receiver processes. After we've explained the
+distributor/receiver workings, we will jump back to the actual core
+that does the decisions and work creation.
+d55 1
+a55 1
+\subsection{Actual Brzozoswki code}
+d58 1
+a58 1
+implementation, and just replaced the core innerloop with our
+d69 1
+a69 1
+work to investigate the correctnes of the code per se. The author
+d75 23
+d118 1
+a118 1
+		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta);
+d121 42
+a162 29
+Lines \autoref{line:DefStarts}-\autoref{line:DefEnds} is the parameters we
+used for timeout values and the reference to ourself (see
+\autoref{sec:PID}) as the results receiver.  We initiated the work in
+progress (\texttt{WiP}) and expressions already processed
+(\texttt{Finish}) as empty lists. \texttt{Dlist} is set to the list
+containing the single element of the regular expresion to be
+considered. These values are initialzed the same in all the entry
+functions.
+
+\autoref{line:dist} spawns the distributor process\footnote{Remember that
+	Erlang processes are comparable to C/Java threads, but from the
+	program's perspective they are processes}, and using the fourth
+parameter (bound to the variable \texttt{N}) as the number of worker
+threads to spawn. Also the timeout and our own process
+information(\texttt{Res}) is passed as parameters.
+
+We then call the actual core of the processing function (\texttt{hv\_brzp\_null}
+in this case) with the parameters declared and initialized in
+\autoref{line:DefStarts}-\autoref{line:DefEnds}. Notice that the \texttt{Dist}ributor
+from line \autoref{dist} is passed as a parameter to this core processing
+function, and that this line is also verbatim copy of line
+\autoref{processing} of the roundrobin scheduler!
+
+Doing the \textsc{RoundRobin} scheduler, we do the same as the \textsc{AsAvailable}
+scheduler, except we spawn a roundrobin distributor. However, note
+that line \autoref{func_rr} is the function called with the third
+parameter matched as the atom \texttt{roundrobin} compared to line
+\autoref{func_asav} where the third parameter matched the atom
+\texttt{available}.
+d164 1
+a164 1
+hv_brz(RE, Sigma, roundrobin, N) ->(*@@\label{func_rr}@@*)
+d166 2
+a167 2
+		Dist = spawn(fun () -> hv_dist_rr_start(TimeOut, Res, N) end),(*@@\label{dist_rr}@@*)
+		hv_brzp_null(RE, Sigma, Dist, WiP, Finish, Dlist, Delta).(*@@\label{processing}@@*)
+d192 2
+a193 1
+\section{Processing (Receiver)}
+d196 10
+a205 6
+The function \texttt{hvp2:hv\_brzp\_null\/7} is the core receiver we
+will discuss in this section. The reader should notice the use
+of the function call pattern matching to follow the major paths in
+the receiver code, and that the receiver calls itself recursively
+until there is no more work in progress (WiP),
+ie. tail recursion at play as explained in \autoref{sec:tail-recursion}.
+d208 3
+a210 3
+\autoref{sec:wip-empty} and the receive only in \autoref{sec:receive}, is the
+empty (\texttt{[]}) fourth parameter\ldots and it must be in that
+order, else the empty WiP state would never be matched.
+d214 1
+a214 1
+fucntion parameters) the first parameter is the expression to derive,
+d236 1
+a236 1
+of this record format in \cite{joe:09}. Suficient to say that it is
+d244 7
+d256 1
+a256 1
+                % io:format("brzp_null_2:"),io:write({rd,E,I,DDI}),io:format("~n"),(*@@\label{debug}@@*)
+d263 2
+a264 3
+                % io:format("brzp_null_2: ~p true~n",[E]), (*@@\label{debug2}@@*)
+			hv_brzp_null(receive_only,Sigma,Dist,
+                           lists:delete({null,E},WiP),[E|Finish],Dlist,Delta);	% Add nullable states to F
+d266 1
+a266 1
+			hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},WiP),Finish,Dlist,Delta)
+d268 3
+a270 3
+                    io:write(WiP),
+                    output_mailbox(1),
+                    throw(timeoutRec_only)
+a272 9
+
+This part of the receiver, is executed based on \texttt{receive\_only}
+matching the first parameter, and it only waits for messages from the
+derivation processes. This should either be a result of a derivation
+tagged with the atom \texttt{rd}, or a result from a nullable test,
+tagged with \texttt{null}. It would remove this request from the WiP
+list, and recurse back to the same function name, but with slightly
+different parameters, modified based on the result received. 
+
+d289 1
+a289 1
+\item[\autoref{line:case-true}] We have seen this derivation befote, so we
+d301 1
+a301 1
+exception. This was a very usefull method to track a typing mistake
+d313 1
+a313 1
+  on Unix}. This is  then followed by the Erlang formating of the
+a319 1
+\subsubsection{}
+d336 1
+a336 1
+	%foreach(Sigma) insert {E,I} into WiP, and add the null to the begining ;)
+d344 2
+a345 2
+				true -> hv_brzp_null(receive_only,Sigma,Dist,lists:delete({rd,E,I},NewWiP),Finish,Dlist,NewDelta);
+				false -> hv_brzp_null(DDI,Sigma,Dist,lists:delete({rd,E,I},NewWiP),Finish,[DDI|Dlist],NewDelta)
+d348 1
+a348 1
+							hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},NewWiP),[E|Finish],Dlist,Delta);	% Add nullable states to Finish
+d350 1
+a350 1
+			hv_brzp_null(receive_only,Sigma,Dist,lists:delete({null,E},NewWiP),Finish,Dlist,Delta)
+d359 5
+a363 5
+    over the Sigma alphabet. The ``function'' in this case, is to sent
+    a message to the distributor \texttt{Dist}. This message consists
+    of the tuple \texttt{{process,[rd,E,X]}}. For some reason I made
+    it a two pair tuple, with the parameters a list, rather than an
+    extended tuple.
+d365 2
+a366 2
+    lines to check for the end conditions and whether the expression
+    is 
+d369 4
+a373 1
+\section{Receivers}
+d376 4
+d381 1
+a381 2
+%The receiver for the round robin/sequential tests
+%
+a382 1
+	%io:format(" starting: ~p self:~p Res:~p~n",[Name,pid_to_list(self()),pid_to_list(Res)]),
+d384 5
+a388 8
+		{stop} -> %io:format("stopping ~p ~n",[Name]),
+					false;
+		{process,[rd,E,I]} -> Res!{rd,E,I,mds:reduce(mds:deriv(E,I))},
+						 hv_rr_rec(Name,Res);
+		{process,[null,E]} -> Res!{null,E,mds:null(E)},
+													 hv_rr_rec(Name,Res);
+		Other -> io:write(Other),throw(Other)
+		after 3000 ->	io:format("Timeout ~p quiting",[Name]),io:nl()
+d392 6
+d412 1
+a412 1
+	%If the distributor works correct, this shouldn't be necesssary,
+d417 1
+a417 1
+					exit(0); %Need to do the exit here else continue to next
+d443 9
+d474 1
+d534 1
+a534 1
+\section{Anxillary functions}
+d537 1
+a537 1
+The Work in Progres (WiP) is a list of the type of processing that
+d544 1
+a544 1
+FIFO type queue would be a prefered implementation when optimizing.
+d548 1
+a548 1
+add_wip(WiP, Type, E, [H]) -> [{Type, E, H}| WiP];(*@@\label{AddHead}@@*)
+@
+
+
+1.7
+log
+@removed PId discussion
+@
+text
+@d12 2
+a13 2
+The reader would be justified to keep figures \ref{fig:AsAvailable}
+and \ref{fig:RoundRobin} next to the code to be able to fully
+d30 1
+a30 1
+\ref{sec:nullable}, and it being the last written code, the author
+d33 2
+a34 2
+\subsection[Ab Initio]{Ab Initio\footnote{Ab Initio: Latin for from the
+  beginning. Introduced to this term from the name of a 
+d87 1
+a87 1
+Lines \ref{line:DefStarts}-\ref{line:DefEnds} is the parameters we
+d106 1
+a106 1
+from line \ref{dist} is passed as a parameter to this core processing
+d108 1
+a108 1
+\ref{processing} of the roundrobin scheduler!
+d112 1
+a112 1
+that line \ref{func_rr} is the function called with the third
+d114 1
+a114 1
+\ref{func_asav} where the third parameter matched the atom
+d118 1
+a118 1
+(*@@\textit{Repeat lines \ref{def_starts}-\ref{def_ends}}@@*)
+d129 1
+a129 1
+	(*@@\textit{Repeat lines \ref{def_starts}-\ref{def_ends}}@@*)
+d153 1
+a153 1
+ie. tail recursion at play as explained in \ref{sec:tail-recursion}.
+d156 1
+a156 1
+\ref{sec:wip-empty} and the receive only in \ref{sec:receive}, is the
+d161 1
+a161 1
+\ref{sec:expr-derive}. Here (again note the order for matching the
+d226 1
+a226 1
+\item[\ref{line:rd_match}] we have received a derivation result based
+d228 1
+a228 1
+\item[\ref{line:newdelta}] Modify the Delta dictionary by creating a
+d234 1
+a234 1
+\item[\ref{line:case}] Some expression and alphabet inputs might
+d240 1
+a240 1
+\item[\ref{line:case-true}] We have seen this derivation befote, so we
+d243 1
+a243 1
+\item[\ref{line:case_false}] here we have not seen this derived
+d249 1
+a249 1
+Line \ref{line:timeout} we have assumed that after 5seconds of
+d260 1
+a260 1
+our code. Line \ref{debug} is a typical line used to debug the
+d266 1
+a266 1
+linefeed. Line \ref{debug2} shows an example with some substitution
+d277 2
+a278 2
+lines\ref{line:rec2}-\ref{line:rec2end}. It is lines
+\ref{line:E2}-\ref{line:E2e} that is the interesting part in this
+d310 1
+a310 1
+  \item[\ref{line:E2}] This is an example where we apply a function
+d316 1
+a316 1
+  \item[\ref{line:null}] The non-distributing versions, used theses
+d487 1
+a487 1
+matching. Here we first check on line~\ref{line:AddHead} if the fourth
+d490 1
+a490 1
+line~\ref{line:AddList} for a list with more than one element and we bind
+@
+
+
+1.6
+log
+@started again
+@
+text
+@d33 4
+a36 4
+\subsection{Ab Initio}\footnote{Ab Initio: Latin for from the
+  beginning. Introduced to this term from the name of a similarly
+  named product/company used in massive extract-transform-load (ETL)
+  environments like telcos and financials}
+d68 3
+a70 3
+chose to have one function for each of the attempts/iterations of
+parallelism embedded in a seperate file or module for each of the attempts.
+ 
+d72 1
+a72 1
+as parameters. First lets look at the entry call for the \textsc{AsAvailable} scheduler:
+d78 1
+a78 1
+		Res = self(),(*@@\label{self}@@*)
+d83 1
+a83 1
+		Dist = spawn(fun () -> hv_dist_avail_start(TimeOut, Res, N)		 end),(*@@\label{dist}@@*)
+d87 8
+a94 6
+Lines \ref{line:DefStarts}-\ref{line:DefEnds} is the parameters we used for
+timeout values and the reference to ourself as the results receiver.
+We initiated the work in progress (\texttt{WiP}) and expressions
+already processed (\texttt{Finish}) as empty lists. \texttt{Dlist} is set to
+the list containing the single element of the regular expresion to be
+considered. These values are initialzed the same in all the entry functions.
+d96 1
+a96 1
+Line \ref{dist} spawns the distributor process\footnote{Remember that
+d105 1
+a105 1
+lines \ref{def_start}-\ref{dist}. Notice that the \texttt{Dist}ributor
+d134 3
+a136 1
+\subsubsection{Repeated lines}
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d6 12
+a17 11
+In this chapter we will analyze the code to show the expressive nature
+of the Erlang language and the ease it was to be able to create the
+concurrent threading of the Brozozswki DFA generation and to make
+changes for different concurrency algorithms.
+
+The reader would be justified to keep figures \ref{fig:AsAvailable} and
+\ref{fig:RoundRobin} next to the code to be able to fully understand the
+code explanations. Even though we will put in an effort follow the flow of the
+code, the concurrent nature of the code (as the different paths in
+those figures would attest to) would not make that entirely
+possible.
+d27 1
+a27 1
+\paragraph{Chosen code to explain}
+d30 2
+a31 4
+\ref{sec:nullable}, and it being the last written code, that will be
+the code set used as basis for explanation in this chapter. Certain
+function names (like \texttt{hv\_brzp\_null}) should be replaced for
+the previous function names used.
+d33 4
+a36 23
+\paragraph{Actual Brzozoswki code}
+
+As we have used a previously working Brozoswki sequential
+implementation, and just replaced the core innerloop with our
+concurrent methods, we will not discuss those code in this document as
+it was outside this project's scope and function. It will have to be
+stated that on analysis of those code, the author found it to be
+closely follow Watson\cite{WatsonPhD} and that would be a good place
+to research the specific workings of the Brozoswki DFA generator and
+the code related to that.
+
+\paragraph{Generated DFA correctness proofs}
+
+The author would like to mention that it was not the scope of this work
+to investigate the correctnes of the code per se. The author have,
+however, checked and confirmed that the DFAs generated and used in
+this work, have been verified against the original implementation,
+thus errors from DFA generation, should be traced back to the original
+sequential implementation.
+
+\section{Ab Initio}\footnote{Latin: from the beginning. Introduced to
+  this term from the name of a similarly named product/company used in
+  massive extract-transform-load (ETL) environments like telcos and financials}
+d44 20
+d65 1
+a65 1
+\subsection{Entry Code}
+d69 1
+a69 1
+parallelism embedded in a seperate file/odule for each of the attempts.
+d76 2
+a77 2
+hv_brz(RE, Sigma, available, N) ->(*@@\label{func_asav}@@*)
+		TimeOut = 3000,(*@@\label{def_starts}@@*)
+d82 1
+a82 1
+		Delta = dict:new(),(*@@\label{def_ends}@@*)
+d87 1
+a87 1
+Lines \ref{def_starts}-\ref{def_ends} is the parameters we used for
+d144 1
+a144 1
+The function \texttt{hvp2:hv\_brzp_null\/7} is the core receiver we
+d159 1
+a159 1
+and did NOT match the atom \texttt{receive_only}!
+d173 1
+a173 1
+\texttt{receive_only} atom matched in the first parameter) we conclude
+d179 2
+a180 2
+\texttt{#dfa} record format. We will refer the author to the specifics
+of this record format in \cite{Armstrong}. Suficient to say that it is
+d196 1
+a196 1
+			true ->hv_brzp_null(receive_only,Sigma,Dist, lists:delete({rd,E,I},WiP),Finish,Dlist,NewDelta);(*@@\label{line:case_true@@*)
+d230 13
+d272 5
+a279 1
+	%io:format("hv_brzp2	~p ~n",[lists:flatten(io_lib:write(E,5))]),
+d281 3
+a283 4
+	lists:foreach(fun(X) -> Dist!{process,[rd,E,X]} end,Sigma),
+	%F1=nullable(E,Finish),
+	%nullable(RE),
+	Dist!{process,[null,E]},
+d285 1
+a285 1
+	NewWiP=[{null,E}|add_wip(WiP,rd,E,Sigma)],
+d288 1
+a288 1
+	receive
+d301 1
+a301 1
+end.
+d305 12
+d325 1
+a325 1
+	%io:format(" starting: ~p self:~p REs:~p~n",[Name,pid_to_list(self()),pid_to_list(Res)]),
+d388 1
+a388 1
+	[spawn(fun()->hv_rr_rec("Receiver "++[N+$0],Res)
+d478 2
+a479 2
+add_wip(WiP, Type, E, [H]) -> [{Type, E, H}| WiP];(*@@\label{add_head}@@*)
+add_wip(WiP, Type, E, [H| SigmaT]) -> add_wip([{Type, E, H}| WiP], Type, E, SigmaT).(*@@\label{add_list}@@*)
+d483 1
+a483 1
+matching. Here we first check on line~\ref{add_head} if the fourth
+d486 1
+a486 1
+line~\ref{add_list} for a list with more than one element and we bind
+d504 5
 @
 
 
