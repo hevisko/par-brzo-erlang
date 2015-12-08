@@ -1,0 +1,1 @@
+Brzozowski DFA construction in Erlang in a parallel manner
